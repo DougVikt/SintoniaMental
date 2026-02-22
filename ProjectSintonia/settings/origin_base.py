@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 # importações extras
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-skfb&@##-g$(&%bn929)l_q(*&8eb^7k9q9!y%k1y_$g32_)0y'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Aplicativos adicionados
+    'register_app.apps.RegisterAppConfig',
+    'login_app.apps.LoginAppConfig',
+    'main_app.apps.MainAppConfig',
+    'questionnaire_app.apps.QuestionnaireAppConfig',
+    'relacion_user_app.apps.RelacionUserAppConfig',
+    'user_specialist_app.apps.UserSpecialistAppConfig',
+    'user_patient_app.apps.UserPatientAppConfig',
+    'video_consult_app.apps.VideoConsultAppConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -120,7 +131,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Diretório onde os arquivos estáticos serão coletados
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
