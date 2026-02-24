@@ -434,6 +434,7 @@ staticfiles/
 .env
 venv/
 ambiente-django/
+ambiente_django/
 
 # Sistema
 .DS_Store
