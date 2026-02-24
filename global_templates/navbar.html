@@ -1,0 +1,66 @@
+<!-- ===================== NAVBAR ===================== -->
+<nav id="nav" class="navbar navbar-expand-lg fixed-top sty-navbar" style="min-height:64px; padding: 0 1.5rem;">
+
+  <!-- Logo (sempre visível) -->
+  <a class="navbar-brand" href="#hero">
+    <span style="font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:var(--orange);">
+      <i class="bi bi-brain me-1"></i>SM
+    </span>
+  </a>
+
+  <!-- Toggler mobile (aparece só em telas < lg) -->
+  <button class="navbar-toggler border-0 ms-auto me-2" type="button"
+    data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+    style="color:var(--orange); box-shadow:none;">
+    <i class="bi bi-list" style="font-size:1.8rem; line-height:1;"></i>
+  </button>
+
+  <!-- Login btn mobile (aparece só em telas < lg, ao lado do toggler) -->
+  <button class="btiniciar d-lg-none" style="font-size:.85rem; padding:.4rem 1rem;"
+    onclick="location.href='/login/'">Login</button>
+
+  <!-- Collapse desktop (só aparece em lg+) -->
+  <div class="collapse navbar-collapse" id="navbarDesktop">
+    <!-- Links centralizados -->
+    <ul class="navbar-nav mx-auto gap-1">
+      <li class="nav-item">
+        <a href="#hero" class="nav-link sty-link-nav"><i class="bi bi-house-fill"></i>Início</a>
+      </li>
+      <li class="nav-item">
+        <a href="#depoimentos" class="nav-link sty-link-nav"><i class="bi bi-chat-quote"></i>Depoimentos</a>
+      </li>
+      <li class="nav-item">
+        <a href="#sobre" class="nav-link sty-link-nav"><i class="bi bi-info-circle"></i>Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a href="/help/" class="nav-link sty-link-nav"><i class="bi bi-question-circle"></i>FAQ</a>
+      </li>
+    </ul>
+    <!-- Login desktop -->
+    <button class="btiniciar" onclick="location.href='/login/'">
+      <i class="bi bi-box-arrow-in-right me-1"></i>Login
+    </button>
+  </div>
+
+  <!-- Offcanvas (mobile) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+    style="max-width:280px;">
+    <div class="offcanvas-header" style="border-bottom:1px solid rgba(241,96,28,0.2);">
+      <span style="font-family:var(--font-display);font-weight:800;font-size:1.2rem;color:var(--orange);">
+        <i class="bi bi-brain me-1"></i>Sintonia Mental
+      </span>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column gap-1 p-3">
+      <a href="#hero"        class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-house-fill"></i>Início</a>
+      <a href="#depoimentos" class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-chat-quote"></i>Depoimentos</a>
+      <a href="#sobre"       class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-info-circle"></i>Sobre</a>
+      <a href="/help/"       class="nav-link sty-link-nav py-3"><i class="bi bi-question-circle"></i>FAQ</a>
+      <hr style="border-color:rgba(241,96,28,0.2); margin:.5rem 0;">
+      <button class="sty-button" onclick="location.href='/login/'">
+        <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
+      </button>
+    </div>
+  </div>
+
+</nav>
