@@ -1,0 +1,441 @@
+{% extends "base.html" %}
+
+{% block title %}Sintonia Mental{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static '#' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="hero-section">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="container">
+        <div class="row align-items-center g-5">
+
+        <!-- Left: copy -->
+        <div class="col-lg-6">
+            <div class="hero-badge">
+            <span class="dot"></span>
+            Plataforma de Saúde Mental
+            </div>
+
+            <h1 class="hero-title">
+            Suporte real para<br>
+            quem pensa em<br>
+            <span class="highlight">alta velocidade</span>
+            </h1>
+
+            <p class="hero-sub">
+            Conectamos pessoas com TDAH e TEA a especialistas qualificados,
+            de forma rápida, acessível e sem burocracia.
+            </p>
+
+            <div class="hero-ctas">
+            <a href="#quest" class="btn-primary-hero">
+                <i class="bi bi-clipboard2-pulse-fill"></i> Teste do TDAH
+            </a>
+            <a href="#" class="btn-ghost-hero"
+                data-bs-toggle="modal" data-bs-target="#registertype">
+                <i class="bi bi-box-arrow-in-right"></i> Cadastre-se
+            </a>
+            </div>
+
+            <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-num" data-count="500">0+</div>
+                <div class="stat-label">Consultas</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num">98%</div>
+                <div class="stat-label">Satisfação</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-num">24h</div>
+                <div class="stat-label">Disponível</div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Right: floating card -->
+        <div class="col-lg-6 hero-visual">
+            <div class="hero-card">
+            <div class="hero-card-head">
+                <div class="avatar"><i class="bi bi-person-fill"></i></div>
+                <div>
+                <div class="hero-card-title">Encontre seu especialista</div>
+                <div class="hero-card-sub">Psicólogos e neuropsicólogos disponíveis</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem;">Especialidades</div>
+                <div>
+                <span class="chip"><i class="bi bi-brain"></i>TDAH</span>
+                <span class="chip blue"><i class="bi bi-puzzle"></i>TEA</span>
+                <span class="chip green"><i class="bi bi-heart-pulse"></i>Ansiedade</span>
+                <span class="chip"><i class="bi bi-lightbulb"></i>Foco</span>
+                </div>
+            </div>
+
+            <div style="background:var(--dark-600);border-radius:1rem;padding:1rem;margin-bottom:1rem;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:.4rem;">
+                <span style="font-size:.85rem;">Compatibilidade</span>
+                <span style="font-size:.85rem;color:var(--orange);font-weight:700;">94%</span>
+                </div>
+                <div class="match-bar"><div class="match-fill" style="width:94%"></div></div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:.85rem;">
+                <div style="background:var(--dark-600);border-radius:.75rem;padding:.85rem;display:flex;gap:.5rem;align-items:center;">
+                <i class="bi bi-camera-video-fill" style="color:var(--orange)"></i>
+                <span>Consulta online</span>
+                </div>
+                <div style="background:var(--dark-600);border-radius:.75rem;padding:.85rem;display:flex;gap:.5rem;align-items:center;">
+                <i class="bi bi-shield-check-fill" style="color:#68d391"></i>
+                <span>Verificado</span>
+                </div>
+                <div style="background:var(--dark-600);border-radius:.75rem;padding:.85rem;display:flex;gap:.5rem;align-items:center;">
+                <i class="bi bi-calendar-check-fill" style="color:#63b3ed"></i>
+                <span>Agenda flex</span>
+                </div>
+                <div style="background:var(--dark-600);border-radius:.75rem;padding:.85rem;display:flex;gap:.5rem;align-items:center;">
+                <i class="bi bi-chat-dots-fill" style="color:var(--orange)"></i>
+                <span>Chat incluso</span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===================== DICAS / CARDS ===================== -->
+    <section id="card" class="tips-section">
+    <div class="container">
+        <div class="reveal">
+        <div class="section-label">Dicas práticas</div>
+        <div class="section-title">Ferramentas para o dia a dia</div>
+        <p class="section-desc">Estratégias simples e eficazes para gerenciar o TDAH e melhorar sua qualidade de vida.</p>
+        </div>
+
+        <div class="tips-grid reveal">
+        <!-- Card 1 -->
+        <div class="tip-card">
+            <img src="/media/tips/foco_Sni5iSG.jpg" alt="Foco" class="tip-card-img">
+            <div class="tip-card-body">
+            <div class="tip-card-icon"><i class="bi bi-list-check"></i></div>
+            <div class="tip-card-title">Quebrando Tarefas em Partes Menores</div>
+            <p class="tip-card-text">Divida tarefas grandes em etapas pequenas e gerenciáveis para vencer a procrastinação.</p>
+            <button class="btn-tip" data-bs-toggle="modal" data-bs-target="#modal-tips0">
+                Saiba mais <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tip-card">
+            <img src="/media/tips/auto_cuidado.jpg" alt="Autocuidado" class="tip-card-img">
+            <div class="tip-card-body">
+            <div class="tip-card-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+            <div class="tip-card-title">Autocuidado e TDAH</div>
+            <p class="tip-card-text">Entenda como dormir, alimentar e movimentar bem o corpo muda tudo para quem tem TDAH.</p>
+            <button class="btn-tip" data-bs-toggle="modal" data-bs-target="#modal-tips1">
+                Saiba mais <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Modais de dicas -->
+    <div class="modal fade" id="modal-tips0" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-list-check me-2 text-warning"></i>Quebrando Tarefas em Partes Menores</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            Tarefas grandes podem parecer assustadoras para quem tem TDAH, levando à procrastinação. 
+            Uma solução é dividir essas tarefas em etapas menores e mais gerenciáveis. Por exemplo, 
+            em vez de <strong style="color:var(--orange)">"estudar para a prova"</strong>, quebre em 
+            <em>"ler o capítulo 1"</em>, <em>"fazer resumo"</em> e <em>"revisar anotações"</em>. 
+            Isso torna o processo menos intimidante e mais realizável. Recompense-se após cada etapa!
+        </div>
+        <div class="modal-footer"><button class="sty-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="modal-tips1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title"><i class="bi bi-heart-pulse-fill me-2 text-warning"></i>Autocuidado e TDAH</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            O autocuidado é crucial para quem vive com TDAH. Isso inclui dormir o suficiente, 
+            alimentar-se bem, praticar exercícios físicos e reservar tempo para atividades prazerosas. 
+            A meditação e técnicas de respiração também ajudam a acalmar a mente. 
+            Não negligencie sua saúde mental — buscar terapia pode fazer toda a diferença.
+        </div>
+        <div class="modal-footer"><button class="sty-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
+        </div>
+    </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ===================== DEPOIMENTOS ===================== -->
+    <section id="depoimentos" class="reviews-section">
+    <div class="container">
+        <div class="reveal text-center mb-5">
+        <div class="section-label">Depoimentos</div>
+        <div class="section-title">O que dizem nossos usuários</div>
+        </div>
+
+        <div class="row g-4 reveal">
+        <!-- Se não houver depoimentos, mostrar estado vazio elegante -->
+        <div class="col-12">
+            <div class="reviews-empty">
+            <i class="bi bi-chat-square-quote" style="font-size:3rem;color:var(--orange);opacity:.5;"></i>
+            <h4 style="color:var(--light);margin-top:1rem;font-family:var(--font-display);">Em breve, os primeiros depoimentos</h4>
+            <p>Aqui você verá as avaliações dos pacientes após as consultas, relatando sua experiência com nossos especialistas.</p>
+            <button class="sty-button mt-2"
+                data-bs-toggle="modal" data-bs-target="#registertype">
+                <i class="bi bi-plus-circle me-1"></i>Seja o primeiro
+            </button>
+            </div>
+        </div>
+
+        <!-- Exemplo de como ficará com depoimentos (remover quando tiver real):
+        <div class="col-md-4">
+            <div class="review-card">
+            <div class="review-quote">"</div>
+            <p class="review-text">Finalmente encontrei um profissional que entende como minha mente funciona.</p>
+            <div class="review-author">
+                <div class="review-avatar">A</div>
+                <div>
+                <div class="review-name">Ana S.</div>
+                <div class="stars">★★★★★</div>
+                </div>
+            </div>
+            </div>
+        </div> -->
+        </div>
+    </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===================== TESTE TDAH ===================== -->
+    <section id="quest" class="quest-section">
+    <div class="container">
+        <div class="reveal">
+        <div class="quest-card">
+            <div class="quest-icon">
+            <i class="bi bi-clipboard2-pulse-fill"></i>
+            </div>
+            <div class="quest-title">Faça o Teste Agora!</div>
+            <p class="quest-desc">
+            Descubra se você apresenta sintomas de TDAH ou autismo respondendo ao nosso questionário 
+            rápido e fácil. Com base na sua pontuação, você encontrará recursos e informações 
+            úteis para entender e lidar com esses desafios.
+            </p>
+            <a href="/quest/" class="btn-quest">
+            Começar o Teste <i class="bi bi-arrow-right-circle-fill"></i>
+            </a>
+            <div class="quest-steps">
+            <div class="quest-step"><i class="bi bi-clock"></i> ~5 minutos</div>
+            <div class="quest-step"><i class="bi bi-shield-lock"></i> Anônimo</div>
+            <div class="quest-step"><i class="bi bi-bar-chart-line"></i> Resultado imediato</div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ===================== SOBRE ===================== -->
+    <section id="sobre" class="sobre-section">
+    <div class="container">
+        <div class="reveal text-center mb-5">
+        <div class="section-label">Sobre o projeto</div>
+        <div class="section-title">O que é o Sintonia Mental?</div>
+        </div>
+
+        <div class="row g-4 mb-5">
+        <!-- O que é TDAH -->
+        <div class="col-12 reveal">
+            <div class="tdah-info-card">
+            <div class="row align-items-start g-4">
+                <div class="col-lg-5">
+                <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+                    <div class="sobre-feature-icon"><i class="bi bi-bookmark-star-fill"></i></div>
+                    <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:#fff;margin:0;">
+                    O que é o TDAH?
+                    </h3>
+                </div>
+                <p style="color:var(--muted);line-height:1.7;">
+                    O TDAH (Transtorno do Déficit de Atenção e Hiperatividade) é uma condição 
+                    que geralmente começa na infância e pode continuar na vida adulta, 
+                    afetando escola, trabalho e relações sociais.
+                </p>
+                <p style="color:var(--muted);line-height:1.7;">
+                    O diagnóstico é feito por um profissional de saúde mental e o tratamento 
+                    costuma incluir remédios, terapia e estratégias comportamentais.
+                </p>
+                </div>
+                <div class="col-lg-7">
+                <p style="color:rgba(240,237,232,0.6);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;">
+                    Principais sintomas
+                </p>
+                <div class="row g-3">
+                    <div class="col-sm-4">
+                    <div style="background:var(--dark-600);border-radius:1rem;padding:1.25rem;height:100%;">
+                        <div style="color:var(--orange);font-size:1.3rem;margin-bottom:.5rem;"><i class="bi bi-eye-slash"></i></div>
+                        <div style="font-weight:700;color:#fff;margin-bottom:.35rem;">Desatenção</div>
+                        <div style="font-size:.85rem;color:var(--muted);">Dificuldade de manter foco, seguir instruções e terminar tarefas.</div>
+                    </div>
+                    </div>
+                    <div class="col-sm-4">
+                    <div style="background:var(--dark-600);border-radius:1rem;padding:1.25rem;height:100%;">
+                        <div style="color:#63b3ed;font-size:1.3rem;margin-bottom:.5rem;"><i class="bi bi-lightning-charge-fill"></i></div>
+                        <div style="font-weight:700;color:#fff;margin-bottom:.35rem;">Hiperatividade</div>
+                        <div style="font-size:.85rem;color:var(--muted);">Dificuldade em ficar parado, agitação constante.</div>
+                    </div>
+                    </div>
+                    <div class="col-sm-4">
+                    <div style="background:var(--dark-600);border-radius:1rem;padding:1.25rem;height:100%;">
+                        <div style="color:#68d391;font-size:1.3rem;margin-bottom:.5rem;"><i class="bi bi-fast-forward-fill"></i></div>
+                        <div style="font-weight:700;color:#fff;margin-bottom:.35rem;">Impulsividade</div>
+                        <div style="font-size:.85rem;color:var(--muted);">Decisões sem pensar, interrupções, dificuldade de esperar.</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="symptom-chips mt-3">
+                    <span class="symptom-chip orange"><i class="bi bi-check2"></i>Desorganização</span>
+                    <span class="symptom-chip blue"><i class="bi bi-check2"></i>Hiperfoco</span>
+                    <span class="symptom-chip green"><i class="bi bi-check2"></i>Esquecimento</span>
+                    <span class="symptom-chip orange"><i class="bi bi-check2"></i>Procrastinação</span>
+                    <span class="symptom-chip blue"><i class="bi bi-check2"></i>Criatividade</span>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- 3 features -->
+        <div class="col-md-4 reveal">
+            <div class="sobre-feature">
+            <div class="sobre-feature-icon"><i class="bi bi-bookmark-check-fill"></i></div>
+            <div class="sobre-feature-title">O que é a SM?</div>
+            <p class="sobre-feature-text">
+                Sintonia Mental é um projeto destinado a pessoas com TDAH e TEA, 
+                idealizado por um professor de TI que tem um filho com TDAH e 
+                identificou a falta de apoio específico para esse público.
+            </p>
+            </div>
+        </div>
+        <div class="col-md-4 reveal">
+            <div class="sobre-feature">
+            <div class="sobre-feature-icon"><i class="bi bi-bookmark-heart-fill"></i></div>
+            <div class="sobre-feature-title">Qual é o objetivo?</div>
+            <p class="sobre-feature-text">
+                Conectar pessoas com TDAH a profissionais especializados de 
+                forma rápida e sem complicações, identificando suas necessidades 
+                e oferecendo suporte personalizado.
+            </p>
+            </div>
+        </div>
+        <div class="col-md-4 reveal">
+            <div class="sobre-feature">
+            <div class="sobre-feature-icon"><i class="bi bi-bookmark-plus-fill"></i></div>
+            <div class="sobre-feature-title">Quem pode participar?</div>
+            <p class="sobre-feature-text">
+                Profissionais de saúde das áreas específicas são bem-vindos a colaborar. 
+                Além disso, qualquer pessoa pode ajudar compartilhando a plataforma e 
+                ampliando nosso alcance.
+            </p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="sty-footer">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div>
+            <div class="footer-logo">
+            <span style="font-family:var(--font-display);font-weight:800;font-size:1.4rem;color:var(--orange);">
+                <i class="bi bi-brain me-1"></i>Sintonia Mental
+            </span>
+            </div>
+            <div class="footer-copy">© Sintonia Mental 2024 — Feito com cuidado 🧡</div>
+        </div>
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+</main>
+
+<!-- ===================== MODAL REGISTRO ===================== -->
+<div class="modal fade" id="registertype" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Como você quer se cadastrar?</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-grid gap-3">
+          <button type="button" class="sty-button btn py-3 d-flex align-items-center justify-content-center gap-2"
+            onclick="location.href='/registre/register_specialist/'">
+            <i class="bi bi-person-badge-fill fs-5"></i>
+            <div class="text-start">
+              <div style="font-weight:700;font-size:1rem;">Sou Profissional</div>
+              <div style="font-size:.8rem;opacity:.8;">Psicólogo, neuropsicólogo ou especialista</div>
+            </div>
+          </button>
+          <button type="button" class="btn py-3 d-flex align-items-center justify-content-center gap-2"
+            style="background:var(--dark-600);border:1.5px solid rgba(241,96,28,0.3);color:var(--light);border-radius:1rem;"
+            onclick="location.href='/registre/register_user/'">
+            <i class="bi bi-person-fill fs-5" style="color:var(--orange)"></i>
+            <div class="text-start">
+              <div style="font-weight:700;font-size:1rem;">Sou Paciente</div>
+              <div style="font-size:.8rem;opacity:.6;">Busco suporte e acompanhamento</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HELP FAB ===================== -->
+<a href="/help/" class="help-fab">
+  <i class="bi bi-chat-dots-fill"></i>
+  Ajuda
+</a>
+
+{% endblock %}
