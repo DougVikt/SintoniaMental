@@ -16,7 +16,7 @@ import os
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -80,7 +80,7 @@ TEMPLATES = [
         },
     },
 ]
-
+print(os.path.join(BASE_DIR, 'global_templates'))
 WSGI_APPLICATION = 'ProjectSintonia.wsgi.application'
 
 
