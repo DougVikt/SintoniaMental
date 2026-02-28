@@ -1,0 +1,30 @@
+@import url('variables.css');
+
+body { 
+    font-family: var(--font-body); 
+    background: var(--dark-800); 
+    color: var(--light); 
+    min-height: 100vh; 
+    overflow-x: hidden;
+}
+
+*, *::before, *::after { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+::-webkit-scrollbar{ 
+    width: 6px; 
+}
+::-webkit-scrollbar-track { 
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb { 
+    background: var(--dark-500); 
+    border-radius: 6px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--orange); 
+}
+
