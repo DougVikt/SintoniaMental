@@ -1,6 +1,5 @@
 @import url('variables.css');
 
-
 /* ============================================================
    BASE & RESET
    ============================================================ */
@@ -21,99 +20,157 @@ body {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: var(--dark-500);
-    border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--orange);
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--dark-500); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
 
 /* ============================================================
-   UTILITY CLASSES
-   ============================================================ */
-/* Animações */
-.fade-up {
+   ANIMAÇÕES
+   /* era: .fade-up e  — ambas idênticas, unificadas aqui */
+/*============================================================ */
+.anim-up {
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.fade-up.visible {
+.anim-up.visible {
     opacity: 1;
     transform: none;
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+/* era: .fade-in */
+.anim-in {
+    animation: kf-anim-in 0.35s ease both;
 }
-.reveal.visible {
-    opacity: 1;
-    transform: none;
+@keyframes kf-anim-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
 }
 
-.fade-in {
-    animation: fadeIn 0.35s ease both;
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
 
 /* ============================================================
-   COMPONENTES COMUNS
-   ============================================================ */
-/* Navbar Pequena (usada em fq.css e sdp.css) */
-.navbar-sm {
+   NAVBAR PEQUENA
+/*============================================================ */
+.nav-sm {
     background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px); 
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 0.75rem 2rem;
-    display: flex;
+    display: flex; 
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; 
     position: sticky;
     top: 0;
     z-index: 200;
 }
+
+
+/* ============================================================
+   NAVBAR PRINCIPAL
+   era: .sty-navbar 
+/*============================================================ */
+.nav-main {
+    background: var(--dark-800);
+    border-bottom: 1px solid var(--orange-border);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: top 0.4s ease, opacity 0.4s ease;
+}
+
+/* era: .nav-logo */
 .nav-logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     text-decoration: none;
 }
+
+/* era: .nav-logo-icon */
 .nav-logo-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--orange);
-    border-radius: 0.7rem;
+    width: 65px;
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--light);
-    font-size: 1rem;
+    
 }
+.nav-logo-span {
+    width: auto;
+    height: 4rem;
+    display: flex;
+    position: fixed;
+    background-color: var(--dark-800);
+    margin-left: 1rem;
+    border-radius:0 0 0.5rem 0.5rem;  
+    top: -0.7rem;
+    z-index: 99;
+    transition: top 0.3s ease, transform 0.3s ease;
+}
+.nav-logo-span.expanded {
+    top: 0;
+    height: 5rem;    
+    transform: scale(1.05);
+}
+
+/* era: .nav-logo-text */
 .nav-logo-text {
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 800;
     color: var(--light);
 }
+
+/* era: .sty-link-nav */
+.nav-link-item {
+    color: rgba(240, 237, 232, 0.8);
+    border-radius: 0.5rem;
+    padding: 0.45rem 1.1rem !important;
+    transition: color 0.2s, background 0.2s;
+    letter-spacing: 0.01em;
+}
+.nav-link-item:hover,
+.nav-link-item.active {
+    color: var(--orange);
+    background: var(--orange-dim);
+}
+.nav-link-item i {
+    margin-right: 0.35rem; 
+}
+
+/* era: .logo-brand img */
+.nav-brand-img {
+    height: 44px;
+    width: auto;
+    filter: drop-shadow(0 0 8px var(--orange-border));
+}
+
+/* Mobile nav */
+@media (max-width: 991px) {
+    .offcanvas {
+        background: var(--dark-900) !important;
+    }
+    .nav-link-item {
+        color: var(--orange) !important;
+        font-size: 1.1rem;
+        margin: 0.3rem 0;
+        display: block !important;
+        visibility: visible !important;
+    }
+    .nav-link-item:hover {
+        background: var(--orange);
+        color: #000 !important;
+    }
+}
+
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
+/* era: .btn-nav — botão pequeno de nav */
 .btn-nav {
     background: var(--orange);
     color: var(--light);
@@ -131,78 +188,49 @@ body {
     color: var(--light);
 }
 
-/* ============================================================
-    NAVBAR — navbar.html
-    ============================================================ */
-.sty-navbar {
-    background: rgba(14,14,14,0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--orange-border);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 500;
-    transition: top 0.4s ease, opacity 0.4s ease;
-}
-
-.sty-link-nav {
-    color: rgba(240,237,232,0.8);
-    border-radius: .5rem;
-    padding: .45rem 1.1rem !important;
-    transition: color .2s, background .2s;
-    letter-spacing: .01em;
-}
-.sty-link-nav:hover, .sty-link-nav.active {
-    color: var(--orange);
-    background: var(--orange-dim);
-}
-.sty-link-nav i { margin-right: .35rem; }
-
-.btiniciar {
+/* era: .btiniciar — botão principal de login/iniciar */
+.btn-primary-action {
     background: var(--orange);
     color: var(--light);
     border: none;
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: .03em;
-    padding: .45rem 1.4rem;
+    letter-spacing: 0.03em;
+    padding: 0.45rem 1.4rem;
     border-radius: 2rem;
-    transition: all .2s;
+    transition: all 0.2s;
     box-shadow: 0 2px 12px var(--orange-border);
+    cursor: pointer;
 }
-.btiniciar:hover {
+.btn-primary-action:hover {
     background: var(--light);
     color: var(--orange);
     box-shadow: var(--shadow-glow);
     transform: translateY(-1px);
 }
 
-.logo-brand img {
-    height: 44px;
-    width: auto;
-    filter: drop-shadow(0 0 8px var(--orange-border));
+/* era: .sty-button — botão padrão genérico */
+.btn-default {
+    background: var(--orange);
+    color: var(--light);
+    border: none;
+    font-weight: 600;
+    border-radius: 2rem;
+    padding: 0.55rem 1.5rem;
+    font-size: 0.95rem;
+    box-shadow: 0 3px 12px rgba(241, 96, 28, 0.4);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.btn-default:hover {
+    background: var(--orange-glow);
+    transform: translateY(-1px);
+    color: var(--light);
 }
 
-/* Mobile nav */
-@media (max-width: 991px) {
-    .offcanvas { 
-        background: var(--dark-900) !important; 
-    }
-    .sty-link-nav { 
-        color: var(--orange); 
-        font-size: 1.1rem; 
-        margin: .3rem 0; 
-    }
-    .sty-link-nav:hover { 
-        background: var(--orange); 
-        color: #000; 
-    }
-}
-
-
-
-/* Botão de ajuda flutuante (hm.css) */
-.help-fab {
+/* Botão flutuante de ajuda
+   era: .help-fab */
+.btn-fab {
     position: fixed;
     bottom: 1.75rem;
     right: 1.75rem;
@@ -220,26 +248,26 @@ body {
     align-items: center;
     gap: 0.5rem;
     transition: all 0.25s;
-    animation: pulse-fab 3s ease-in-out infinite;
+    animation: kf-pulse-fab 3s ease-in-out infinite;
     text-decoration: none;
 }
-.help-fab:hover {
+.btn-fab:hover {
     background: var(--orange-glow);
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 10px 30px var(--orange-border);
     color: var(--light);
 }
-@keyframes pulse-fab {
-    0%, 90%, 100% {
-        box-shadow: 0 6px 24px var(--orange-border);
-    }
-    95% {
-        box-shadow: 0 6px 32px var(--orange-glow), 0 0 0 8px var(--orange-dim);
-    }
+@keyframes kf-pulse-fab {
+    0%, 90%, 100% { box-shadow: 0 6px 24px var(--orange-border); }
+    95%            { box-shadow: 0 6px 32px var(--orange-glow), 0 0 0 8px var(--orange-dim); }
 }
 
-/* Tags / Chips */
-.tag {
+
+/* ============================================================
+   TAGS / CHIPS
+   era: .tag, .tag-orange, .tag-blue, .tag-green, .tag-purple 
+   ============================================================ */
+.chip {
     padding: 0.28rem 0.75rem;
     border-radius: 2rem;
     font-size: 0.78rem;
@@ -247,52 +275,38 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
+    border: 1px solid transparent;
 }
-.tag-orange {
+.chip i { font-size: inherit; }
+
+/* era: .tag-orange */
+.chip-orange {
     background: var(--orange-dim);
     color: var(--orange-glow);
-    border: 1px solid var(--orange-border);
+    border-color: var(--orange-border);
 }
-.tag-blue {
+/* era: .tag-blue */
+.chip-blue {
     background: var(--blue-dim);
     color: var(--blue);
-    border: 1px solid var(--blue-400);
+    border-color: var(--blue-400);
 }
-.tag-green {
+/* era: .tag-green */
+.chip-green {
     background: rgba(74, 222, 128, 0.12);
     color: var(--green);
-    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-color: rgba(74, 222, 128, 0.3);
 }
-.tag-purple {
+/* era: .tag-purple */
+.chip-purple {
     background: var(--purple-dim);
     color: var(--purple);
-    border: 1px solid var(--purple-border);
-}
-.tag-orange i, .tag-blue i, .tag-green i, .tag-purple i { /* Para ícones */
-    font-size: inherit;
+    border-color: var(--purple-border);
 }
 
-/* Botões de ação (ex: nos cards) */
-.sty-button { /* Nome genérico para botão padrão */
-    background: var(--orange);
-    color: var(--light);
-    border: none;
-    font-weight: 600;
-    border-radius: 2rem;
-    padding: 0.55rem 1.5rem;
-    font-size: 0.95rem;
-    box-shadow: 0 3px 12px rgba(241, 96, 28, 0.4);
-    transition: all 0.2s;
-    cursor: pointer;
-}
-.sty-button:hover {
-    background: var(--orange-glow);
-    transform: translateY(-1px);
-    color: var(--light);
-}
 
 /* ============================================================
-   COMPONENTES DE MODAL (Comuns)
+   MODAL
    ============================================================ */
 .modal-content {
     background: var(--dark-700);
@@ -312,21 +326,19 @@ body {
     color: var(--light);
     font-size: 1.1rem;
 }
-.btn-close-white {
-    filter: invert(1);
-}
-.modal-body {
-    padding: 1.75rem;
-}
+.btn-close-white { filter: invert(1); }
+.modal-body { padding: 1.75rem; }
 .modal-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding: 1rem 1.5rem;
 }
 
+
 /* ============================================================
-   FOOTER (Comum)
+   FOOTER
+   era: .sty-footer
    ============================================================ */
-.sty-footer { /* Unindo os dois */
+.footer-main {
     background: var(--dark-900);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding: 2rem;
@@ -334,16 +346,18 @@ body {
     color: var(--muted);
     font-size: 0.85rem;
 }
-.sty-footer a {
+.footer-main a {
     color: var(--orange);
     text-decoration: none;
     font-weight: 600;
 }
 
+
 /* ============================================================
-   OVERLAY PARA SIDEBAR (Compartilhado entre pd.css e sd.css)
+   OVERLAY SIDEBAR
+   era: .sidebar-overlay 
    ============================================================ */
-.sidebar-overlay {
+.overlay-sidebar {
     display: none;
     position: fixed;
     inset: 0;
@@ -351,6 +365,4 @@ body {
     z-index: 199;
     backdrop-filter: blur(3px);
 }
-.sidebar-overlay.show {
-    display: block;
-}
+.overlay-sidebar.show { display: block; }
