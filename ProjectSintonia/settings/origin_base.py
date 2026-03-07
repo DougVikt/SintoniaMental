@@ -80,7 +80,7 @@ TEMPLATES = [
         },
     },
 ]
-print(os.path.join(BASE_DIR, 'global_templates'))
+
 WSGI_APPLICATION = 'ProjectSintonia.wsgi.application'
 
 
