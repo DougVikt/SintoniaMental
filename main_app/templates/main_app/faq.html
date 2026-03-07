@@ -1,0 +1,572 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'main_app/css/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'main_app/js/script.js' %}"></script>
+{% endblock %}
+
+{% include 'global_templates/navbar.html' %}
+
+{% block content %}
+<!-- ====================== NAVBAR ========================= -->
+
+
+<main>
+<!-- ======================= HERO ========================== -->
+<div class="faq-hero">
+  <div class="faq-badge"><i class="bi bi-question-circle-fill"></i> Central de Ajuda</div>
+  <h1 class="faq-hero-title">Como podemos ajudar?</h1>
+  <p class="faq-hero-sub">Encontre respostas rápidas sobre consultas, cadastro, pagamentos e muito mais.</p>
+
+  <div class="search-wrap">
+    <i class="bi bi-search search-icon"></i>
+    <input type="text" class="search-input" id="searchInput"
+      placeholder="Pesquisar dúvidas... ex: como agendar, pagamento..."
+      oninput="searchFAQ(this.value)">
+    <div class="search-clear" id="searchClear" onclick="clearSearch()"><i class="bi bi-x"></i></div>
+  </div>
+  <div class="search-results-count" id="searchCount" style="display:none;">
+    <span id="searchCountNum">0</span> resultado(s) encontrado(s) para "<span id="searchTerm"></span>"
+  </div>
+</div>
+
+<!-- ============================================================ MAIN -->
+<div class="faq-layout">
+
+  <!-- Sidebar categories -->
+  <aside class="cat-sidebar">
+    <div class="cat-label">Categorias</div>
+    <a class="cat-item active" onclick="filterCat('all', this)">
+      <div class="cat-icon"><i class="bi bi-grid-fill"></i></div>
+      <span class="cat-name">Todas</span>
+      <span class="cat-count" id="cnt-all">18</span>
+    </a>
+    <a class="cat-item" onclick="filterCat('inicio', this)">
+      <div class="cat-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+      <span class="cat-name">Primeiros passos</span>
+      <span class="cat-count">4</span>
+    </a>
+    <a class="cat-item" onclick="filterCat('consultas', this)">
+      <div class="cat-icon"><i class="bi bi-calendar-check-fill"></i></div>
+      <span class="cat-name">Consultas</span>
+      <span class="cat-count">5</span>
+    </a>
+    <a class="cat-item" onclick="filterCat('pagamentos', this)">
+      <div class="cat-icon"><i class="bi bi-credit-card-fill"></i></div>
+      <span class="cat-name">Pagamentos</span>
+      <span class="cat-count">4</span>
+    </a>
+    <a class="cat-item" onclick="filterCat('especialistas', this)">
+      <div class="cat-icon"><i class="bi bi-person-badge-fill"></i></div>
+      <span class="cat-name">Especialistas</span>
+      <span class="cat-count">3</span>
+    </a>
+    <a class="cat-item" onclick="filterCat('conta', this)">
+      <div class="cat-icon"><i class="bi bi-person-gear"></i></div>
+      <span class="cat-name">Minha conta</span>
+      <span class="cat-count">2</span>
+    </a>
+  </aside>
+
+  <!-- FAQ Accordion -->
+  <div class="faq-content" id="faqContent">
+
+    <!-- ===== PRIMEIROS PASSOS ===== -->
+    <div class="faq-section fade-up" data-cat="inicio" id="section-inicio">
+      <div class="faq-section-header">
+        <div class="faq-section-icon" style="background:rgba(241,96,28,0.12);color:var(--orange-glow);border:1px solid var(--orange-border);">
+          <i class="bi bi-rocket-takeoff-fill"></i>
+        </div>
+        <div class="faq-section-title">Primeiros passos</div>
+        <div class="faq-section-count">4 perguntas</div>
+      </div>
+
+      <div class="faq-item" data-cat="inicio">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">O que é o Sintonia Mental e como funciona?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>O <strong>Sintonia Mental</strong> é uma plataforma de saúde mental focada em pessoas com TDAH e TEA. Conectamos pacientes a neuropsicólogos e psicólogos especializados para consultas online.</p>
+            <p>O funcionamento é simples:</p>
+            <ul>
+              <li>Você se cadastra como paciente ou especialista</li>
+              <li>Navega pelos perfis dos especialistas disponíveis</li>
+              <li>Agenda uma consulta no horário que preferir</li>
+              <li>Realiza a consulta por videochamada diretamente pela plataforma</li>
+            </ul>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Geral</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="inicio">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Preciso ter diagnóstico de TDAH ou TEA para usar a plataforma?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>Não!</strong> Você não precisa de diagnóstico prévio. Muitas pessoas chegam ao Sintonia Mental justamente para obter uma avaliação e entender melhor seus sintomas.</p>
+            <p>Nossos especialistas estão preparados tanto para quem já tem diagnóstico e busca acompanhamento, quanto para quem suspeita ter TDAH ou TEA e quer uma avaliação profissional.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">TDAH / TEA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="inicio">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Como faço para criar minha conta?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>O cadastro é rápido e gratuito. Basta clicar em <a href="/registre/">Cadastrar</a> e seguir os 3 passos:</p>
+            <ul>
+              <li><strong>Tipo de conta:</strong> escolha entre Paciente ou Especialista</li>
+              <li><strong>Dados pessoais:</strong> nome, e-mail e senha</li>
+              <li><strong>Confirmação:</strong> aceite os termos e pronto</li>
+            </ul>
+            <p>Você também pode entrar com sua conta Google ou Facebook para facilitar.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Cadastro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="inicio">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">O serviço é gratuito?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>O <strong>cadastro é 100% gratuito</strong>. A primeira consulta com um novo especialista também é gratuita para que você possa conhecer o profissional.</p>
+            <p>A partir da segunda consulta, os valores são definidos pelo próprio especialista, geralmente a partir de <strong>R$80 por sessão</strong>. Você sempre verá o valor antes de confirmar o agendamento.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Preços</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CONSULTAS ===== -->
+    <div class="faq-section fade-up" data-cat="consultas" id="section-consultas">
+      <div class="faq-section-header">
+        <div class="faq-section-icon" style="background:rgba(96,165,250,0.12);color:var(--blue);border:1px solid rgba(96,165,250,0.3);">
+          <i class="bi bi-calendar-check-fill"></i>
+        </div>
+        <div class="faq-section-title">Consultas</div>
+        <div class="faq-section-count">5 perguntas</div>
+      </div>
+
+      <div class="faq-item" data-cat="consultas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Como agendar uma consulta?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Agendar é simples:</p>
+            <ul>
+              <li>Acesse seu <a href="/dashboard/">Dashboard</a> e clique em "Nova Consulta"</li>
+              <li>Ou acesse o perfil de um especialista e clique em "Agendar"</li>
+              <li>Escolha a data, horário e tipo (online ou presencial)</li>
+              <li>Adicione uma observação se quiser e confirme</li>
+            </ul>
+            <p>Você receberá uma confirmação por e-mail assim que o especialista aceitar.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Agendamento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="consultas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Posso cancelar ou remarcar uma consulta?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>Sim!</strong> Você pode cancelar ou remarcar com até <strong>24 horas de antecedência</strong> sem nenhum custo.</p>
+            <p>Cancelamentos com menos de 24h podem resultar em cobrança de uma taxa de <strong>50% do valor da consulta</strong>, dependendo da política do especialista.</p>
+            <p>Para cancelar, acesse "Minhas Consultas" no seu Dashboard e clique em "Cancelar" na consulta desejada.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Cancelamento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="consultas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Como funciona a videochamada?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A videochamada acontece <strong>dentro da própria plataforma</strong>, sem precisar instalar nenhum aplicativo. Basta um navegador atualizado (Chrome, Firefox, Edge ou Safari).</p>
+            <p>No dia da consulta, o botão <strong>"Entrar na Consulta"</strong> ficará disponível 15 minutos antes do horário agendado no seu Dashboard.</p>
+            <p>Recomendamos:</p>
+            <ul>
+              <li>Conexão de internet estável</li>
+              <li>Ambiente tranquilo e privado</li>
+              <li>Testar câmera e microfone com antecedência</li>
+            </ul>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Videochamada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="consultas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">E se o especialista não aparecer na consulta?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Se o especialista não entrar na sala em até <strong>15 minutos</strong> após o horário agendado, a consulta será automaticamente cancelada e você receberá <strong>reembolso integral</strong>.</p>
+            <p>Você também poderá avaliar a situação e nossa equipe de suporte entrará em contato para resolver da melhor forma possível.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Suporte</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="consultas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">As consultas ficam gravadas?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>Não.</strong> As consultas não são gravadas por padrão. Sua privacidade é uma prioridade.</p>
+            <p>Se tanto o paciente quanto o especialista concordarem com a gravação (por exemplo, para fins de estudo ou supervisão), isso pode ser ativado manualmente, com consentimento explícito de ambas as partes.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Privacidade</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PAGAMENTOS ===== -->
+    <div class="faq-section fade-up" data-cat="pagamentos" id="section-pagamentos">
+      <div class="faq-section-header">
+        <div class="faq-section-icon" style="background:rgba(74,222,128,0.12);color:var(--green);border:1px solid rgba(74,222,128,0.3);">
+          <i class="bi bi-credit-card-fill"></i>
+        </div>
+        <div class="faq-section-title">Pagamentos</div>
+        <div class="faq-section-count">4 perguntas</div>
+      </div>
+
+      <div class="faq-item" data-cat="pagamentos">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Quais formas de pagamento são aceitas?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Aceitamos as principais formas de pagamento:</p>
+            <ul>
+              <li><strong>Cartão de crédito</strong> — Visa, Mastercard, Elo, American Express (parcelamento disponível)</li>
+              <li><strong>Cartão de débito</strong></li>
+              <li><strong>PIX</strong> — aprovação instantânea</li>
+              <li><strong>Boleto bancário</strong> — prazo de até 3 dias úteis</li>
+            </ul>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Pagamento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="pagamentos">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Quando sou cobrado pelo agendamento?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A cobrança acontece <strong>no momento do agendamento</strong>, após a confirmação pelo especialista. Isso garante que seu horário fica reservado.</p>
+            <p>Para a primeira consulta com um novo especialista, <strong>não há cobrança</strong> — ela é gratuita.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Cobrança</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="pagamentos">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Como funciona o reembolso em caso de cancelamento?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A política de reembolso depende da antecedência do cancelamento:</p>
+            <ul>
+              <li><strong>Mais de 24h antes:</strong> reembolso integral (até 7 dias úteis no cartão)</li>
+              <li><strong>Menos de 24h antes:</strong> reembolso de 50% do valor</li>
+              <li><strong>Não comparecimento sem aviso:</strong> sem reembolso</li>
+            </ul>
+            <p>Em casos de problemas técnicos ou ausência do especialista, o reembolso é sempre integral.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Reembolso</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="pagamentos">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Meus dados de pagamento ficam salvos com segurança?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>Sim.</strong> Não armazenamos os dados do seu cartão diretamente. Todo o processamento é feito por gateways certificados com criptografia <strong>SSL/TLS</strong> e conformidade com o <strong>PCI DSS</strong>.</p>
+            <p>Seus dados financeiros nunca ficam expostos na plataforma.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Segurança</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ESPECIALISTAS ===== -->
+    <div class="faq-section fade-up" data-cat="especialistas" id="section-especialistas">
+      <div class="faq-section-header">
+        <div class="faq-section-icon" style="background:var(--purple-dim,rgba(167,139,250,0.14));color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">
+          <i class="bi bi-person-badge-fill"></i>
+        </div>
+        <div class="faq-section-title">Especialistas</div>
+        <div class="faq-section-count">3 perguntas</div>
+      </div>
+
+      <div class="faq-item" data-cat="especialistas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Como me cadastrar como especialista?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Para se cadastrar como especialista, acesse <a href="/registre/register_specialist/">Cadastro de Especialista</a> e preencha:</p>
+            <ul>
+              <li>Dados pessoais e profissionais</li>
+              <li>Número do registro (CRP, CRM ou equivalente)</li>
+              <li>Especialidades (TDAH, TEA, Ansiedade, etc.)</li>
+            </ul>
+            <p>Após o cadastro, nossa equipe revisará seu perfil em até <strong>24 horas</strong>. Você receberá um e-mail de aprovação.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Especialista</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="especialistas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Quais especialistas posso encontrar na plataforma?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>A plataforma conta com profissionais das áreas de:</p>
+            <ul>
+              <li><strong>Neuropsicologia</strong> — avaliação e reabilitação cognitiva</li>
+              <li><strong>Psicologia Clínica</strong> — terapia e acompanhamento</li>
+              <li><strong>Psiquiatria</strong> — diagnóstico e prescrição médica</li>
+            </ul>
+            <p>Todos especializados em TDAH, TEA, ansiedade e condições relacionadas.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Especialidades</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="especialistas">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Como os especialistas são verificados?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Todo especialista passa por uma verificação manual antes de ser aprovado:</p>
+            <ul>
+              <li>Validação do número de registro (CRP/CRM) nos conselhos oficiais</li>
+              <li>Revisão das especialidades declaradas</li>
+              <li>Confirmação de documentação profissional</li>
+            </ul>
+            <p>Perfis aprovados exibem o selo <strong style="color:var(--green);">✓ Verificado</strong> no perfil público.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Verificação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CONTA ===== -->
+    <div class="faq-section fade-up" data-cat="conta" id="section-conta">
+      <div class="faq-section-header">
+        <div class="faq-section-icon" style="background:rgba(251,191,36,0.12);color:var(--yellow);border:1px solid rgba(251,191,36,0.3);">
+          <i class="bi bi-person-gear"></i>
+        </div>
+        <div class="faq-section-title">Minha conta</div>
+        <div class="faq-section-count">2 perguntas</div>
+      </div>
+
+      <div class="faq-item" data-cat="conta">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Como altero minha senha?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Você pode alterar sua senha de duas formas:</p>
+            <ul>
+              <li>Acesse <strong>Meu Perfil → Configurações → Alterar senha</strong></li>
+              <li>Na tela de login, clique em <a href="/login/">Esqueci a senha</a> para receber um link por e-mail</li>
+            </ul>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">Conta</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" data-cat="conta">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span class="faq-q-text">Posso excluir minha conta?</span>
+          <i class="bi bi-chevron-down faq-chevron"></i>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>Sim.</strong> Você pode solicitar a exclusão da conta a qualquer momento em <strong>Configurações → Excluir conta</strong>.</p>
+            <p>Após a exclusão, todos os seus dados pessoais são removidos em até <strong>30 dias</strong>, conforme a LGPD. Histórico de consultas é mantido por obrigação legal por 5 anos, de forma anonimizada.</p>
+            <div class="faq-footer-row">
+              <div class="faq-helpful">Isso foi útil?
+                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+              </div>
+              <span class="faq-tag">LGPD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No results -->
+    <div class="no-results" id="noResults">
+      <i class="bi bi-search"></i>
+      <strong>Nenhum resultado encontrado</strong>
+      <p>Tente palavras diferentes ou entre em contato com nosso suporte.</p>
+    </div>
+
+    <!-- Contact card -->
+    <div class="contact-card fade-up" id="contato">
+      <div class="contact-card-title">Não encontrou o que procurava?</div>
+      <p class="contact-card-sub">Nossa equipe está pronta para ajudar. Resposta em até 24 horas.</p>
+      <div class="contact-btns">
+        <a href="mailto:suporte@sintoniamental.com.br" class="btn-contact primary">
+          <i class="bi bi-envelope-fill"></i> Enviar e-mail
+        </a>
+        <a href="https://wa.me/5511999999999" class="btn-contact ghost" target="_blank">
+          <i class="bi bi-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /faq-content -->
+</div><!-- /faq-layout -->
+</main>
+{% endblock %}
+

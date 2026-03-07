@@ -11,6 +11,55 @@
     <script src="{% static 'main_app/js/script.js' %}"></script>
 {% endblock %}
 
+{% block content_nav %}
+ <!-- Login btn mobile (aparece só em telas < lg, ao lado do toggler) -->
+    <button class="btn-primary-action d-lg-none btn-login" 
+      onclick="location.href='/login/'">Login</button>
+
+    <!-- Collapse desktop (só aparece em lg+) -->
+    <div class="collapse navbar-collapse" id="navbarDesktop">
+      <!-- Links centralizados -->
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item">
+          <a href="#hero" class="nav-link nav-link-item"><i class="bi bi-house-fill"></i>Início</a>
+        </li>
+        <li class="nav-item">
+          <a href="#depoimentos" class="nav-link nav-link-item"><i class="bi bi-chat-quote"></i>Depoimentos</a>
+        </li>
+        <li class="nav-item">
+          <a href="#sobre" class="nav-link nav-link-item"><i class="bi bi-info-circle"></i>Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'faq' %}" class="nav-link nav-link-item"><i class="bi bi-question-circle"></i>FAQ</a>
+        </li>
+      </ul>
+      <!-- Login desktop -->
+      <button class="btn-primary-action" onclick="location.href='/login/'">
+        <i class="bi bi-box-arrow-in-right me-1"></i>Login
+      </button>
+    </div>
+
+    <!-- Offcanvas (mobile) -->
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar">
+      <div class="offcanvas-header" >
+        <span class="offcanvas-title d-flex align-items-center gap-2 text-light">
+          <i class="bi bi-brain me-1"></i>Sintonia Mental
+        </span>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column gap-1 p-3">
+        <a href="#hero"        class="nav-link nav-link-item py-3" data-bs-dismiss="offcanvas"><i class="bi bi-house-fill"></i>Início</a>
+        <a href="#depoimentos" class="nav-link nav-link-item py-3" data-bs-dismiss="offcanvas"><i class="bi bi-chat-quote"></i>Depoimentos</a>
+        <a href="#sobre"       class="nav-link nav-link-item py-3" data-bs-dismiss="offcanvas"><i class="bi bi-info-circle"></i>Sobre</a>
+        <a href="/help/"       class="nav-link nav-link-item py-3"><i class="bi bi-question-circle"></i>FAQ</a>
+        <hr style="border-color:rgba(241,96,28,0.2); margin:.5rem 0;">
+        <button class="sty-button" onclick="location.href='/login/'">
+          <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
+        </button>
+      </div>
+    </div>
+{% endblock %}
+
 {% block content %}
 <main>
 
@@ -128,13 +177,13 @@
     <!-- ===================== DICAS / CARDS ===================== -->
     <section id="card" class="tips-section">
     <div class="container">
-        <div class="reveal">
+        <div class="anim-up">
         <div class="section-label">Dicas práticas</div>
         <div class="section-title">Ferramentas para o dia a dia</div>
         <p class="section-desc">Estratégias simples e eficazes para gerenciar o TDAH e melhorar sua qualidade de vida.</p>
         </div>
 
-        <div class="tips-grid reveal">
+        <div class="tips-grid anim-up">
         <!-- Card 1 -->
         <div class="tip-card">
             <img src="#" alt="Foco" class="tip-card-img">
@@ -207,12 +256,12 @@
     <!-- ===================== DEPOIMENTOS ===================== -->
     <section id="depoimentos" class="reviews-section">
     <div class="container">
-        <div class="reveal text-center mb-5">
+        <div class="anim-up text-center mb-5">
         <div class="section-label">Depoimentos</div>
         <div class="section-title">O que dizem nossos usuários</div>
         </div>
 
-        <div class="row g-4 reveal">
+        <div class="row g-4 anim-up">
         <!-- Se não houver depoimentos, mostrar estado vazio elegante -->
         <div class="col-12">
             <div class="reviews-empty">
@@ -249,7 +298,7 @@
     <!-- ===================== TESTE TDAH ===================== -->
     <section id="quest" class="quest-section">
     <div class="container">
-        <div class="reveal">
+        <div class="anim-up">
         <div class="quest-card">
             <div class="quest-icon">
             <i class="bi bi-clipboard2-pulse-fill"></i>
@@ -278,14 +327,14 @@
     <!-- ===================== SOBRE ===================== -->
     <section id="sobre" class="sobre-section">
     <div class="container">
-        <div class="reveal text-center mb-5">
+        <div class="anim-up text-center mb-5">
         <div class="section-label">Sobre o projeto</div>
         <div class="section-title">O que é o Sintonia Mental?</div>
         </div>
 
         <div class="row g-4 mb-5">
         <!-- O que é TDAH -->
-        <div class="col-12 reveal">
+        <div class="col-12 anim-up">
             <div class="tdah-info-card">
             <div class="row align-items-start g-4">
                 <div class="col-lg-5">
@@ -345,7 +394,7 @@
         </div>
 
         <!-- 3 features -->
-        <div class="col-md-4 reveal">
+        <div class="col-md-4 anim-up">
             <div class="sobre-feature">
             <div class="sobre-feature-icon"><i class="bi bi-bookmark-check-fill"></i></div>
             <div class="sobre-feature-title">O que é a SM?</div>
@@ -356,7 +405,7 @@
             </p>
             </div>
         </div>
-        <div class="col-md-4 reveal">
+        <div class="col-md-4 anim-up">
             <div class="sobre-feature">
             <div class="sobre-feature-icon"><i class="bi bi-bookmark-heart-fill"></i></div>
             <div class="sobre-feature-title">Qual é o objetivo?</div>
@@ -367,7 +416,7 @@
             </p>
             </div>
         </div>
-        <div class="col-md-4 reveal">
+        <div class="col-md-4 anim-up">
             <div class="sobre-feature">
             <div class="sobre-feature-icon"><i class="bi bi-bookmark-plus-fill"></i></div>
             <div class="sobre-feature-title">Quem pode participar?</div>
