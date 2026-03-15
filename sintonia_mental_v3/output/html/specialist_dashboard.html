@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sintonia Mental — Área do Especialista</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Global -->
+  <link rel="stylesheet" href="{% static 'css/global.css' %}">
+  <!-- Page -->
+  <link rel="stylesheet" href="{% static 'css/specialist_dashboard.css' %}">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon"><i class="bi bi-brain"></i></div>
+      <div class="sidebar-logo-text">Sintonia Mental <small>Área do Especialista</small></div>
+    </div>
+
+    <div class="sidebar-profile">
+      <div class="profile-avatar">
+        AC
+        <span class="profile-online-dot"></span>
+      </div>
+      <div>
+        <div class="profile-name">Dra. Ana Costa</div>
+        <div class="profile-badge">Especialista</div>
+        <div class="profile-rating"><i class="bi bi-star-fill"></i> 4.9 &nbsp;·&nbsp; <span class="txt-muted">128 consultas</span></div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a class="nav-item active" onclick="setPage(this)">
+        <i class="bi bi-grid-1x2-fill"></i> Dashboard
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-calendar-event-fill"></i> Minha Agenda
+        <span class="nav-badge yellow">3</span>
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-people-fill"></i> Meus Pacientes
+      </a>
+
+      <div class="nav-section-label" class="specialist-dashboard--s0">Consultas</div>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-hourglass-split"></i> Solicitações
+        <span class="nav-badge">2</span>
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-camera-video-fill"></i> Sala de Espera
+      </a>
+
+      <div class="nav-section-label" class="specialist-dashboard--s0">Conta</div>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-person-fill"></i> Meu Perfil
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-wallet2"></i> Financeiro
+      </a>
+      <a class="nav-item" onclick="setPage(this); openAvailModal()" data-bs-toggle="modal" data-bs-target="#modalAvailability">
+        <i class="bi bi-clock-fill" class="txt-orange"></i> Disponibilidade
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-gear-fill"></i> Configurações
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="btn-logout" onclick="location.href='/login/'">
+        <i class="bi bi-box-arrow-left"></i> Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN ==================== -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="d-flex align-items-center gap-3">
+        <button class="hamburger-btn" onclick="openSidebar()"><i class="bi bi-list"></i></button>
+        <div>
+          <span class="topbar-title">Dashboard <small id="topbarDate"></small></span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <!-- Availability toggle -->
+        <div class="avail-toggle online" id="availToggle" onclick="toggleAvailability()">
+          <span class="avail-dot"></span>
+          <span id="availLabel">Disponível</span>
+        </div>
+        <div class="topbar-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></div>
+        <div class="topbar-btn"><i class="bi bi-chat-dots-fill"></i></div>
+        <div class="profile-avatar" class="specialist-dashboard--s1">AC</div>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-content">
+
+      <!-- STATS -->
+      <div class="stats-row reveal">
+        <div class="stat-card orange">
+          <div class="stat-icon orange"><i class="bi bi-calendar-check-fill"></i></div>
+          <div class="stat-num">128</div>
+          <div class="stat-label">Consultas realizadas</div>
+          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i>+12 este mês</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-icon" class="specialist-dashboard--s2"><i class="bi bi-hourglass-split"></i></div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Consultas hoje</div>
+          <div class="stat-trend neutral"><i class="bi bi-dash"></i> agendadas</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-icon blue"><i class="bi bi-people-fill"></i></div>
+          <div class="stat-num">47</div>
+          <div class="stat-label">Pacientes ativos</div>
+          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i>+5 este mês</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon green"><i class="bi bi-cash-coin"></i></div>
+          <div class="stat-num">R$2.4k</div>
+          <div class="stat-label">Receita mensal</div>
+          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i>+18%</div>
+        </div>
+      </div>
+
+      <!-- CALENDAR + WIDGETS -->
+      <div class="dashboard-grid reveal">
+
+        <!-- Calendar -->
+        <div class="calendar-card">
+          <div class="calendar-header">
+            <div class="calendar-title"><i class="bi bi-calendar3 me-2" class="txt-orange"></i>Agenda</div>
+            <div class="cal-nav">
+              <div class="cal-btn" onclick="changeMonth(-1)"><i class="bi bi-chevron-left"></i></div>
+              <div class="cal-month" id="calMonthLabel">—</div>
+              <div class="cal-btn" onclick="changeMonth(1)"><i class="bi bi-chevron-right"></i></div>
+            </div>
+          </div>
+          <div class="calendar-grid">
+            <div class="cal-weekdays">
+              <div class="cal-wd">Dom</div><div class="cal-wd">Seg</div><div class="cal-wd">Ter</div>
+              <div class="cal-wd">Qua</div><div class="cal-wd">Qui</div><div class="cal-wd">Sex</div><div class="cal-wd">Sáb</div>
+            </div>
+            <div class="cal-days" id="calDays"></div>
+          </div>
+          <div class="agenda-list">
+            <div class="agenda-label" id="agendaLabel">Agenda de hoje</div>
+            <div id="agendaItems"></div>
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <div>
+          <!-- Solicitações pendentes -->
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title"><i class="bi bi-hourglass-split me-2" class="specialist-dashboard--s3"></i>Solicitações Pendentes</div>
+              <span class="nav-badge yellow" class="specialist-dashboard--s4">2</span>
+            </div>
+            <div class="pending-body" id="pendingList"></div>
+          </div>
+
+          <!-- Receita -->
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title"><i class="bi bi-graph-up-arrow me-2" class="specialist-dashboard--s5"></i>Receita</div>
+              <a href="#" class="widget-link">detalhes</a>
+            </div>
+            <div class="earnings-body">
+              <div class="specialist-dashboard--s6">Mês atual</div>
+              <div class="earnings-total">R$ 2.400</div>
+              <div class="earnings-sub">Meta: R$ 3.000 &nbsp;·&nbsp; <span class="txt-green">80% concluído</span></div>
+              <div class="earnings-bar-wrap">
+                <div class="earnings-bar-label"><span>Progresso da meta</span><span class="txt-orange">80%</span></div>
+                <div class="earnings-bar"><div class="earnings-fill" id="earningsBar" class="specialist-dashboard--s7"></div></div>
+              </div>
+              <div class="earnings-breakdown">
+                <div class="earn-item">
+                  <div class="earn-num" class="txt-orange">30</div>
+                  <div class="earn-label">Consultas pagas</div>
+                </div>
+                <div class="earn-item">
+                  <div class="earn-num" class="txt-green">R$80</div>
+                  <div class="earn-label">Valor médio</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATIENTS TABLE -->
+      <div class="patients-section reveal">
+        <div class="section-row">
+          <div class="section-row-title"><i class="bi bi-people-fill me-2" class="txt-orange"></i>Pacientes Recentes</div>
+          <a href="#" class="section-row-link">Ver todos <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="patients-table-wrap">
+          <table class="patients-table" id="patientsTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ MODAL PACIENTE -->
+<div class="modal fade" id="modalPatient" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-person-badge me-2" class="txt-orange"></i>Perfil do Paciente</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="patient-modal-header">
+          <div class="patient-modal-av" id="modalPatAv" class="specialist-dashboard--s8">JS</div>
+          <div class="u-flex-1">
+            <div class="specialist-dashboard--s9" id="modalPatName">João Silva</div>
+            <div class="specialist-dashboard--s10" id="modalPatMeta">TDAH · Paciente desde Jan/2024</div>
+            <div class="specialist-dashboard--s11" id="modalPatTags"></div>
+          </div>
+          <div class="text-right">
+            <div class="specialist-dashboard--s12" id="modalPatSessions">0</div>
+            <div class="specialist-dashboard--s13">consultas</div>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-box-num" class="txt-green">Ativo</div>
+            <div class="info-box-label">Status</div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-num" id="modalNextDate">—</div>
+            <div class="info-box-label">Próxima consulta</div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-num" class="txt-yellow">★ 4.9</div>
+            <div class="info-box-label">Avaliação dada</div>
+          </div>
+        </div>
+
+        <label class="form-label-sm"><i class="bi bi-journal-text me-1"></i>Anotações do Especialista</label>
+        <div id="modalNotes" class="specialist-dashboard--s14"></div>
+
+        <label class="form-label-sm"><i class="bi bi-plus-circle me-1"></i>Nova Anotação</label>
+        <textarea class="form-ctrl" rows="3" id="newNoteInput" placeholder="Registre observações, evolução, próximos passos..."></textarea>
+
+      </div>
+      <div class="modal-footer" class="specialist-dashboard--s15">
+        <button class="btn-sec-modal" data-bs-dismiss="modal">Fechar</button>
+        <button class="btn-primary-modal" onclick="saveNote()">
+          <i class="bi bi-floppy-fill"></i> Salvar Anotação
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ MODAL DISPONIBILIDADE -->
+<div class="modal fade" id="modalAvailability" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-clock-fill me-2" class="txt-orange"></i>
+          Gerenciar Disponibilidade
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Tabs -->
+        <div class="avail-modal-tabs">
+          <button class="avail-tab active" onclick="switchAvailTab('horarios', this)">
+            <i class="bi bi-calendar-week me-1"></i>Horários Semanais
+          </button>
+          <button class="avail-tab" onclick="switchAvailTab('excecoes', this)">
+            <i class="bi bi-slash-circle me-1"></i>Bloquear Datas
+          </button>
+          <button class="avail-tab" onclick="switchAvailTab('resumo', this)">
+            <i class="bi bi-eye me-1"></i>Resumo
+          </button>
+        </div>
+
+        <!-- ===== TAB: HORÁRIOS ===== -->
+        <div id="tab-horarios">
+
+          <!-- Duration -->
+          <div class="avail-section-label"><i class="bi bi-hourglass me-1"></i>Duração da consulta</div>
+          <div class="duration-btns" id="durBtns">
+            <button class="dur-btn" onclick="selectDuration(30, this)">30 min</button>
+            <button class="dur-btn selected" onclick="selectDuration(50, this)">50 min</button>
+            <button class="dur-btn" onclick="selectDuration(60, this)">60 min</button>
+            <button class="dur-btn" onclick="selectDuration(90, this)">90 min</button>
+          </div>
+
+          <!-- Days -->
+          <div class="avail-section-label" class="specialist-dashboard--s16"><i class="bi bi-calendar3 me-1"></i>Dias e horários disponíveis</div>
+          <div id="daysList"></div>
+
+        </div>
+
+        <!-- ===== TAB: EXCEÇÕES ===== -->
+        <div id="tab-excecoes" class="u-hidden">
+
+          <div class="avail-section-label"><i class="bi bi-plus-circle me-1"></i>Bloquear nova data</div>
+          <div class="specialist-dashboard--s17">
+            <div class="specialist-dashboard--s18">
+              <label class="form-label-sm">Data</label>
+              <input type="date" class="form-ctrl" id="blockDateInput" class="specialist-dashboard--s19">
+            </div>
+            <div class="specialist-dashboard--s20">
+              <label class="form-label-sm">Motivo (opcional)</label>
+              <input type="text" class="form-ctrl" id="blockReasonInput" placeholder="Ex: Férias, Congresso, Feriado..." class="specialist-dashboard--s19">
+            </div>
+            <button class="btn-primary-modal" class="specialist-dashboard--s21" onclick="addBlockedDate()">
+              <i class="bi bi-slash-circle"></i> Bloquear
+            </button>
+          </div>
+
+          <div class="avail-section-label"><i class="bi bi-list-ul me-1"></i>Datas bloqueadas</div>
+          <div class="blocked-list" id="blockedList"></div>
+
+        </div>
+
+        <!-- ===== TAB: RESUMO ===== -->
+        <div id="tab-resumo" class="u-hidden">
+          <div class="avail-section-label"><i class="bi bi-eye me-1"></i>Como seu perfil aparece para pacientes</div>
+
+          <!-- Preview card -->
+          <div class="specialist-dashboard--s22">
+            <div class="specialist-dashboard--s23">
+              <div class="specialist-dashboard--s24">AC</div>
+              <div>
+                <div class="specialist-dashboard--s25">Dra. Ana Costa</div>
+                <div class="specialist-dashboard--s26">Neuropsicóloga · TDAH</div>
+              </div>
+              <div id="previewStatus" class="specialist-dashboard--s27"></div>
+            </div>
+
+            <div class="specialist-dashboard--s28">Próximos horários disponíveis</div>
+            <div id="previewSlots" class="specialist-dashboard--s29"></div>
+          </div>
+
+          <div id="resumoDays"></div>
+        </div>
+
+      </div>
+      <div class="modal-footer" class="specialist-dashboard--s30">
+        <div class="specialist-dashboard--s31">
+          <i class="bi bi-info-circle me-1"></i>
+          Alterações salvas ficam visíveis imediatamente para os pacientes.
+        </div>
+        <div class="specialist-dashboard--s32">
+          <button class="btn-sec-modal" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn-primary-modal" onclick="saveAvailability()">
+            <i class="bi bi-floppy-fill"></i> Salvar Disponibilidade
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ TOAST -->
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" class="specialist-dashboard--s33">
+  <div id="toastSuccess" class="toast toast-custom" role="alert">
+    <div class="toast-body d-flex align-items-center gap-3 py-3 px-3">
+      <div class="toast-icon"><i class="bi bi-check-circle-fill"></i></div>
+      <div>
+        <div class="specialist-dashboard--s34" id="toastMsg">Ação realizada!</div>
+        <div class="specialist-dashboard--s26" id="toastSub">Atualizado com sucesso.</div>
+      </div>
+      <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" class="specialist-dashboard--s35"></button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ JS -->
+
+  <script src="{{% static 'js/specialist_dashboard.js' %}}"></script>
+</body>
+</html>

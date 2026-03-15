@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sintonia Mental — Dra. Ana Costa</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Global -->
+  <link rel="stylesheet" href="{% static 'css/global.css' %}">
+  <!-- Page -->
+  <link rel="stylesheet" href="{% static 'css/specialist_profile.css' %}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar-sm">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon"><i class="bi bi-brain"></i></div>
+    <span class="nav-logo-text">Sintonia Mental</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/login/" class="btn-nav-ghost">Entrar</a>
+    <a href="/registre/" class="btn-nav">Cadastrar</a>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO -->
+<div class="profile-hero">
+  <div class="hero-inner">
+
+    <!-- Avatar -->
+    <div class="profile-avatar-wrap">
+      <div class="profile-avatar">AC</div>
+      <div class="online-badge" title="Online agora"></div>
+      <div class="verified-badge" title="Perfil verificado"><i class="bi bi-check"></i></div>
+    </div>
+
+    <!-- Info -->
+    <div class="hero-info">
+      <div class="hero-breadcrumb">
+        <a href="/">Início</a> <i class="bi bi-chevron-right" class="specialist-profile--s0"></i>
+        <a href="/especialistas/">Especialistas</a> <i class="bi bi-chevron-right" class="specialist-profile--s0"></i>
+        <span class="txt-light">Dra. Ana Costa</span>
+      </div>
+      <h1 class="hero-name">Dra. Ana Costa</h1>
+      <p class="hero-role">Neuropsicóloga &nbsp;·&nbsp; CRP 06/48921</p>
+      <div class="hero-tags">
+        <span class="tag tag-orange"><i class="bi bi-lightning-charge-fill"></i>TDAH</span>
+        <span class="tag tag-blue"><i class="bi bi-puzzle-fill"></i>TEA</span>
+        <span class="tag tag-purple"><i class="bi bi-heart-pulse-fill"></i>Ansiedade</span>
+        <span class="tag tag-green"><i class="bi bi-check-circle-fill"></i>Verificada</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">128</div>
+          <div class="hero-stat-label">Consultas</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num" class="txt-yellow">★ 4.9</div>
+          <div class="hero-stat-label">Avaliação</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">8 anos</div>
+          <div class="hero-stat-label">Experiência</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num" class="txt-green">Online</div>
+          <div class="hero-stat-label">Agora</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA col (visible on desktop hero) -->
+    <div class="hero-cta-col">
+      <div class="hero-cta-card">
+        <div class="hero-price">R$ 80</div>
+        <div class="hero-price-sub">por sessão de 50 min</div>
+        <div class="hero-price-free">1ª consulta grátis</div>
+        <button class="btn-book" onclick="openBooking()" data-bs-toggle="modal" data-bs-target="#modalBooking">
+          <i class="bi bi-calendar-plus-fill"></i> Agendar
+        </button>
+        <button class="btn-fav" id="favBtn" onclick="toggleFav()">
+          <i class="bi bi-heart" id="favIcon"></i>
+          <span id="favLabel">Favoritar</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tabs -->
+  <div class="profile-tabs">
+    <div class="profile-tab active" onclick="showTab('sobre', this)">Sobre</div>
+    <div class="profile-tab" onclick="showTab('formacao', this)">Formação</div>
+    <div class="profile-tab" onclick="showTab('abordagem', this)">Abordagem</div>
+    <div class="profile-tab" onclick="showTab('avaliacoes', this)">Avaliações <span class="specialist-profile--s1">★ 4.9</span></div>
+  </div>
+</div>
+
+<!-- ============================================================ MAIN LAYOUT -->
+<div class="profile-layout">
+
+  <!-- Left column -->
+  <div class="profile-main">
+
+    <!-- SOBRE -->
+    <div id="tab-sobre">
+      <div class="section-card fade-up">
+        <div class="section-title"><i class="bi bi-person-fill"></i>Sobre mim</div>
+        <div class="about-text">
+          <p id="aboutShort">
+            Sou neuropsicóloga especializada em avaliação e reabilitação cognitiva de crianças, adolescentes e adultos com TDAH e TEA. Atuo há 8 anos na área de neuropsicologia, com foco em diagnóstico diferencial e intervenção personalizada.
+          </p>
+          <div id="aboutFull" class="u-hidden">
+            <p>
+              Acredito que cada pessoa tem um perfil cognitivo único e que o entendimento profundo desse perfil é fundamental para um acompanhamento eficaz. Minha abordagem combina avaliação neuropsicológica com psicoeducação, orientação familiar e estratégias práticas para o dia a dia.
+            </p>
+            <p>
+              Trabalho com pacientes de todas as idades, desde a avaliação de crianças em idade escolar até adultos que buscam entender melhor suas dificuldades de concentração, organização e interação social. Tenho experiência tanto em contextos clínicos quanto educacionais.
+            </p>
+            <p>
+              Me importo profundamente com o bem-estar dos meus pacientes e entendo que buscar ajuda profissional exige coragem. Meu ambiente de atendimento — seja presencial ou online — é sempre acolhedor, sem julgamentos e focado no que realmente importa: você.
+            </p>
+          </div>
+          <button class="read-more" id="readMoreBtn" onclick="toggleAbout()">
+            Ler mais <i class="bi bi-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="section-card fade-up">
+        <div class="section-title"><i class="bi bi-tags-fill"></i>Especialidades</div>
+        <div class="specialty-grid">
+          <span class="tag tag-orange">TDAH Infantil</span>
+          <span class="tag tag-orange">TDAH Adulto</span>
+          <span class="tag tag-blue">TEA / Autismo</span>
+          <span class="tag tag-blue">Diagnóstico TEA</span>
+          <span class="tag tag-purple">Ansiedade</span>
+          <span class="tag tag-purple">Avaliação Neuropsicológica</span>
+          <span class="tag tag-green">Reabilitação Cognitiva</span>
+          <span class="tag tag-green">Psicoeducação</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMAÇÃO -->
+    <div id="tab-formacao" class="u-hidden">
+      <div class="section-card fade-up">
+        <div class="section-title"><i class="bi bi-mortarboard-fill"></i>Formação Acadêmica</div>
+        <div class="formation-list">
+          <div class="formation-item">
+            <div class="formation-dot-col"><div class="formation-dot"></div><div class="formation-line"></div></div>
+            <div>
+              <div class="formation-year">2022</div>
+              <div class="formation-title">Pós-Doutorado em Neuropsicologia</div>
+              <div class="formation-sub">Universidade de São Paulo (USP)</div>
+            </div>
+          </div>
+          <div class="formation-item">
+            <div class="formation-dot-col"><div class="formation-dot"></div><div class="formation-line"></div></div>
+            <div>
+              <div class="formation-year">2019</div>
+              <div class="formation-title">Doutorado em Psicologia Clínica</div>
+              <div class="formation-sub">Universidade Estadual de Campinas (UNICAMP)</div>
+            </div>
+          </div>
+          <div class="formation-item">
+            <div class="formation-dot-col"><div class="formation-dot"></div><div class="formation-line"></div></div>
+            <div>
+              <div class="formation-year">2016</div>
+              <div class="formation-title">Especialização em Neuropsicologia</div>
+              <div class="formation-sub">Instituto de Psicologia Aplicada — São Paulo</div>
+            </div>
+          </div>
+          <div class="formation-item">
+            <div class="formation-dot-col"><div class="formation-dot"></div><div class="formation-line"></div></div>
+            <div>
+              <div class="formation-year">2014</div>
+              <div class="formation-title">Graduação em Psicologia</div>
+              <div class="formation-sub">Pontifícia Universidade Católica de São Paulo (PUC-SP)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABORDAGEM -->
+    <div id="tab-abordagem" class="u-hidden">
+      <div class="section-card fade-up">
+        <div class="section-title"><i class="bi bi-compass-fill"></i>Minha Abordagem</div>
+        <p class="specialist-profile--s2">
+          Trabalho com uma abordagem integrativa, combinando técnicas baseadas em evidências científicas com escuta ativa e cuidado individualizado.
+        </p>
+        <div class="approach-grid">
+          <div class="approach-item">
+            <span class="approach-icon">🧠</span>
+            <div class="approach-label">Avaliação Neuropsicológica</div>
+            <div class="approach-sub">Bateria completa de testes cognitivos para mapear pontos fortes e áreas de atenção.</div>
+          </div>
+          <div class="approach-item">
+            <span class="approach-icon">🎯</span>
+            <div class="approach-label">TCC para TDAH</div>
+            <div class="approach-sub">Técnicas cognitivo-comportamentais adaptadas para o perfil de desatenção e impulsividade.</div>
+          </div>
+          <div class="approach-item">
+            <span class="approach-icon">📚</span>
+            <div class="approach-label">Psicoeducação</div>
+            <div class="approach-sub">Informação de qualidade para paciente e família entenderem e manejarem a condição.</div>
+          </div>
+          <div class="approach-item">
+            <span class="approach-icon">🔄</span>
+            <div class="approach-label">Reabilitação Cognitiva</div>
+            <div class="approach-sub">Exercícios e estratégias práticas para desenvolver memória, atenção e funções executivas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AVALIAÇÕES -->
+    <div id="tab-avaliacoes" class="u-hidden">
+      <div class="section-card fade-up">
+        <div class="section-title"><i class="bi bi-star-fill"></i>Avaliações dos Pacientes</div>
+
+        <!-- Rating summary -->
+        <div class="review-summary">
+          <div>
+            <div class="review-big-num">4.9</div>
+            <div class="stars-row">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </div>
+            <div class="review-total">de 87 avaliações</div>
+          </div>
+          <div class="rating-bars">
+            <div class="rating-bar-row">
+              <span class="rating-bar-label">5 ★</span>
+              <div class="rating-bar-outer"><div class="rating-bar-fill" data-w="82" class="specialist-profile--s3"></div></div>
+              <span class="specialist-profile--s4">82%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="rating-bar-label">4 ★</span>
+              <div class="rating-bar-outer"><div class="rating-bar-fill" data-w="12" class="specialist-profile--s3"></div></div>
+              <span class="specialist-profile--s4">12%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="rating-bar-label">3 ★</span>
+              <div class="rating-bar-outer"><div class="rating-bar-fill" data-w="4" class="specialist-profile--s3"></div></div>
+              <span class="specialist-profile--s4">4%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="rating-bar-label">2 ★</span>
+              <div class="rating-bar-outer"><div class="rating-bar-fill" data-w="2" class="specialist-profile--s3"></div></div>
+              <span class="specialist-profile--s4">2%</span>
+            </div>
+            <div class="rating-bar-row">
+              <span class="rating-bar-label">1 ★</span>
+              <div class="rating-bar-outer"><div class="rating-bar-fill" data-w="0" class="specialist-profile--s3"></div></div>
+              <span class="specialist-profile--s4">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review cards -->
+        <div id="reviewList"></div>
+        <button class="read-more" id="loadMoreReviews" onclick="loadMore()" class="specialist-profile--s5">
+          Ver mais avaliações <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right column (sticky sidebar) -->
+  <div class="sticky-cta">
+
+    <!-- CTA Widget -->
+    <div class="cta-widget sidebar-widget">
+      <div class="cta-price">R$ 80</div>
+      <div class="cta-price-note">por sessão de 50 min</div>
+      <div class="cta-free-badge"><i class="bi bi-gift-fill me-1"></i>1ª consulta grátis</div>
+      <button class="btn-book-lg" onclick="openBooking()" data-bs-toggle="modal" data-bs-target="#modalBooking">
+        <i class="bi bi-calendar-plus-fill"></i> Agendar Consulta
+      </button>
+      <button class="btn-fav" id="favBtn2" onclick="toggleFav()" class="specialist-profile--s6">
+        <i class="bi bi-heart" id="favIcon2"></i>
+        <span id="favLabel2">Salvar perfil</span>
+      </button>
+      <div class="cta-secure"><i class="bi bi-shield-lock-fill" class="txt-green"></i>Consulta segura e privada</div>
+    </div>
+
+    <!-- Quick info -->
+    <div class="sidebar-widget">
+      <div class="widget-title"><i class="bi bi-info-circle-fill"></i>Informações</div>
+      <div class="info-list">
+        <div class="info-list-item">
+          <i class="bi bi-camera-video-fill info-list-icon"></i>
+          <div>
+            <span class="info-list-label">Atendimento</span>
+            <span class="info-list-value">Online e Presencial</span>
+          </div>
+        </div>
+        <div class="info-list-item">
+          <i class="bi bi-translate info-list-icon"></i>
+          <div>
+            <span class="info-list-label">Idiomas</span>
+            <span class="info-list-value">Português, Inglês</span>
+          </div>
+        </div>
+        <div class="info-list-item">
+          <i class="bi bi-geo-alt-fill info-list-icon"></i>
+          <div>
+            <span class="info-list-label">Localização</span>
+            <span class="info-list-value">São Paulo, SP</span>
+          </div>
+        </div>
+        <div class="info-list-item">
+          <i class="bi bi-person-fill info-list-icon"></i>
+          <div>
+            <span class="info-list-label">Público</span>
+            <span class="info-list-value">Crianças, Adolescentes, Adultos</span>
+          </div>
+        </div>
+        <div class="info-list-item">
+          <i class="bi bi-clock-fill info-list-icon"></i>
+          <div>
+            <span class="info-list-label">Resposta média</span>
+            <span class="info-list-value" class="txt-green">Menos de 1 hora</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Availability preview -->
+    <div class="sidebar-widget">
+      <div class="widget-title"><i class="bi bi-calendar3"></i>Horários disponíveis</div>
+      <div class="avail-days" id="availPreview"></div>
+      <button class="specialist-profile--s7"
+        onclick="openBooking()" data-bs-toggle="modal" data-bs-target="#modalBooking"
+        onmouseover="this.style.borderColor='rgba(241,96,28,.3)';this.style.color='var(--orange-glow)'"
+        onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='var(--muted)'">
+        Ver todos os horários <i class="bi bi-arrow-right ms-1"></i>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ BOOKING MODAL -->
+<div class="modal fade" id="modalBooking" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-calendar-plus-fill me-2" class="txt-orange"></i>Agendar Consulta</h5>
+        <button type="button" class="btn-close" class="specialist-profile--s8" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Spec header -->
+        <div class="modal-spec-header">
+          <div class="modal-spec-av">AC</div>
+          <div>
+            <div class="modal-spec-name">Dra. Ana Costa</div>
+            <div class="modal-spec-role">Neuropsicóloga</div>
+            <div class="modal-spec-stars">★★★★★ 4.9</div>
+          </div>
+          <div class="specialist-profile--s9">
+            <div class="specialist-profile--s10">R$80</div>
+            <div class="specialist-profile--s11">50 min</div>
+          </div>
+        </div>
+
+        <!-- Date -->
+        <div class="specialist-profile--s12">
+          <label class="form-label-sm"><i class="bi bi-calendar3 me-1"></i>Data</label>
+          <input type="date" class="form-ctrl" id="bookDate" onchange="updateSlots(this.value)">
+        </div>
+
+        <!-- Time slots -->
+        <div class="specialist-profile--s12">
+          <label class="form-label-sm"><i class="bi bi-clock me-1"></i>Horário</label>
+          <div class="slots-grid" id="slotsGrid"></div>
+        </div>
+
+        <!-- Type -->
+        <div class="specialist-profile--s12">
+          <label class="form-label-sm"><i class="bi bi-display me-1"></i>Tipo de consulta</label>
+          <div class="type-btns">
+            <div class="type-btn selected" onclick="selectType('online', this)" id="type-online">
+              <i class="bi bi-camera-video-fill"></i> Online (Vídeo)
+            </div>
+            <div class="type-btn" onclick="selectType('presencial', this)" id="type-presencial">
+              <i class="bi bi-geo-alt-fill"></i> Presencial
+            </div>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="specialist-profile--s13">
+          <label class="form-label-sm"><i class="bi bi-chat-left-text me-1"></i>Observações (opcional)</label>
+          <textarea class="form-ctrl" rows="2" id="bookNotes" placeholder="Ex: primeira consulta, sintomas principais..."></textarea>
+        </div>
+
+        <!-- Summary -->
+        <div class="booking-summary" id="bookingSummary" class="u-hidden">
+          <div class="booking-summary-detail">
+            <span>Data e horário</span>
+            <strong id="summaryDateTime">—</strong>
+          </div>
+          <div class="booking-summary-detail">
+            <span>Tipo</span>
+            <strong id="summaryType">Online</strong>
+          </div>
+          <div class="booking-price" id="summaryPrice">Grátis</div>
+        </div>
+
+      </div>
+      <div class="modal-footer" class="specialist-profile--s14">
+        <button class="btn-sec" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn-confirm" id="confirmBtn" onclick="confirmBooking()">
+          <i class="bi bi-check-circle-fill"></i> Confirmar Agendamento
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" class="specialist-profile--s15">
+  <div id="toast" class="toast" role="alert" class="specialist-profile--s16">
+    <div class="toast-body d-flex align-items-center gap-3 py-3 px-3">
+      <div class="specialist-profile--s17">
+        <i class="bi bi-check-circle-fill"></i>
+      </div>
+      <div>
+        <div class="specialist-profile--s18" id="toastMsg">Consulta agendada!</div>
+        <div class="specialist-profile--s19" id="toastSub">Você receberá um e-mail de confirmação.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ JS -->
+
+  <script src="{{% static 'js/specialist_profile.js' %}}"></script>
+</body>
+</html>

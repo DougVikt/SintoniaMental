@@ -1,0 +1,411 @@
+/* ============================================================
+   SINTONIA MENTAL — global.css
+   Estilos compartilhados por todas as páginas
+   ============================================================ */
+
+/* ============================================================
+   VARIÁVEIS
+   ============================================================ */
+:root {
+  /* Cores principais */
+  --orange:        #F1601C;
+  --orange-glow:   #ff7c3a;
+  --orange-dark:   #c94d12;
+  --orange-dim:    rgba(241, 96, 28, 0.15);
+  --orange-border: rgba(241, 96, 28, 0.3);
+
+  /* Tons escuros */
+  --dark-900: #0a0a0a;
+  --dark-800: #111111;
+  --dark-750: #151515;
+  --dark-700: #1c1c1c;
+  --dark-600: #242424;
+  --dark-500: #2e2e2e;
+  --dark-400: #3a3a3a;
+
+  /* Texto */
+  --light:   #f0ede8;
+  --muted:   #7a7470;
+  --muted-2: #4e4a46;
+
+  /* Cores de feedback */
+  --green:  #4ade80;
+  --blue:   #60a5fa;
+  --yellow: #fbbf24;
+  --red:    #f87171;
+
+  /* Roxo (especialistas) */
+  --purple:        #a78bfa;
+  --purple-dim:    rgba(167, 139, 250, 0.14);
+  --purple-border: rgba(167, 139, 250, 0.3);
+
+  /* Tipografia */
+  --font-d: 'Syne', sans-serif;
+  --font-b: 'DM Sans', sans-serif;
+
+  /* Layout */
+  --radius:    1rem;
+  --radius-lg: 1.5rem;
+  --sidebar-w: 260px;
+  --topbar-h:  64px;
+  --shadow:    0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 28px rgba(241, 96, 28, 0.35);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+  font-family: var(--font-b);
+  background-color: var(--dark-800);
+  color: var(--light);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar          { width: 6px; height: 6px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: var(--dark-500); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+/* ============================================================
+   NAVBAR SIMPLES (.navbar-sm)
+   Usada em: faq, payment, specialist_profile, waiting_room, questionario
+   ============================================================ */
+.navbar-sm {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: .75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  border-radius: .7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  font-family: var(--font-d);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.nav-actions { display: flex; gap: .6rem; }
+
+/* Botão primário do nav */
+.btn-nav {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: .45rem 1.25rem;
+  font-weight: 700;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+.btn-nav:hover { background: var(--orange-glow); color: #fff; }
+
+/* Botão ghost do nav */
+.btn-nav-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+  border-radius: 2rem;
+  padding: .45rem 1.15rem;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+  text-decoration: none;
+}
+.btn-nav-ghost:hover {
+  color: var(--light);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================================
+   NAVBAR BOOTSTRAP (.sty-navbar)
+   Usada em: home
+   ============================================================ */
+.sty-navbar {
+  background: rgba(14, 14, 14, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(241, 96, 28, 0.15);
+  font-family: var(--font-b);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: top 0.4s ease, opacity 0.4s ease;
+}
+
+.sty-link-nav {
+  color: rgba(240, 237, 232, 0.8);
+  border-radius: 0.5rem;
+  padding: 0.45rem 1.1rem !important;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.01em;
+}
+.sty-link-nav:hover,
+.sty-link-nav.active {
+  color: var(--orange);
+  background: rgba(241, 96, 28, 0.1);
+}
+.sty-link-nav i { margin-right: 0.35rem; }
+
+.logo-brand img {
+  height: 44px;
+  width: auto;
+  filter: drop-shadow(0 0 8px rgba(241, 96, 28, 0.3));
+}
+
+.btiniciar {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  font-family: var(--font-d);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.45rem 1.4rem;
+  border-radius: 2rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(241, 96, 28, 0.4);
+}
+.btiniciar:hover {
+  background: #fff;
+  color: var(--orange);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 991px) {
+  .offcanvas { background: var(--dark-900) !important; }
+  .sty-link-nav { color: var(--orange); font-size: 1.1rem; margin: 0.3rem 0; }
+  .sty-link-nav:hover { background: var(--orange); color: #000; }
+}
+
+/* ============================================================
+   CARDS BASE
+   ============================================================ */
+.card-base {
+  background: var(--dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================
+   BADGES / TAGS
+   ============================================================ */
+.badge-orange {
+  background: var(--orange-dim);
+  border: 1px solid var(--orange-border);
+  color: var(--orange-glow);
+  padding: .3rem .85rem;
+  border-radius: 2rem;
+  font-size: .78rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+/* ============================================================
+   ANIMAÇÕES
+   ============================================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(20px, -20px) scale(1.05); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(241, 96, 28, 0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(241, 96, 28, 0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   MODAL BASE (Bootstrap override)
+   ============================================================ */
+.modal-content {
+  background: var(--dark-700);
+  border: 1px solid rgba(241, 96, 28, 0.2);
+  color: var(--light);
+  border-radius: var(--radius-lg);
+}
+.modal-header {
+  background: var(--dark-800);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 1.25rem 1.5rem;
+}
+.modal-header .modal-title {
+  font-family: var(--font-d);
+  font-weight: 800;
+  color: #fff;
+}
+.modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1rem 1.5rem;
+}
+
+/* ============================================================
+   TOAST BASE
+   ============================================================ */
+.toast {
+  background: var(--dark-700);
+  border: 1.5px solid rgba(74, 222, 128, 0.3);
+  border-radius: var(--radius);
+  color: var(--light);
+}
+
+/* ============================================================
+   SEÇÃO GENÉRICA
+   ============================================================ */
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer-logo img {
+  height: 40px;
+  filter: brightness(0.9);
+}
+.footer-copy {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+.footer-social a {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  background: var(--dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: all 0.2s;
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+.footer-social a:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+
+hr.section-divider {
+  border-color: rgba(255, 255, 255, 0.06);
+  margin: 0;
+}
+
+/* ============================================================
+   RESPONSIVO GERAL
+   ============================================================ */
+@media (max-width: 768px) {
+  .navbar-sm { padding: .65rem 1rem; }
+}
+
+/* ============================================================
+   UTILITÁRIOS — gerados automaticamente (inline styles → classes)
+   ============================================================ */
+.txt-orange   { color: var(--orange); }
+.txt-green    { color: var(--green); }
+.txt-yellow   { color: var(--yellow); }
+.txt-blue     { color: var(--blue); }
+.txt-muted    { color: var(--muted); }
+.txt-light    { color: var(--light); }
+.txt-white    { color: #fff; }
+.u-hidden     { display: none; }
+.font-display { font-family: var(--font-d); }
+.font-body    { font-family: var(--font-b); }
+.fw-800       { font-weight: 800; }
+.fw-700       { font-weight: 700; }
+.fw-600       { font-weight: 600; }
+.text-upper   { text-transform: uppercase; }
+.u-pointer    { cursor: pointer; }
+.u-relative   { position: relative; }
+.u-flex-1     { flex: 1; }
+.u-w-full     { width: 100%; }
+.mb-0-force   { margin-bottom: 0 !important; }
