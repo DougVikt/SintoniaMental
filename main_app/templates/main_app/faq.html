@@ -31,7 +31,7 @@
       oninput="searchFAQ(this.value)">
     <div class="search-clear" id="searchClear" onclick="clearSearch()"><i class="bi bi-x"></i></div>
   </div>
-  <div class="search-results-count" id="searchCount" style="display:none;">
+  <div class="search-results-count" id="searchCount" class="u-hidden">
     <span id="searchCountNum">0</span> resultado(s) encontrado(s) para "<span id="searchTerm"></span>"
   </div>
 </div>
@@ -80,7 +80,7 @@
     <!-- ===== PRIMEIROS PASSOS ===== -->
     <div class="faq-section fade-up" data-cat="inicio" id="section-inicio">
       <div class="faq-section-header">
-        <div class="faq-section-icon" style="background:rgba(241,96,28,0.12);color:var(--orange-glow);border:1px solid var(--orange-border);">
+        <div class="faq-section-icon" class="faq--s0">
           <i class="bi bi-rocket-takeoff-fill"></i>
         </div>
         <div class="faq-section-title">Primeiros passos</div>
@@ -182,7 +182,7 @@
     <!-- ===== CONSULTAS ===== -->
     <div class="faq-section fade-up" data-cat="consultas" id="section-consultas">
       <div class="faq-section-header">
-        <div class="faq-section-icon" style="background:rgba(96,165,250,0.12);color:var(--blue);border:1px solid rgba(96,165,250,0.3);">
+        <div class="faq-section-icon" class="faq--s1">
           <i class="bi bi-calendar-check-fill"></i>
         </div>
         <div class="faq-section-title">Consultas</div>
@@ -306,7 +306,7 @@
     <!-- ===== PAGAMENTOS ===== -->
     <div class="faq-section fade-up" data-cat="pagamentos" id="section-pagamentos">
       <div class="faq-section-header">
-        <div class="faq-section-icon" style="background:rgba(74,222,128,0.12);color:var(--green);border:1px solid rgba(74,222,128,0.3);">
+        <div class="faq-section-icon" class="faq--s2">
           <i class="bi bi-credit-card-fill"></i>
         </div>
         <div class="faq-section-title">Pagamentos</div>
@@ -407,7 +407,7 @@
     <!-- ===== ESPECIALISTAS ===== -->
     <div class="faq-section fade-up" data-cat="especialistas" id="section-especialistas">
       <div class="faq-section-header">
-        <div class="faq-section-icon" style="background:var(--purple-dim,rgba(167,139,250,0.14));color:#a78bfa;border:1px solid rgba(167,139,250,0.3);">
+        <div class="faq-section-icon" class="faq--s3">
           <i class="bi bi-person-badge-fill"></i>
         </div>
         <div class="faq-section-title">Especialistas</div>
@@ -477,7 +477,7 @@
               <li>Revisão das especialidades declaradas</li>
               <li>Confirmação de documentação profissional</li>
             </ul>
-            <p>Perfis aprovados exibem o selo <strong style="color:var(--green);">✓ Verificado</strong> no perfil público.</p>
+            <p>Perfis aprovados exibem o selo <strong class="txt-green">✓ Verificado</strong> no perfil público.</p>
             <div class="faq-footer-row">
               <div class="faq-helpful">Isso foi útil?
                 <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
@@ -493,7 +493,7 @@
     <!-- ===== CONTA ===== -->
     <div class="faq-section fade-up" data-cat="conta" id="section-conta">
       <div class="faq-section-header">
-        <div class="faq-section-icon" style="background:rgba(251,191,36,0.12);color:var(--yellow);border:1px solid rgba(251,191,36,0.3);">
+        <div class="faq-section-icon" class="faq--s4">
           <i class="bi bi-person-gear"></i>
         </div>
         <div class="faq-section-title">Minha conta</div>
