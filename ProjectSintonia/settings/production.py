@@ -1,20 +1,23 @@
 from .origin_base import *
+from decouple import config
 
 """
 Configurações específicas para o ambiente de produção.
+Specific configurations for the production environment
+
 """
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'sintonia-mental.onrender.com',
-    
-]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
-        'NAME': BASE_DIR / '',
+        'ENGINE': config('DB_ENGINE' , default ='django.db.backends.postgresql'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
- 
