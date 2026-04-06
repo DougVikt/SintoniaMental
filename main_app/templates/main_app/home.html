@@ -13,7 +13,7 @@
 
 {% block content_nav %}
  <!-- Login btn mobile (aparece só em telas < lg, ao lado do toggler) -->
-    <button class="btn-primary-action d-lg-none btn-login" 
+    <button class="btn-primary d-lg-none" 
       onclick="location.href='/login/'">Login</button>
 
     <!-- Collapse desktop (só aparece em lg+) -->
@@ -21,20 +21,19 @@
       <!-- Links centralizados -->
       <ul class="navbar-nav mx-auto gap-1">
         <li class="nav-item">
-          <a href="#hero" class="nav-link nav-link-item"><i class="bi bi-house-fill"></i>Início</a>
+          <a href="#hero" class="nav-link sty-link-nav"><i class="bi bi-house-fill"></i>Início</a>
         </li>
         <li class="nav-item">
-          <a href="#depoimentos" class="nav-link nav-link-item"><i class="bi bi-chat-quote"></i>Depoimentos</a>
+          <a href="#depoimentos" class="nav-link sty-link-nav"><i class="bi bi-chat-quote"></i>Depoimentos</a>
         </li>
         <li class="nav-item">
-          <a href="#sobre" class="nav-link nav-link-item"><i class="bi bi-info-circle"></i>Sobre</a>
+          <a href="#sobre" class="nav-link sty-link-nav"><i class="bi bi-info-circle"></i>Sobre</a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'faq' %}" class="nav-link nav-link-item"><i class="bi bi-question-circle"></i>FAQ</a>
+          <a href="/help/" class="nav-link sty-link-nav"><i class="bi bi-question-circle"></i>FAQ</a>
         </li>
       </ul>
-      <!-- Login desktop -->
-      <button class="btn-primary-action" onclick="location.href='/login/'">
+      <button class="btn-primary" onclick="location.href='/login/'">
         <i class="bi bi-box-arrow-in-right me-1"></i>Login
       </button>
     </div>
@@ -48,12 +47,12 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
       </div>
       <div class="offcanvas-body d-flex flex-column gap-1 p-3">
-        <a href="#hero"        class="nav-link nav-link-item py-3" data-bs-dismiss="offcanvas"><i class="bi bi-house-fill"></i>Início</a>
-        <a href="#depoimentos" class="nav-link nav-link-item py-3" data-bs-dismiss="offcanvas"><i class="bi bi-chat-quote"></i>Depoimentos</a>
-        <a href="#sobre"       class="nav-link nav-link-item py-3" data-bs-dismiss="offcanvas"><i class="bi bi-info-circle"></i>Sobre</a>
-        <a href="/help/"       class="nav-link nav-link-item py-3"><i class="bi bi-question-circle"></i>FAQ</a>
-        <hr class="home--s8">
-        <button class="sty-button" onclick="location.href='/login/'">
+    <a href="#hero"        class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-house-fill"></i>Início</a>
+    <a href="#depoimentos" class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-chat-quote"></i>Depoimentos</a>
+    <a href="#sobre"       class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-info-circle"></i>Sobre</a>
+    <a href="/help/"       class="nav-link sty-link-nav py-3"><i class="bi bi-question-circle"></i>FAQ</a>
+    <hr class="border-orange my-2">
+    <button class="btn-primary w-full" onclick="location.href='/login/'">
           <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
         </button>
       </div>
@@ -74,7 +73,7 @@
 
         <!-- Left: copy -->
         <div class="col-lg-6">
-            <div class="hero-badge">
+            <div class="hero-chip">
             <span class="dot"></span>
             Plataforma de Saúde Mental
             </div>
@@ -90,19 +89,18 @@
             de forma rápida, acessível e sem burocracia.
             </p>
 
-            <div class="hero-ctas">
-            <a href="#quest" class="btn-primary-hero">
+            <div class="hero-card">
+          <a href="#quest" class="btn-primary">
                 <i class="bi bi-clipboard2-pulse-fill"></i> Teste do TDAH
             </a>
-            <a href="#" class="btn-ghost-hero"
-                data-bs-toggle="modal" data-bs-target="#registertype">
+          <a href="#" class="btn-outline" data-bs-toggle="modal" data-bs-target="#registertype">
                 <i class="bi bi-box-arrow-in-right"></i> Cadastre-se
             </a>
             </div>
 
             <div class="hero-stats">
             <div class="stat-item">
-                <div class="stat-num" data-count="500">0+</div>
+            <div class="stat-num">500+</div>
                 <div class="stat-label">Consultas</div>
             </div>
             <div class="stat-divider"></div>
@@ -120,7 +118,7 @@
 
         <!-- Right: floating card -->
         <div class="col-lg-6 hero-visual">
-            <div class="hero-card">
+        <div class="card-base hero-card">
             <div class="hero-card-head">
                 <div class="avatar"><i class="bi bi-person-fill"></i></div>
                 <div>
@@ -130,41 +128,22 @@
             </div>
 
             <div class="mb-3">
-                <div class="home--s9">Especialidades</div>
-                <div>
-                <span class="chip"><i class="bi bi-brain"></i>TDAH</span>
-                <span class="chip blue"><i class="bi bi-puzzle"></i>TEA</span>
-                <span class="chip green"><i class="bi bi-heart-pulse"></i>Ansiedade</span>
-                <span class="chip"><i class="bi bi-lightbulb"></i>Foco</span>
-                </div>
+            <div class="text-muted mb-2">Especialidades</div>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="chip chip-orange"><i class="bi bi-brain"></i>TDAH</span>
+              <span class="chip chip-blue"><i class="bi bi-puzzle"></i>TEA</span>
+              <span class="chip chip-green"><i class="bi bi-heart-pulse"></i>Ansiedade</span>
             </div>
-
-           <div class="home--s10">
-            <div class="home--s11">
-              <span class="home--s12">Compatibilidade</span>
-              <span class="home--s13">94%</span>
-            </div>
-            <div class="match-bar"><div class="match-fill" class="home--s14"></div></div>
           </div>
 
-          <div class="home--s15">
-            <div class="home--s16">
-              <i class="bi bi-camera-video-fill" class="txt-orange"></i>
-              <span>Consulta online</span>
+          <div class="row g-2 fs-6">
+            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
+                <i class="bi bi-camera-video-fill text-orange"></i>
+                <span class="small">Consulta online</span>
             </div>
-            <div class="home--s16">
-              <i class="bi bi-shield-check-fill" class="home--s17"></i>
-              <span>Verificado</span>
-            </div>
-            <div class="home--s16">
-              <i class="bi bi-calendar-check-fill" class="home--s18"></i>
-              <span>Agenda flex</span>
-            </div>
-            <div class="home--s16">
-              <i class="bi bi-chat-dots-fill" class="txt-orange"></i>
-              <span>Chat incluso</span>
-                </div>
-            </div>
+            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2"><i class="bi bi-shield-check-fill text-success"></i><span class="small">Verificado</span></div>
+            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2"><i class="bi bi-calendar-check-fill text-info"></i><span class="small">Agenda flex</span></div>
+            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2"><i class="bi bi-chat-dots-fill text-orange"></i><span class="small">Chat incluso</span></div>
             </div>
         </div>
 
@@ -228,7 +207,7 @@
             <em>"ler o capítulo 1"</em>, <em>"fazer resumo"</em> e <em>"revisar anotações"</em>. 
             Isso torna o processo menos intimidante e mais realizável. Recompense-se após cada etapa!
         </div>
-        <div class="modal-footer"><button class="sty-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
+        <div class="modal-footer"><button class="nav-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
         </div>
     </div>
     </div>
@@ -246,7 +225,7 @@
             A meditação e técnicas de respiração também ajudam a acalmar a mente. 
             Não negligencie sua saúde mental — buscar terapia pode fazer toda a diferença.
         </div>
-        <div class="modal-footer"><button class="sty-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
+        <div class="modal-footer"><button class="nav-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
         </div>
     </div>
     </div>
@@ -265,10 +244,10 @@
         <!-- Se não houver depoimentos, mostrar estado vazio elegante -->
         <div class="col-12">
             <div class="reviews-empty">
-            <i class="bi bi-chat-square-quote" class="home--s19"></i>
-            <h4 class="home--s20">Em breve, os primeiros depoimentos</h4>
+            <i class="bi bi-chat-square-quote fs-1 text-orange opacity-50"></i>
+            <h4 class="text-light mt-3 font-display">Em breve, os primeiros depoimentos</h4>
             <p>Aqui você verá as avaliações dos pacientes após as consultas, relatando sua experiência com nossos especialistas.</p>
-            <button class="sty-button mt-2"
+            <button class="nav-button mt-2"
                 data-bs-toggle="modal" data-bs-target="#registertype">
                 <i class="bi bi-plus-circle me-1"></i>Seja o primeiro
             </button>
@@ -338,46 +317,46 @@
             <div class="tdah-info-card">
             <div class="row align-items-start g-4">
                 <div class="col-lg-5">
-                <div class="home--s21">
+                <div class="d-flex align-items-center gap-3 mb-3">
                     <div class="sobre-feature-icon"><i class="bi bi-bookmark-star-fill"></i></div>
-                    <h3 class="home--s22">
+                    <h3 class="font-display fs-4 fw-bolder text-white m-0">
                     O que é o TDAH?
                     </h3>
                 </div>
-                <p class="home--s23">
+                <p class="text-muted lh-lg">
                     O TDAH (Transtorno do Déficit de Atenção e Hiperatividade) é uma condição 
                     que geralmente começa na infância e pode continuar na vida adulta, 
                     afetando escola, trabalho e relações sociais.
                 </p>
-                <p class="home--s23">
+                <p class="text-muted lh-lg">
                     O diagnóstico é feito por um profissional de saúde mental e o tratamento 
                     costuma incluir remédios, terapia e estratégias comportamentais.
                 </p>
                 </div>
                 <div class="col-lg-7">
-                <p class="home--s24">
+                <p class="text-white-50 small text-uppercase mb-3 tracking-wide">
                     Principais sintomas
                 </p>
                 <div class="row g-3">
                     <div class="col-sm-4">
-                        <div class="home--s25">
-                            <div class="home--s26"><i class="bi bi-eye-slash"></i></div>
-                            <div class="home--s27">Desatenção</div>
-                            <div class="home--s28">Dificuldade de manter foco, seguir instruções e terminar tarefas.</div>
+                  <div class="bg-dark-600 rounded-4 p-3 h-100">
+                    <div class="text-orange fs-4 mb-2"><i class="bi bi-eye-slash"></i></div>
+                    <div class="fw-bold text-white mb-1">Desatenção</div>
+                    <div class="small text-muted">Dificuldade de manter foco, seguir instruções e terminar tarefas.</div>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="home--s25">
-                            <div class="home--s29"><i class="bi bi-lightning-charge-fill"></i></div>
-                            <div class="home--s27">Hiperatividade</div>
-                            <div class="home--s28">Dificuldade em ficar parado, agitação constante.</div>
+                  <div class="bg-dark-600 rounded-4 p-3 h-100">
+                    <div class="text-info fs-4 mb-2"><i class="bi bi-lightning-charge-fill"></i></div>
+                    <div class="fw-bold text-white mb-1">Hiperatividade</div>
+                    <div class="small text-muted">Dificuldade em ficar parado, agitação constante.</div>
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <div class="home--s25">
-                            <div class="home--s30"><i class="bi bi-fast-forward-fill"></i></div>
-                            <div class="home--s27">Impulsividade</div>
-                            <div class="home--s28">Decisões sem pensar, interrupções, dificuldade de esperar.</div>
+                  <div class="bg-dark-600 rounded-4 p-3 h-100">
+                    <div class="text-success fs-4 mb-2"><i class="bi bi-fast-forward-fill"></i></div>
+                    <div class="fw-bold text-white mb-1">Impulsividade</div>
+                    <div class="small text-muted">Decisões sem pensar, interrupções, dificuldade de esperar.</div>
                         </div>
                     </div>
                 </div>
