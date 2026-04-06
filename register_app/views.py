@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def CreatePatient(request):
+    return HttpResponse('Em desenvolvimento..')
+
+def CreateExperts(request):
+    return HttpResponse('Em desenvolvimento..')

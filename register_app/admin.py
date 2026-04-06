@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Experts ,Patients,Specialties
 
-# Register your models here.
+
+admin.site.register(Experts)
+admin.site.register(Patients)
+admin.site.register(Specialties)
