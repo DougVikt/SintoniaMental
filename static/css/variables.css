@@ -4,26 +4,31 @@
     --orange-glow:   #ff7c3a;
     --orange-dark:   #c94d12;
     --orange-dim:    rgba(241,96,28,0.15);
+    --orange-dim-100:rgba(241,96,28,0.05);
     --orange-border: rgba(241,96,28,0.35);
     --purple:        #a78bfa;
     --purple-dim:    rgba(167,139,250,0.14);
     --purple-border: rgba(167,139,250,0.3);
     --dark-900:      #0e0e0e;
     --dark-800:      #161616;
+    --dark-750:      #151515;
     --dark-700:      #1f1f1f;
-    --dark-750:      #161616;
     --dark-600:      #2a2a2a;
     --dark-500:      #383838;
     --dark-400:      #3a3a3a;
-    --light:         #f0ede8;
+    --light:         #f5f4f3;
+    --light-100:     #ffffff0a;
     --muted:         #9a9490;
-    --muted-2:       #4e4a46;
+    --muted-2:       #666463b7;
     --green:         #4ade80;
+    --green-300:     rgba(74, 222, 128, 0.12);
+    --green-250:     rgba(74, 222, 128, 0.3);
     --blue:          #60a5fa;
     --blue-dim:      rgba(96, 165, 250, 0.12);
     --blue-400:      rgba(96, 165, 250, 0.3);
     --yellow:        #fbbf24;
     --red:           #f87171; 
+    --brown:         rgba(30,20,15,0.9);
 
     /*  Typography: */
     --font-display: "Lexend", sans-serif;
