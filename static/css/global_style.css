@@ -20,10 +20,20 @@ body {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--dark-500); border-radius: 6px; }
-::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+::-webkit-scrollbar { 
+    width: 6px; 
+    height: 6px; 
+}
+::-webkit-scrollbar-track { 
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb { 
+    background: var(--dark-500); 
+    border-radius: 6px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--orange); 
+}
 
 
 /* ============================================================

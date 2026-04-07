@@ -1,44 +1,195 @@
- :root {
-    /*   Color Palette: */
-    --orange:        #F1601C;
-    --orange-glow:   #ff7c3a;
-    --orange-dark:   #c94d12;
-    --orange-dim:    rgba(241,96,28,0.15);
-    --orange-dim-100:rgba(241,96,28,0.05);
-    --orange-border: rgba(241,96,28,0.35);
-    --purple:        #a78bfa;
-    --purple-dim:    rgba(167,139,250,0.14);
-    --purple-border: rgba(167,139,250,0.3);
-    --dark-900:      #0e0e0e;
-    --dark-800:      #161616;
-    --dark-750:      #151515;
-    --dark-700:      #1f1f1f;
-    --dark-600:      #2a2a2a;
-    --dark-500:      #383838;
-    --dark-400:      #3a3a3a;
-    --light:         #f5f4f3;
-    --light-100:     #ffffff0a;
-    --muted:         #9a9490;
-    --muted-2:       #666463b7;
-    --green:         #4ade80;
-    --green-300:     rgba(74, 222, 128, 0.12);
-    --green-250:     rgba(74, 222, 128, 0.3);
-    --blue:          #60a5fa;
-    --blue-dim:      rgba(96, 165, 250, 0.12);
-    --blue-400:      rgba(96, 165, 250, 0.3);
-    --yellow:        #fbbf24;
-    --red:           #f87171; 
-    --brown:         rgba(30,20,15,0.9);
+/* --- CSS Variables / Design Tokens --- */
+:root {
+  /* ===== CORES PRINCIPAIS ===== */
+  --orange:       #F1601C;
+  --orange-dark:  #c94d12;
+  --orange-light: #ff7c3a;
+  --orange-glow:  #ff7c3a;
+  
+  /* Orange com opacidades */
+  --orange-a1: rgba(241,96,28,0.02);
+  --orange-a2: rgba(241,96,28,0.04);
+  --orange-a3: rgba(241,96,28,0.06);
+  --orange-a4: rgba(241,96,28,0.08);
+  --orange-a5: rgba(241,96,28,0.1);
+  --orange-a6: rgba(241,96,28,0.12);
+  --orange-a7: rgba(241,96,28,0.15);
+  --orange-a8: rgba(241,96,28,0.18);
+  --orange-a9: rgba(241,96,28,0.2);
+  --orange-a10: rgba(241,96,28,0.25);
+  --orange-a11: rgba(241,96,28,0.3);
+  --orange-a12: rgba(241,96,28,0.35);
+  --orange-a13: rgba(241,96,28,0.4);
+  --orange-a14: rgba(241,96,28,0.5);
+  
+  /* Orange borders */
+  --orange-border: rgba(241,96,28,0.2);
+  --orange-border-2: rgba(241,96,28,0.25);
+  --orange-border-3: rgba(241,96,28,0.3);
+  --orange-border-4: rgba(241,96,28,0.35);
+  
+  /* Orange shadows */
+  --orange-shadow-xs: 0 1px 4px rgba(241,96,28,0.15);
+  --orange-shadow-sm: 0 2px 8px rgba(241,96,28,0.2);
+  --orange-shadow-md: 0 4px 16px rgba(241,96,28,0.25);
+  --orange-shadow-lg: 0 8px 24px rgba(241,96,28,0.3);
+  --orange-shadow-xl: 0 12px 40px rgba(241,96,28,0.35);
+  --orange-shadow-glow: 0 0 12px rgba(241,96,28,0.4);
+  --orange-shadow-focus: 0 0 0 3px rgba(241,96,28,0.15);
 
-    /*  Typography: */
-    --font-display: "Lexend", sans-serif;
-    --font-body:    'Inter', sans-serif;
-    --radius:     1rem;
-    --shadow-glow: 0 0 28px rgba(241, 96, 28, 0.35);
-    --radius-lg: 1.5rem;
-    --sidebar-w: 260px;
-    --topbar-h: 64px;
-    --shadow: 0 8px 32px rgba(0,0,0,0.4);
-   
+  /* ===== CORES VERDE ===== */
+  --green:    #4ade80;
+  --green-dark:#22c55e;
+  --green-a1: rgba(74,222,128,0.05);
+  --green-a2: rgba(74,222,128,0.08);
+  --green-a3: rgba(74,222,128,0.1);
+  --green-a4: rgba(74,222,128,0.12);
+  --green-a5: rgba(74,222,128,0.15);
+  --green-a6: rgba(74,222,128,0.2);
+  --green-a7: rgba(74,222,128,0.25);
+  --green-border: rgba(74,222,128,0.2);
+  --green-border-2: rgba(74,222,128,0.3);
+
+  /* ===== CORES VERMELHO ===== */
+  --red:      #f87171;
+  --red-dark: #ef4444;
+  --red-a1: rgba(248,113,113,0.05);
+  --red-a2: rgba(248,113,113,0.08);
+  --red-a3: rgba(248,113,113,0.1);
+  --red-a4: rgba(248,113,113,0.12);
+  --red-a5: rgba(248,113,113,0.15);
+  --red-a6: rgba(248,113,113,0.2);
+  --red-border: rgba(248,113,113,0.2);
+  --red-border-2: rgba(248,113,113,0.3);
+
+  /* ===== CORES AZUL ===== */
+  --blue:     #60a5fa;
+  --blue-dark: #3b82f6;
+  --blue-a1: rgba(96,165,250,0.05);
+  --blue-a2: rgba(96,165,250,0.08);
+  --blue-a3: rgba(96,165,250,0.1);
+  --blue-a4: rgba(96,165,250,0.12);
+  --blue-a5: rgba(96,165,250,0.15);
+  --blue-a6: rgba(96,165,250,0.2);
+  --blue-border: rgba(96,165,250,0.2);
+  --blue-border-2: rgba(96,165,250,0.3);
+
+  /* ===== CORES AMARELO ===== */
+  --yellow:   #fbbf24;
+  --yellow-a1: rgba(251,191,36,0.05);
+  --yellow-a2: rgba(251,191,36,0.08);
+  --yellow-a3: rgba(251,191,36,0.1);
+  --yellow-a4: rgba(251,191,36,0.12);
+  --yellow-a5: rgba(251,191,36,0.15);
+  --yellow-a6: rgba(251,191,36,0.2);
+  --yellow-border: rgba(251,191,36,0.2);
+  --yellow-border-2: rgba(251,191,36,0.3);
+
+  /* ===== CORES DARK ===== */
+  --dark-900: #0a0a0a;
+  --dark-850: #0d0d0d;
+  --dark-800: #111111;
+  --dark-780: #141414;
+  --dark-750: #161616;
+  --dark-720: #1a1a1a;
+  --dark-700: #1c1c1c;
+  --dark-680: #202020;
+  --dark-650: #222222;
+  --dark-600: #242424;
+  --dark-550: #292929;
+  --dark-500: #2e2e2e;
+  --dark-450: #333333;
+  --dark-400: #3a3a3a;
+  --dark-350: #404040;
+
+  /* Dark backgrounds with opacity */
+  --dark-bg-1: rgba(17,17,17,0.3);
+  --dark-bg-2: rgba(17,17,17,0.5);
+  --dark-bg-3: rgba(17,17,17,0.7);
+  --dark-bg-4: rgba(17,17,17,0.85);
+  --dark-bg-5: rgba(10,10,10,0.92);
+  --dark-bg-6: rgba(10,10,10,0.95);
+
+  /* ===== CORES BRANCO/PRETO ===== */
+  --white: #FFFFFF;
+  --black: #000000;
+  --light: #f0ede8;
+  --muted: #7a7470;
+  --muted-2: #5a5450;
+
+  /* White with opacity */
+  --white-a1: rgba(255,255,255,0.02);
+  --white-a2: rgba(255,255,255,0.04);
+  --white-a3: rgba(255,255,255,0.05);
+  --white-a4: rgba(255,255,255,0.06);
+  --white-a5: rgba(255,255,255,0.07);
+  --white-a6: rgba(255,255,255,0.08);
+  --white-a7: rgba(255,255,255,0.1);
+  --white-a8: rgba(255,255,255,0.12);
+  --white-a9: rgba(255,255,255,0.15);
+  --white-a10: rgba(255,255,255,0.2);
+  --white-a11: rgba(255,255,255,0.25);
+  --white-a12: rgba(255,255,255,0.3);
+
+  /* Black with opacity */
+  --black-a1: rgba(0,0,0,0.05);
+  --black-a2: rgba(0,0,0,0.1);
+  --black-a3: rgba(0,0,0,0.15);
+  --black-a4: rgba(0,0,0,0.2);
+  --black-a5: rgba(0,0,0,0.25);
+  --black-a6: rgba(0,0,0,0.3);
+  --black-a7: rgba(0,0,0,0.4);
+  --black-a8: rgba(0,0,0,0.5);
+  --black-a9: rgba(0,0,0,0.6);
+  --black-a10: rgba(0,0,0,0.7);
+
+  /* ===== CORES GRAY ===== */
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+  --gray-600: #757575;
+  --gray-700: #616161;
+  --gray-800: #424242;
+  --gray-900: #212121;
+
+  /* ===== CORES PURPLE ===== */
+  --purple: #A78BFA;
+  --purple-a1: rgba(167,139,250,0.08);
+  --purple-a2: rgba(167,139,250,0.1);
+  --purple-a3: rgba(167,139,250,0.12);
+  --purple-a4: rgba(167,139,250,0.15);
+  --purple-border: rgba(167,139,250,0.2);
+  --purple-border-2: rgba(167,139,250,0.3);
+
+  /* ===== FONTES ===== */
+  --font-display: "Lexend", sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+
+  /* ===== SHADOWS ===== */
+  --shadow-xs: 0 1px 3px var(--black-a2);
+  --shadow-sm: 0 2px 6px var(--black-a3);
+  --shadow-md: 0 4px 12px var(--black-a4);
+  --shadow-lg: 0 8px 24px var(--black-a5);
+  --shadow-xl: 0 16px 48px var(--black-a6);
+  --shadow: var(--shadow-md);
+
+  /* ===== BORDER RADIUS ===== */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius: var(--radius-md);
+  --radius-full: 9999px;
+
+  /* ===== TRANSITIONS ===== */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ===== LAYOUT ===== */
+  --sidebar-w: 260px;
+  --topbar-h: 64px;
 }
-
