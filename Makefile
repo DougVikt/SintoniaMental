@@ -26,6 +26,6 @@ makemigrations:
 	poetry run python manage.py makemigrations
 
 migrate: makemigrations
-	@echo Rodando migrações
+	@echo Rodando migracoes
 	poetry run python manage.py migrate
 
