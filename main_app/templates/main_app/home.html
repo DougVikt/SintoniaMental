@@ -21,7 +21,7 @@
       <!-- Links centralizados -->
       <ul class="navbar-nav mx-auto gap-1">
         <li class="nav-item">
-          <a href="#hero" class="nav-link sty-link-nav"><i class="bi bi-house-fill"></i>Início</a>
+          <a href="{% url 'home' %}" class="nav-link sty-link-nav"><i class="bi bi-house-fill"></i>Início</a>
         </li>
         <li class="nav-item">
           <a href="#depoimentos" class="nav-link sty-link-nav"><i class="bi bi-chat-quote"></i>Depoimentos</a>
@@ -30,7 +30,7 @@
           <a href="#sobre" class="nav-link sty-link-nav"><i class="bi bi-info-circle"></i>Sobre</a>
         </li>
         <li class="nav-item">
-          <a href="/help/" class="nav-link sty-link-nav"><i class="bi bi-question-circle"></i>FAQ</a>
+          <a href="{% url 'faq' %}" class="nav-link sty-link-nav"><i class="bi bi-question-circle"></i>FAQ</a>
         </li>
       </ul>
       <button class="btn-primary" onclick="location.href='/login/'">
@@ -50,7 +50,7 @@
     <a href="#hero"        class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-house-fill"></i>Início</a>
     <a href="#depoimentos" class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-chat-quote"></i>Depoimentos</a>
     <a href="#sobre"       class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-info-circle"></i>Sobre</a>
-    <a href="/help/"       class="nav-link sty-link-nav py-3"><i class="bi bi-question-circle"></i>FAQ</a>
+    <a href="{% url 'faq' %}"       class="nav-link sty-link-nav py-3"><i class="bi bi-question-circle"></i>FAQ</a>
     <hr class="border-orange my-2">
     <button class="btn-primary w-full" onclick="location.href='/login/'">
           <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
