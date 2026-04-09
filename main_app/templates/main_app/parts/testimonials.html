@@ -1,0 +1,19 @@
+<div class="col-md-4">
+    <div class="review-card">
+        <div class="review-quote">"</div>
+        <p class="review-text">{% review.text %}</p>
+        <div class="review-author">
+            <div class="review-patient">{% review.patient.name %}</div>
+            <div>
+            <div class="review-name">Dr(a). {% review.expert.name %}</div>
+            {% for star in stars %}
+                {% if star <= review.stars %}
+                    <i class="bi bi-stars-fill"></i>
+                {% else %}
+                    <i class="bi bi-stars"></i>
+                {% endif %}
+            {% endfor %}
+            </div>
+         </div>
+    </div>
+</div>

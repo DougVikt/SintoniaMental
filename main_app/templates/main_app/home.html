@@ -163,73 +163,35 @@
         </div>
 
         <div class="tips-grid anim-up">
-        <!-- Card 1 -->
-        <div class="tip-card">
-            <img src="#" alt="Foco" class="tip-card-img">
-            <div class="tip-card-body">
-            <div class="tip-card-icon"><i class="bi bi-list-check"></i></div>
-            <div class="tip-card-title">Quebrando Tarefas em Partes Menores</div>
-            <p class="tip-card-text">Divida tarefas grandes em etapas pequenas e gerenciáveis para vencer a procrastinação.</p>
-            <button class="btn-tip" data-bs-toggle="modal" data-bs-target="#modal-tips0">
-                Saiba mais <i class="bi bi-arrow-right ms-1"></i>
-            </button>
+        <!-- Cards -->
+         {% if tips %}
+         {% for tip in tips %}
+            <div class="tip-card">
+                <img src="{ tip.image.url }" alt="{ tip.alt }" class="tip-card-img">
+                <div class="tip-card-body">
+                    <div class="tip-card-icon">
+                        <i class="bi bi-list-check"></i>
+                    </div>
+                    <div class="tip-card-title">
+                        { tip.title }
+                    </div>
+                    <p class="tip-card-text">
+                        Divida tarefas grandes em etapas pequenas e gerenciáveis para vencer a procrastinação
+                    </p>
+                    <button class="btn-tip" data-bs-toggle="modal" data-bs-target="#modal-tips0">
+                        Saiba mais <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="tip-card">
-            <img src="#" alt="Autocuidado" class="tip-card-img">
-            <div class="tip-card-body">
-            <div class="tip-card-icon"><i class="bi bi-heart-pulse-fill"></i></div>
-            <div class="tip-card-title">Autocuidado e TDAH</div>
-            <p class="tip-card-text">Entenda como dormir, alimentar e movimentar bem o corpo muda tudo para quem tem TDAH.</p>
-            <button class="btn-tip" data-bs-toggle="modal" data-bs-target="#modal-tips1">
-                Saiba mais <i class="bi bi-arrow-right ms-1"></i>
-            </button>
+            <!-- Modais -->
+            {% include 'main_app/parts/modal_tips.html' %}
+        {% endfor %}
+        {% else %}
+            <div class="tip-card">
+                <p class="text-center"> sem cards no momento <p>
             </div>
-        </div>
-        </div>
-    </div>
+        {% endif %}
     </section>
-
-    <!-- Modais de dicas -->
-    <div class="modal fade" id="modal-tips0" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title"><i class="bi bi-list-check me-2 text-warning"></i>Quebrando Tarefas em Partes Menores</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-            Tarefas grandes podem parecer assustadoras para quem tem TDAH, levando à procrastinação. 
-            Uma solução é dividir essas tarefas em etapas menores e mais gerenciáveis. Por exemplo, 
-            em vez de <strong class="txt-orange">"estudar para a prova"</strong>, quebre em 
-            <em>"ler o capítulo 1"</em>, <em>"fazer resumo"</em> e <em>"revisar anotações"</em>. 
-            Isso torna o processo menos intimidante e mais realizável. Recompense-se após cada etapa!
-        </div>
-        <div class="modal-footer"><button class="nav-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
-        </div>
-    </div>
-    </div>
-
-    <div class="modal fade" id="modal-tips1" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title"><i class="bi bi-heart-pulse-fill me-2 text-warning"></i>Autocuidado e TDAH</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-            O autocuidado é crucial para quem vive com TDAH. Isso inclui dormir o suficiente, 
-            alimentar-se bem, praticar exercícios físicos e reservar tempo para atividades prazerosas. 
-            A meditação e técnicas de respiração também ajudam a acalmar a mente. 
-            Não negligencie sua saúde mental — buscar terapia pode fazer toda a diferença.
-        </div>
-        <div class="modal-footer"><button class="nav-btnmodal btn" data-bs-dismiss="modal">Fechar</button></div>
-        </div>
-    </div>
-    </div>
-
     <hr class="section-divider">
 
     <!-- ===================== DEPOIMENTOS ===================== -->
@@ -241,33 +203,24 @@
         </div>
 
         <div class="row g-4 anim-up">
-        <!-- Se não houver depoimentos, mostrar estado vazio elegante -->
-        <div class="col-12">
-            <div class="reviews-empty">
-            <i class="bi bi-chat-square-quote fs-1 text-orange opacity-50"></i>
-            <h4 class="text-light mt-3 font-display">Em breve, os primeiros depoimentos</h4>
-            <p>Aqui você verá as avaliações dos pacientes após as consultas, relatando sua experiência com nossos especialistas.</p>
-            <button class="nav-button mt-2"
-                data-bs-toggle="modal" data-bs-target="#registertype">
-                <i class="bi bi-plus-circle me-1"></i>Seja o primeiro
-            </button>
-            </div>
-        </div>
-
-        <!-- Exemplo de como ficará com depoimentos (remover quando tiver real):
-        <div class="col-md-4">
-            <div class="review-card">
-            <div class="review-quote">"</div>
-            <p class="review-text">Finalmente encontrei um profissional que entende como minha mente funciona.</p>
-            <div class="review-author">
-                <div class="review-avatar">A</div>
-                <div>
-                <div class="review-name">Ana S.</div>
-                <div class="stars">★★★★★</div>
+        {% if not testimonials %}
+            <!-- Se não houver depoimentos -->
+            <div class="col-12">
+                <div class="reviews-empty">
+                <i class="bi bi-chat-square-quote fs-1 text-orange opacity-50"></i>
+                <h4 class="text-light mt-3 font-display">Em breve, os primeiros depoimentos</h4>
+                <p>Aqui você verá as avaliações dos pacientes após as consultas, relatando sua experiência com nossos especialistas.</p>
+                <button class="nav-button mt-2"
+                    data-bs-toggle="modal" data-bs-target="#registertype">
+                    <i class="bi bi-plus-circle me-1"></i>Seja o primeiro
+                </button>
                 </div>
             </div>
-            </div>
-        </div> -->
+        {% else %}
+            {% for review in testimonials %}
+            {% include "main_app/parts/testimonials.html" %}
+            {% endfor %}
+        {% endif %}
         </div>
     </div>
     </section>
@@ -288,7 +241,7 @@
             rápido e fácil. Com base na sua pontuação, você encontrará recursos e informações 
             úteis para entender e lidar com esses desafios.
             </p>
-            <a href="/quest/" class="btn-quest">
+            <a href="#" class="btn-quest">
             Começar o Teste <i class="bi bi-arrow-right-circle-fill"></i>
             </a>
             <div class="quest-steps">
@@ -302,114 +255,10 @@
     </section>
 
     <hr class="section-divider">
-
     <!-- ===================== SOBRE ===================== -->
     <section id="sobre" class="sobre-section">
-    <div class="container">
-        <div class="anim-up text-center mb-5">
-        <div class="section-label">Sobre o projeto</div>
-        <div class="section-title">O que é o Sintonia Mental?</div>
-        </div>
-
-        <div class="row g-4 mb-5">
-        <!-- O que é TDAH -->
-        <div class="col-12 anim-up">
-            <div class="tdah-info-card">
-            <div class="row align-items-start g-4">
-                <div class="col-lg-5">
-                <div class="d-flex align-items-center gap-3 mb-3">
-                    <div class="sobre-feature-icon"><i class="bi bi-bookmark-star-fill"></i></div>
-                    <h3 class="font-display fs-4 fw-bolder text-white m-0">
-                    O que é o TDAH?
-                    </h3>
-                </div>
-                <p class="text-muted lh-lg">
-                    O TDAH (Transtorno do Déficit de Atenção e Hiperatividade) é uma condição 
-                    que geralmente começa na infância e pode continuar na vida adulta, 
-                    afetando escola, trabalho e relações sociais.
-                </p>
-                <p class="text-muted lh-lg">
-                    O diagnóstico é feito por um profissional de saúde mental e o tratamento 
-                    costuma incluir remédios, terapia e estratégias comportamentais.
-                </p>
-                </div>
-                <div class="col-lg-7">
-                <p class="text-white-50 small text-uppercase mb-3 tracking-wide">
-                    Principais sintomas
-                </p>
-                <div class="row g-3">
-                    <div class="col-sm-4">
-                  <div class="bg-dark-600 rounded-4 p-3 h-100">
-                    <div class="text-orange fs-4 mb-2"><i class="bi bi-eye-slash"></i></div>
-                    <div class="fw-bold text-white mb-1">Desatenção</div>
-                    <div class="small text-muted">Dificuldade de manter foco, seguir instruções e terminar tarefas.</div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                  <div class="bg-dark-600 rounded-4 p-3 h-100">
-                    <div class="text-info fs-4 mb-2"><i class="bi bi-lightning-charge-fill"></i></div>
-                    <div class="fw-bold text-white mb-1">Hiperatividade</div>
-                    <div class="small text-muted">Dificuldade em ficar parado, agitação constante.</div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                  <div class="bg-dark-600 rounded-4 p-3 h-100">
-                    <div class="text-success fs-4 mb-2"><i class="bi bi-fast-forward-fill"></i></div>
-                    <div class="fw-bold text-white mb-1">Impulsividade</div>
-                    <div class="small text-muted">Decisões sem pensar, interrupções, dificuldade de esperar.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="symptom-chips mt-3">
-                    <span class="symptom-chip orange"><i class="bi bi-check2"></i>Desorganização</span>
-                    <span class="symptom-chip blue"><i class="bi bi-check2"></i>Hiperfoco</span>
-                    <span class="symptom-chip green"><i class="bi bi-check2"></i>Esquecimento</span>
-                    <span class="symptom-chip orange"><i class="bi bi-check2"></i>Procrastinação</span>
-                    <span class="symptom-chip blue"><i class="bi bi-check2"></i>Criatividade</span>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <!-- 3 features -->
-        <div class="col-md-4 anim-up">
-            <div class="sobre-feature">
-            <div class="sobre-feature-icon"><i class="bi bi-bookmark-check-fill"></i></div>
-            <div class="sobre-feature-title">O que é a SM?</div>
-            <p class="sobre-feature-text">
-                Sintonia Mental é um projeto destinado a pessoas com TDAH e TEA, 
-                idealizado por um professor de TI que tem um filho com TDAH e 
-                identificou a falta de apoio específico para esse público.
-            </p>
-            </div>
-        </div>
-        <div class="col-md-4 anim-up">
-            <div class="sobre-feature">
-            <div class="sobre-feature-icon"><i class="bi bi-bookmark-heart-fill"></i></div>
-            <div class="sobre-feature-title">Qual é o objetivo?</div>
-            <p class="sobre-feature-text">
-                Conectar pessoas com TDAH a profissionais especializados de 
-                forma rápida e sem complicações, identificando suas necessidades 
-                e oferecendo suporte personalizado.
-            </p>
-            </div>
-        </div>
-        <div class="col-md-4 anim-up">
-            <div class="sobre-feature">
-            <div class="sobre-feature-icon"><i class="bi bi-bookmark-plus-fill"></i></div>
-            <div class="sobre-feature-title">Quem pode participar?</div>
-            <p class="sobre-feature-text">
-                Profissionais de saúde das áreas específicas são bem-vindos a colaborar. 
-                Além disso, qualquer pessoa pode ajudar compartilhando a plataforma e 
-                ampliando nosso alcance.
-            </p>
-            </div>
-        </div>
-        </div>
-    </div>
+        {% include "main_app/parts/about.html" %}
     </section>
-
     <!-- ===================== FOOTER ===================== -->
     {% include "main_app/parts/footer.html" %}
 </main>
