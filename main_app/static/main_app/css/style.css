@@ -3,20 +3,15 @@ body {
     background-image:
     radial-gradient(circle at 20% 10%, var(--orange-dim) 0%, transparent 40%),
     radial-gradient(circle at 80% 80%, var(--orange-dim-100) 0%, transparent 40%);
-
 }
-
 /* Scrollbar */
 ::-webkit-scrollbar { 
     width: .75rem; 
 }
 
-
-
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--dark-500); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--orange); }
-
+::-webkit-scrollbar-thumb { 
+    border-radius: 10px; 
+}
 
 /* ============================================================
     HERO
@@ -97,7 +92,7 @@ body {
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-size: clamp(2.8rem, 5vw, 5.2rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -.02em;
@@ -593,7 +588,12 @@ body {
 }
 
 /* Symptom chips */
-.symptom-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+.symptom-chips { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: .5rem; 
+    margin-top: 1.5rem;
+ }
 .symptom-chip {
     padding: .35rem .85rem;
     border-radius: 2rem;
