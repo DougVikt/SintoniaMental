@@ -156,19 +156,19 @@
           <div class="row g-2 fs-6">
             <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
                 <i class="bi bi-camera-video-fill text-primary"></i>
-                <span class="small">Consulta online</span>
+                <span>Consulta online</span>
             </div>
             <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
                 <i class="bi bi-shield-fill-check text-success"></i>
-                <span class="small">Verificado</span>
+                <span>Verificado</span>
             </div>
             <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
                 <i class="bi bi-calendar-check-fill text-warning"></i>
-                <span class="small">Agenda flex</span>
+                <span>Agenda flex</span>
             </div>
             <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
                 <i class="bi bi-chat-dots-fill text-info"></i>
-                <span class="small">Chat incluso</span>
+                <span>Chat incluso</span>
             </div>
             </div>
         </div>
@@ -182,13 +182,13 @@
     <!-- ===================== DICAS / CARDS ===================== -->
     <section id="card" class="tips-section">
     <div class="container">
-        <div class="anim-up">
+        <div class="reveal">
         <div class="section-label">Dicas práticas</div>
         <div class="section-title">Ferramentas para o dia a dia</div>
         <p class="section-desc">Estratégias simples e eficazes para gerenciar o TDAH e melhorar sua qualidade de vida.</p>
         </div>
 
-        <div class="tips-grid anim-up">
+        <div class="tips-grid reveal">
         <!-- Cards -->
          {% if tips %}
          {% for tip in tips %}
@@ -223,12 +223,12 @@
     <!-- ===================== DEPOIMENTOS ===================== -->
     <section id="depoimentos" class="reviews-section">
     <div class="container">
-        <div class="anim-up text-center mb-5">
+        <div class="reveal text-center mb-5">
         <div class="section-label">Depoimentos</div>
         <div class="section-title">O que dizem nossos usuários</div>
         </div>
 
-        <div class="row g-4 anim-up">
+        <div class="row g-4 reveal">
         {% if not testimonials %}
             <!-- Se não houver depoimentos -->
             <div class="col-12">
@@ -256,7 +256,7 @@
     <!-- ===================== TESTE TDAH ===================== -->
     <section id="quest" class="quest-section">
     <div class="container">
-        <div class="anim-up">
+        <div class="reveal">
         <div class="quest-card">
             <div class="quest-icon">
             <i class="bi bi-clipboard2-pulse-fill"></i>
@@ -271,9 +271,15 @@
             Começar o Teste <i class="bi bi-arrow-right-circle-fill"></i>
             </a>
             <div class="quest-steps">
-            <div class="quest-step"><i class="bi bi-clock"></i> ~5 minutos</div>
-            <div class="quest-step"><i class="bi bi-shield-lock"></i> Anônimo</div>
-            <div class="quest-step"><i class="bi bi-bar-chart-line"></i> Resultado imediato</div>
+            <div class="quest-step">
+                <i class="bi bi-clock"></i> ~5 minutos
+            </div>
+            <div class="quest-step">
+                <i class="bi bi-shield-lock"></i> Anônimo
+            </div>
+            <div class="quest-step">
+                <i class="bi bi-bar-chart-line"></i> Resultado imediato
+            </div>
             </div>
         </div>
         </div>

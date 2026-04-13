@@ -8,9 +8,9 @@
             <div class="review-name">Dr(a). {% review.expert.name %}</div>
             {% for star in stars %}
                 {% if star <= review.stars %}
-                    <i class="bi bi-stars-fill"></i>
+                    <i class="bi bi-stars-fill stars"></i>
                 {% else %}
-                    <i class="bi bi-stars"></i>
+                    <i class="bi bi-stars stars"></i>
                 {% endif %}
             {% endfor %}
             </div>
