@@ -13,27 +13,36 @@
 
 {% block content_nav %}
  <!-- Login btn mobile (aparece só em telas < lg, ao lado do toggler) -->
-    <button class="btn-primary d-lg-none login-btn-mobile" 
-      onclick="location.href='/login/'">Login</button>
+    <button class="btn-primary d-lg-none login-btn-mobile">
+        <a href="{% url 'register_login' %}">Login</a>
+        </button>
 
     <!-- Collapse desktop (só aparece em lg+) -->
     <div class="collapse navbar-collapse" id="navbarDesktop">
       <!-- Links centralizados -->
       <ul class="navbar-nav mx-auto gap-1">
         <li class="nav-item">
-          <a href="{% url 'home' %}" class="nav-link sty-link-nav"><i class="bi bi-house-fill"></i>Início</a>
+            <a href="{% url 'home' %}" class="nav-link sty-link-nav">
+                <i class="bi bi-house-fill"></i>Início
+            </a>
         </li>
         <li class="nav-item">
-          <a href="#depoimentos" class="nav-link sty-link-nav"><i class="bi bi-chat-quote"></i>Depoimentos</a>
+            <a href="#depoimentos" class="nav-link sty-link-nav">
+                <i class="bi bi-chat-quote"></i>Depoimentos
+            </a>
         </li>
         <li class="nav-item">
-          <a href="#sobre" class="nav-link sty-link-nav"><i class="bi bi-info-circle"></i>Sobre</a>
+            <a href="#sobre" class="nav-link sty-link-nav">
+                <i class="bi bi-info-circle"></i>Sobre
+            </a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'faq' %}" class="nav-link sty-link-nav"><i class="bi bi-question-circle"></i>FAQ</a>
+            <a href="{% url 'faq' %}" class="nav-link sty-link-nav">
+                <i class="bi bi-question-circle"></i>FAQ
+            </a>
         </li>
       </ul>
-      <button class="btn-primary" onclick="location.href='/login/'">
+      <button class="btn-primary" onclick="location.href='{% url 'register_login' %}'">
         <i class="bi bi-box-arrow-in-right me-1"></i>Login
       </button>
     </div>
@@ -47,12 +56,20 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
       </div>
       <div class="offcanvas-body d-flex flex-column gap-1 p-3">
-    <a href="#hero"        class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-house-fill"></i>Início</a>
-    <a href="#depoimentos" class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-chat-quote"></i>Depoimentos</a>
-    <a href="#sobre"       class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas"><i class="bi bi-info-circle"></i>Sobre</a>
-    <a href="{% url 'faq' %}"       class="nav-link sty-link-nav py-3"><i class="bi bi-question-circle"></i>FAQ</a>
-    <hr class="border-orange my-2">
-    <button class="btn-primary w-full" onclick="location.href='/login/'">
+        <a href="#hero"class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas">
+            <i class="bi bi-house-fill"></i>Início
+        </a>
+        <a href="#depoimentos"class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas">
+            <i class="bi bi-chat-quote"></i>Depoimentos
+        </a>
+        <a href="#sobre" class="nav-link sty-link-nav py-3" data-bs-dismiss="offcanvas">
+            <i class="bi bi-info-circle"></i>Sobre
+        </a>
+        <a href="{% url 'faq' %}"class="nav-link sty-link-nav py-3">
+            <i class="bi bi-question-circle"></i>FAQ
+        </a>
+        <hr class="border-orange my-2">
+        <button class="btn-primary w-full" onclick="location.href='/login/'">
           <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
         </button>
       </div>
@@ -73,7 +90,7 @@
 
         <!-- Left: copy -->
         <div class="col-lg-6">
-            <div class="hero-chip">
+            <div class="hero-badge">
             <span class="dot"></span>
             Plataforma de Saúde Mental
             </div>
@@ -118,7 +135,7 @@
 
         <!-- Right: floating card -->
         <div class="col-lg-6 hero-visual">
-        <div class="card-base hero-card">
+        <div class="hero-card">
             <div class="hero-card-head">
                 <div class="avatar"><i class="bi bi-person-fill"></i></div>
                 <div>
@@ -141,9 +158,18 @@
                 <i class="bi bi-camera-video-fill text-orange"></i>
                 <span class="small">Consulta online</span>
             </div>
-            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2"><i class="bi bi-shield-check-fill text-success"></i><span class="small">Verificado</span></div>
-            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2"><i class="bi bi-calendar-check-fill text-info"></i><span class="small">Agenda flex</span></div>
-            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2"><i class="bi bi-chat-dots-fill text-orange"></i><span class="small">Chat incluso</span></div>
+            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
+                <i class="bi bi-shield-check-fill text-success"></i>
+                <span class="small">Verificado</span>
+            </div>
+            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
+                <i class="bi bi-calendar-check-fill text-info"></i>
+                <span class="small">Agenda flex</span>
+            </div>
+            <div class="col-6 bg-dark-600 rounded-3 p-2 d-flex align-items-center gap-2">
+                <i class="bi bi-chat-dots-fill text-orange"></i>
+                <span class="small">Chat incluso</span>
+            </div>
             </div>
         </div>
 
