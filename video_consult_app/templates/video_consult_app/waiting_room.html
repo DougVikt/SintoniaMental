@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sala de Espera{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'video_consult_app/css/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'video_consult_app/js/script.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<!-- ============================================================ WAITING ROOM -->
+<div class="waiting-main" id="waitingMain">
+  <div class="waiting-screen">
+
+    <!-- Status -->
+    <div class="status-bar waiting" id="statusBar">
+      <div class="status-dot"></div>
+      <span id="statusText">Aguardando o especialista entrar...</span>
+    </div>
+
+    <!-- Specialist card -->
+    <div class="spec-card">
+      <div class="spec-avatar-wrap">
+        <div class="avatar-ring-2"></div>
+        <div class="avatar-ring"></div>
+        <div class="spec-avatar">AC</div>
+        <div class="spec-status-dot offline" id="specStatusDot"></div>
+      </div>
+      <div class="spec-info">
+        <div class="spec-name">Dra. Ana Costa</div>
+        <div class="spec-role">Neuropsicóloga · CRP 06/48921</div>
+        <div class="spec-tags">
+          <span class="spec-tag">TDAH</span>
+          <span class="spec-tag">TEA</span>
+          <span class="spec-tag">★ 4.9</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appointment info pills -->
+    <div class="appt-details">
+      <div class="appt-detail-pill">
+        <i class="bi bi-calendar3"></i>
+        <span id="apptDate">15/02/2025</span>
+      </div>
+      <div class="appt-detail-pill">
+        <i class="bi bi-clock"></i>
+        <span>10:00 — 50 min</span>
+      </div>
+      <div class="appt-detail-pill">
+        <i class="bi bi-camera-video-fill"></i>
+        <span>Online (Vídeo)</span>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-area">
+      <div class="countdown-label">A consulta começa em</div>
+      <div class="countdown-numbers">
+        <div class="countdown-block">
+          <div class="countdown-num" id="cdMin">00</div>
+          <div class="countdown-unit">min</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <div class="countdown-num" id="cdSec">00</div>
+          <div class="countdown-unit">seg</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enter button -->
+    <button class="btn-enter" id="btnEnter" disabled onclick="enterCall()">
+      <i class="bi bi-camera-video-fill icon-sm"></i>
+      <span class="btn-enter-label" id="btnEnterLabel">Disponível ao iniciar</span>
+    </button>
+    <p class="enter-hint" id="enterHint">O botão será liberado quando o especialista entrar na sala</p>
+
+    <!-- Tech checklist -->
+    <div class="checklist-card">
+      <div class="checklist-title"><i class="bi bi-check2-circle"></i>Verificação técnica</div>
+      <div class="checklist-items" id="checklistItems">
+        <div class="check-item" id="chk-cam" onclick="testDevice('cam')">
+          <div class="check-box" id="chk-cam-box">✓</div>
+          <span class="check-label">Câmera</span>
+          <span class="check-status" id="chk-cam-status"></span>
+        </div>
+        <div class="check-item" id="chk-mic" onclick="testDevice('mic')">
+          <div class="check-box" id="chk-mic-box">✓</div>
+          <span class="check-label">Microfone</span>
+          <span class="check-status" id="chk-mic-status"></span>
+        </div>
+        <div class="check-item done" id="chk-net">
+          <div class="check-box">✓</div>
+          <span class="check-label">Conexão de internet</span>
+          <span class="check-status ok">Boa</span>
+        </div>
+        <div class="check-item done" id="chk-browser">
+          <div class="check-box">✓</div>
+          <span class="check-label">Navegador compatível</span>
+          <span class="check-status ok">Chrome</span>
+        </div>
+      </div>
+      <div class="test-btns">
+        <button class="btn-test" id="btnTestCam" onclick="simulateTest('cam')">
+          <i class="bi bi-camera-video"></i> Testar câmera
+        </button>
+        <button class="btn-test" id="btnTestMic" onclick="simulateTest('mic')">
+          <i class="bi bi-mic"></i> Testar microfone
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat while waiting -->
+    <div class="chat-panel">
+      <div class="chat-header"><i class="bi bi-chat-dots-fill"></i>Chat com o especialista</div>
+      <div class="chat-messages" id="waitChatMessages">
+        <div class="chat-msg system">Sala de espera criada. O especialista será notificado.</div>
+      </div>
+      <div class="chat-input-wrap">
+        <input type="text" class="chat-input" id="waitChatInput" placeholder="Escreva uma mensagem..." onkeydown="if(event.key==='Enter') sendWaitChat()">
+        <button class="btn-send" onclick="sendWaitChat()"><i class="bi bi-send-fill"></i></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ IN-CALL SCREEN -->
+<div class="call-screen" id="callScreen">
+
+  <!-- Video area -->
+  <div class="video-main">
+
+    <!-- Remote video placeholder -->
+    <div class="video-remote">
+      <div class="video-remote-placeholder">
+        <div class="video-remote-av">AC</div>
+        <div class="video-remote-name">Dra. Ana Costa</div>
+        <div class="video-remote-status"><span class="status-dot-sm"></span>Câmera ativa</div>
+      </div>
+    </div>
+
+    <!-- Self video PIP -->
+    <div class="video-self">
+      <div class="video-self-av">JS</div>
+      <span class="video-self-label">Você</span>
+    </div>
+
+    <!-- Top bar -->
+    <div class="call-topbar">
+      <div class="call-info">
+        <div class="call-spec-name">Dra. Ana Costa</div>
+        <div class="call-timer-badge" id="callTimerBadge">00:00</div>
+      </div>
+      <div class="call-quality">
+        <div class="quality-bars">
+          <div class="q-bar q-bar-h1"></div>
+          <div class="q-bar q-bar-h2"></div>
+          <div class="q-bar q-bar-h3"></div>
+          <div class="q-bar q-bar-h4"></div>
+        </div>
+        Boa conexão
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="call-controls">
+      <div class="ctrl-wrap">
+        <div class="ctrl-btn mic-on" id="ctrlMic" onclick="toggleMic()" title="Microfone">
+          <i class="bi bi-mic-fill" id="micIcon"></i>
+          <span class="ctrl-label">Mic</span>
+        </div>
+      </div>
+      <div class="ctrl-wrap">
+        <div class="ctrl-btn cam-on" id="ctrlCam" onclick="toggleCam()" title="Câmera">
+          <i class="bi bi-camera-video-fill" id="camIcon"></i>
+          <span class="ctrl-label">Câmera</span>
+        </div>
+      </div>
+      <div class="ctrl-wrap">
+        <div class="ctrl-btn share-off" id="ctrlShare" onclick="toggleShare()" title="Compartilhar tela">
+          <i class="bi bi-display" id="shareIcon"></i>
+          <span class="ctrl-label">Tela</span>
+        </div>
+      </div>
+      <div class="ctrl-wrap">
+        <div class="ctrl-btn chat-btn" onclick="toggleCallChat()" title="Chat">
+          <i class="bi bi-chat-dots-fill"></i>
+          <div class="ctrl-notif" id="chatNotif">1</div>
+          <span class="ctrl-label">Chat</span>
+        </div>
+      </div>
+      <div class="ctrl-btn end-call" onclick="endCall()" title="Encerrar">
+        <i class="bi bi-telephone-x-fill"></i>
+          <span class="ctrl-label ctrl-label-muted">Sair</span>
+      </div>
+    </div>
+
+    <!-- In-call chat -->
+    <div class="call-chat" id="callChat">
+      <div class="call-chat-header">
+        <span class="call-chat-title"><i class="bi bi-chat-dots me-1 chat-icon-orange"></i>Chat</span>
+        <button class="btn-close-chat" onclick="toggleCallChat()"><i class="bi bi-x"></i></button>
+      </div>
+      <div class="call-chat-messages" id="callChatMessages">
+        <div class="chat-msg system">Chat iniciado. Mensagens são visíveis apenas para vocês dois.</div>
+      </div>
+      <div class="call-chat-input-wrap">
+        <input type="text" class="call-chat-input" id="callChatInput" placeholder="Digite..." onkeydown="if(event.key==='Enter') sendCallChat()">
+        <button class="btn-send" onclick="sendCallChat()"><i class="bi bi-send-fill"></i></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ POST-CALL -->
+<div class="postcall-screen" id="postcallScreen">
+  <div class="postcall-center">
+    <div class="postcall-emoji">🎉</div>
+    <div class="postcall-title">Consulta encerrada!</div>
+    <p class="postcall-sub">Como foi sua consulta com a Dra. Ana Costa?</p>
+
+    <div class="rating-row" id="ratingStars">
+      <span class="rating-star" onclick="setRating(1)" data-n="1">★</span>
+      <span class="rating-star" onclick="setRating(2)" data-n="2">★</span>
+      <span class="rating-star" onclick="setRating(3)" data-n="3">★</span>
+      <span class="rating-star" onclick="setRating(4)" data-n="4">★</span>
+      <span class="rating-star" onclick="setRating(5)" data-n="5">★</span>
+    </div>
+
+    <textarea class="postcall-textarea" rows="3" id="postcallComment" placeholder="Deixe um comentário (opcional)..."></textarea>
+
+    <div class="d-flex flex-column align-items-center gap-2">
+      <button class="btn-postcall-submit" onclick="submitRating()">
+        <i class="bi bi-send-fill me-1"></i> Enviar Avaliação
+      </button>
+      <button class="btn-postcall-skip" onclick="location.href='/dashboard/'">Pular e ir ao Dashboard</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
