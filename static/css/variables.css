@@ -1,5 +1,8 @@
-/* --- CSS Variables / Design Tokens --- */
-:root {
+/* =================================================
+          CSS Variables / Design Tokens 
+ =================================================== */
+
+ :root {
   /* ===== CORES PRINCIPAIS ===== */
   --orange:       #F1601C;
   --orange-dark:  #c94d12;
@@ -82,6 +85,7 @@
   --yellow-a4: rgba(251,191,36,0.12);
   --yellow-a5: rgba(251,191,36,0.15);
   --yellow-a6: rgba(251,191,36,0.2);
+  --yellow-a7: rgba(251, 191, 36, 0.12);
   --yellow-border: rgba(251,191,36,0.2);
   --yellow-border-2: rgba(251,191,36,0.3);
 

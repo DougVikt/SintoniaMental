@@ -1,0 +1,98 @@
+/* ==========================================
+   UTILITIES - Apenas customizações específicas
+   ========================================== */
+
+/* Cores de texto customizadas */
+.text-orange {
+  color: var(--orange);
+}
+
+.text-green {
+  color: var(--green);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+.text-red {
+  color: var(--red);
+}
+
+.text-blue {
+  color: var(--blue);
+}
+
+.text-purple {
+  color: var(--purple);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.text-light {
+  color: var(--light);
+}
+
+/* Backgrounds customizados */
+.bg-dark-700 {
+  background: var(--dark-700);
+}
+
+.bg-dark-600 {
+  background: var(--dark-600);
+}
+
+.bg-dark-500 {
+  background: var(--dark-500);
+}
+
+.bg-green-dim {
+  background: var(--orange-a7);
+}
+
+.bg-yellow-dim {
+  background: var(--yellow-a7);
+}
+
+.bg-red-dim {
+  background: var(--red-a7);
+}
+
+.bg-blue-dim {
+  background: var(--blue-a7);
+}
+
+.bg-orange-dim {
+  background: var(--orange-a7);
+}
+
+.bg-primary {
+  background: var(--orange);
+}
+
+.bg-success {
+  background: var(--green);
+}
+
+.bg-danger {
+  background: var(--red);
+}
+
+/* Bordas customizadas */
+.border-orange {
+  border-color: var(--orange-border) !important;
+}
+
+.border-green {
+  border-color: var(--green-border) !important;
+}
+
+.border-yellow {
+  border-color: var(--yellow-border) !important;
+}
+
+.border-blue {
+  border-color: var(--blue-border) !important;
+}

@@ -1,377 +1,180 @@
 @import url('variables.css');
+@import url('customize.css');
 
-/* ============================================================
-   BASE & RESET
-   ============================================================ */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: var(--font-body);
-    background: var(--dark-800);
-    color: var(--light);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { 
-    width: 6px; 
-    height: 6px; 
-}
-::-webkit-scrollbar-track { 
-    background: transparent; 
-}
-::-webkit-scrollbar-thumb { 
-    background: var(--dark-500); 
-    border-radius: 6px; 
-}
-::-webkit-scrollbar-thumb:hover { 
-    background: var(--orange); 
+/* ========================================
+            Base e reset 
+ ========================================== */
+ 
+html, body {
+  font-family: var(--font-b);
+  background: var(--dark-800);
+  color: var(--light);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 
-/* ============================================================
-   ANIMAÇÕES
-   /* era: .fade-up e  — ambas idênticas, unificadas aqui */
-/*============================================================ */
-.anim-up {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.anim-up.visible {
-    opacity: 1;
-    transform: none;
+/* Scrollbar  */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.anim-in {
-    animation: kf-anim-in 0.35s ease both;
-}
-@keyframes kf-anim-in {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: none; }
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
+::-webkit-scrollbar-thumb {
+  background: var(--dark-500);
+  border-radius: 6px;
+}
 
-/* ============================================================
-   NAVBAR PEQUENA
-/*============================================================ */
-.nav-sm {
-    background: var(--dark-900);
-    backdrop-filter: blur(14px); 
-    border-bottom: 1px solid var(--light);
-    padding: 0.75rem 2rem;
-    display: flex; 
-    align-items: center;
-    justify-content: space-between; 
-    position: sticky;
-    top: 0;
-    z-index: 200;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}
+
+/* Botoes customizados */
+.btn-primary {
+  background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(254, 144, 0, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--orange-dark), var(--orange));
+  box-shadow: 0 6px 20px rgba(254, 144, 0, 0.4);
+  transform: translateY(-2px);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--gray-300);
+  color: var(--gray-700);
+}
+.btn-outline:hover {
+  border-color: var(--orange);
+  color: var(--orange);
 }
 
 
-/* ============================================================
-   NAVBAR PRINCIPAL
-   era: .sty-navbar 
-/*============================================================ */
-.nav-main {
-    background: var(--dark-800);
-    border-bottom: 1px solid var(--orange-border);
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 500;
-    transition: top 0.4s ease, opacity 0.4s ease;
-}
-
-/* era: .nav-logo */
+/* navbar */
 .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
 }
-
-/* era: .nav-logo-icon */
 .nav-logo-icon {
-    width: 65px;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-.nav-logo-span {
-    width: auto;
-    height: 4rem;
-    display: flex;
-    position: fixed;
-    background-color: var(--dark-800);
-    margin-left: 1rem;
-    border-radius:0 0 0.5rem 0.5rem;  
-    top: -0.7rem;
-    z-index: 99;
-    transition: top 0.3s ease, transform 0.3s ease;
-}
-.nav-logo-span.expanded {
-    top: 0;
-    height: 5rem;    
-    transform: scale(1.05);
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  border-radius: .7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1rem;
 }
 
-/* era: .nav-logo-text */
-.nav-logo-text {
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--light);
+/* --- Hero Stats and components --- */
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+  flex-wrap: wrap;
+  animation: fadeUp .7s .4s ease both;
+}
+.stat-item {
+  text-align: left;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1;
+}
+.stat-label {
+  font-size: .8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: .2rem;
+}
+.stat-divider {
+  width: 1px;
+  background: rgba(240, 237, 232, 0.12);
+  align-self: stretch;
 }
 
-/* era: .sty-link-nav */
-.nav-link-item {
-    color: var(--light);
-    border-radius: 0.5rem;
-    padding: 0.45rem 1.1rem !important;
-    transition: color 0.2s, background 0.2s;
-    letter-spacing: 0.01em;
-}
-.nav-link-item:hover,
-.nav-link-item.active {
-    color: var(--orange);
-    background: var(--orange-dim);
-}
-.nav-link-item i {
-    margin-right: 0.35rem; 
+
+
+/* --- Blob Animation --- */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .25;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
 }
 
-/* era: .logo-brand img */
-.nav-brand-img {
-    height: 44px;
-    width: auto;
-    filter: drop-shadow(0 0 8px var(--orange-border));
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--orange);
+  top: -10%;
+  left: -10%;
+  animation-delay: 0s;
 }
 
-/* Mobile nav */
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  background: var(--orange-light2);
+  bottom: 5%;
+  right: -5%;
+  animation-delay: 3s;
+}
+
+.blob-3 {
+  width: 200px;
+  height: 200px;
+  background: var(--orange-dark);
+  top: 40%;
+  left: 50%;
+  animation-delay: 5s;
+  opacity: .15;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+}
+
+
+
 @media (max-width: 991px) {
-    .offcanvas {
-        background: var(--dark-900) !important;
-    }
-    .nav-link-item {
-        color: var(--orange) !important;
-        font-size: 1.1rem;
-        margin: 0.3rem 0;
-        display: block !important;
-        visibility: visible !important;
-    }
-    .nav-link-item:hover {
-        background: var(--orange);
-        color: var(--dark-900) !important;
-    }
-}
+  .offcanvas {
+    background: var(--dark-900) !important;
+  }
 
-
-/* ============================================================
-   BOTÕES
-   ============================================================ */
-
-/* era: .btn-nav — botão pequeno de nav */
-.btn-nav {
-    background: var(--orange);
-    color: var(--light);
-    border: none;
-    border-radius: 2rem;
-    padding: 0.45rem 1.25rem;
-    font-weight: 700;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-}
-.btn-nav:hover {
-    background: var(--orange-glow);
-    color: var(--light);
-}
-
-/* era: .btiniciar — botão principal de login/iniciar */
-.btn-primary-action {
-    background: var(--orange);
-    color: var(--light);
-    border: none;
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    padding: 0.45rem 1.4rem;
-    border-radius: 2rem;
-    transition: all 0.2s;
-    box-shadow: 0 2px 12px var(--orange-border);
-    cursor: pointer;
-}
-.btn-primary-action:hover {
-    background: var(--light);
+  .sty-link-nav {
     color: var(--orange);
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-1px);
-}
-
-/* era: .sty-button — botão padrão genérico */
-.btn-default {
-    background: var(--orange);
-    color: var(--light);
-    border: none;
-    font-weight: 600;
-    border-radius: 2rem;
-    padding: 0.55rem 1.5rem;
-    font-size: 0.95rem;
-    box-shadow: 0 3px 12px var(--orange-border);
-    transition: all 0.2s;
-    cursor: pointer;
-}
-.btn-default:hover {
-    background: var(--orange-glow);
-    transform: translateY(-1px);
-    color: var(--light);
-}
-
-/* Botão flutuante de ajuda
-   era: .help-fab */
-.btn-fab {
-    position: fixed;
-    bottom: 1.75rem;
-    right: 1.75rem;
-    z-index: 1050;
-    background: var(--orange);
-    color: var(--light);
-    border: none;
-    border-radius: 2rem;
-    padding: 0.7rem 1.4rem;
-    font-size: 0.95rem;
-    font-weight: 700;
-    box-shadow: 0 6px 24px var(--orange-border);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.25s;
-    animation: kf-pulse-fab 3s ease-in-out infinite;
-    text-decoration: none;
-}
-.btn-fab:hover {
-    background: var(--orange-glow);
-    transform: translateY(-2px) scale(1.04);
-    box-shadow: 0 10px 30px var(--orange-border);
-    color: var(--light);
-}
-@keyframes kf-pulse-fab {
-    0%, 90%, 100% { box-shadow: 0 6px 24px var(--orange-border); }
-    95%            { box-shadow: 0 6px 32px var(--orange-glow), 0 0 0 8px var(--orange-dim); }
-}
-
-
-/* ============================================================
-   TAGS / CHIPS
-   era: .tag, .tag-orange, .tag-blue, .tag-green, .tag-purple 
-   ============================================================ */
-.chip {
-    padding: 0.28rem 0.75rem;
-    border-radius: 2rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    border: 1px solid transparent;
-}
-.chip i { font-size: inherit; }
-
-/* era: .tag-orange */
-.chip-orange {
-    background: var(--orange-dim);
-    color: var(--orange-glow);
-    border-color: var(--orange-border);
-}
-/* era: .tag-blue */
-.chip-blue {
-    background: var(--blue-dim);
-    color: var(--blue);
-    border-color: var(--blue-400);
-}
-/* era: .tag-green */
-.chip-green {
-    background: var(--green-300);
-    color: var(--green);
-    border-color: var(--green-250);
-}
-/* era: .tag-purple */
-.chip-purple {
-    background: var(--purple-dim);
-    color: var(--purple);
-    border-color: var(--purple-border);
-}
-
-
-/* ============================================================
-   MODAL
-   ============================================================ */
-.modal-content {
-    background: var(--dark-700);
-    border: 1px solid var(--orange-dim);
-    color: var(--light);
-    border-radius: var(--radius-lg);
-}
-.modal-header {
-    background: var(--dark-800);
-    border-bottom: 1px solid var(--light-100);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    padding: 1.25rem 1.5rem;
-}
-.modal-header .modal-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    color: var(--light);
     font-size: 1.1rem;
-}
-.btn-close-white { filter: invert(1); }
-.modal-body { padding: 1.75rem; }
-.modal-footer {
-    border-top: 1px solid var(--light-100);
-    padding: 1rem 1.5rem;
+    margin: .3rem 0;
+  }
+
+  .sty-link-nav:hover {
+    background: var(--orange);
+    color: var(--black);
+  }
 }
 
-
-/* ============================================================
-   FOOTER
-   era: .sty-footer
-   ============================================================ */
-.footer-main {
-    background: var(--dark-900);
-    border-top: 1px solid var(--light-100);
-    padding: 2rem;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.85rem;
-}
-.footer-main a {
-    color: var(--orange);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-
-/* ============================================================
-   OVERLAY SIDEBAR
-   era: .sidebar-overlay 
-   ============================================================ */
-.overlay-sidebar {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: var(--dark-700);
-    z-index: 199;
-    backdrop-filter: blur(3px);
-}
-.overlay-sidebar.show { display: block; }
