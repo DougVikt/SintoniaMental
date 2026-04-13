@@ -1,8 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SM | {% block title %}{% endblock %}</title>
@@ -14,42 +15,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/global_style.css' %}">
     {% block styles %}{% endblock %}
-    
+
 
 </head>
-<body >
-    <!-- ===================== NAVBAR ===================== -->
-    <nav id="nav" class="navbar navbar-expand-lg fixed-top nav-main" >
-        <div class="container-fluid px-3">
-            <!-- Logo (sempre visível) -->
-            <a class="nav-logo ms-5 m-auto" href="{% url 'home' %}">
-                <span class="nav-logo-span p-2">
-                    <img src="{% static 'img/icon_main_sm.svg' %}" alt="Logo Sintonia mental" class="nav-logo-icon m-auto py-2">
-                </span>
-            </a>
-            <!-- Toggler mobile (aparece só em telas < lg) -->
-            <button class="navbar-toggler border-0 ms-auto me-2 d-lg-none" type="button"data-bs-toggle="offcanvas" 
-            data-bs-target="#offcanvasNavbar" data-bs-theme="dark" aria-controls="offcanvasNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-        {% block content_nav %}{% endblock %}
-        
+<body>
+    {% if add_nav is not False %}
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="nav" class="navbar navbar-expand-lg fixed-top nav-main">
+        <div class="container-fluid px-3">
+            {% block content_nav %}{% endblock %}
         </div>
     </nav>
-
+    {% endif %}
+    <!-- Conteudo Principal -->
     {% block content %}{% endblock %}
-    
-    
+
     <!-- Custom js-->
     <script src="{% static 'js/global_script.js' %}"></script>
     {% block scripts %}{% endblock %}
-    
-    
+
 </body>
+
 </html>
