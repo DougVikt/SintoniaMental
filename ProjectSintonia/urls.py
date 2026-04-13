@@ -26,8 +26,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # urls das apps
     path('', include('main_app.urls')),
-    
+    path("questions/", include("questionnaire_app.urls")),
+    path("register_login/", include("register_login_app.urls")),
+    path("specialist/", include("user_specialist_app.urls")),
+    path("patient/", include("user_patient_app.urls")),
+    path("waiting_room/", include("video_consult_app.urls")),
     # Redireciona o favicon para o local correto
-    path('favicon.ico', RedirectView.as_view(url='/static/images/favicon.ico')),
+    path('favicon.ico', RedirectView.as_view(url='/static/img/favicon_sm.ico')),
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

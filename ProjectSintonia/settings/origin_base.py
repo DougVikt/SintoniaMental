@@ -41,8 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Aplicativos adicionados
-    'register_app.apps.RegisterAppConfig',
-    'login_app.apps.LoginAppConfig',
+    'register_login_app.apps.RegisterLoginAppConfig',
     'main_app.apps.MainAppConfig',
     'questionnaire_app.apps.QuestionnaireAppConfig',
     'relacion_user_app.apps.RelacionUserAppConfig',
