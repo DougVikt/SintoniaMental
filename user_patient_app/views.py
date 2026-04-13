@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def dashboard_patient(request):
+    return render(request, 'user_patient_app/dashboard_patient.html')
