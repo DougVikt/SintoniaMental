@@ -1,0 +1,394 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Área do Especialista{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'user_specialist_app/css/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'user_specialist_app/js/script.js' %}"></script>
+{% endblock %}
+
+{% block content %}    
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+
+  <!-- ==================== SIDEBAR ==================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon"><i class="bi bi-brain"></i></div>
+      <div class="sidebar-logo-text">Sintonia Mental <small>Área do Especialista</small></div>
+    </div>
+
+    <div class="sidebar-profile">
+      <div class="profile-avatar">
+        AC
+        <span class="profile-online-dot"></span>
+      </div>
+      <div>
+        <div class="profile-name">Dra. Ana Costa</div>
+        <div class="profile-badge">Especialista</div>
+        <div class="profile-rating"><i class="bi bi-star-fill"></i> 4.9 &nbsp;·&nbsp; <span class="rating-muted">128 consultas</span></div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <a class="nav-item active" onclick="setPage(this)">
+        <i class="bi bi-grid-1x2-fill"></i> Dashboard
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-calendar-event-fill"></i> Minha Agenda
+        <span class="nav-badge yellow">3</span>
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-people-fill"></i> Meus Pacientes
+      </a>
+
+      <div class="nav-section-label nav-section-mt">Consultas</div>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-hourglass-split"></i> Solicitações
+        <span class="nav-badge">2</span>
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-camera-video-fill"></i> Sala de Espera
+      </a>
+
+      <div class="nav-section-label nav-section-mt">Conta</div>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-person-fill"></i> Meu Perfil
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-wallet2"></i> Financeiro
+      </a>
+      <a class="nav-item" onclick="setPage(this); openAvailModal()" data-bs-toggle="modal" data-bs-target="#modalAvailability">
+        <i class="bi bi-clock-fill icon-orange"></i> Disponibilidade
+      </a>
+      <a class="nav-item" onclick="setPage(this)">
+        <i class="bi bi-gear-fill"></i> Configurações
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="btn-logout" onclick="location.href='/login/'">
+        <i class="bi bi-box-arrow-left"></i> Sair
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN ==================== -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="d-flex align-items-center gap-3">
+        <button class="hamburger-btn" onclick="openSidebar()"><i class="bi bi-list"></i></button>
+        <div>
+          <span class="topbar-title">Dashboard <small id="topbarDate"></small></span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <!-- Availability toggle -->
+        <div class="avail-toggle online" id="availToggle" onclick="toggleAvailability()">
+          <span class="avail-dot"></span>
+          <span id="availLabel">Disponível</span>
+        </div>
+        <div class="topbar-btn"><i class="bi bi-bell-fill"></i><span class="notif-dot"></span></div>
+        <div class="topbar-btn"><i class="bi bi-chat-dots-fill"></i></div>
+        <div class="profile-avatar avatar-sm avatar-purple">AC</div>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-content">
+
+      <!-- STATS -->
+      <div class="stats-row reveal">
+        <div class="stat-card orange">
+          <div class="stat-icon orange"><i class="bi bi-calendar-check-fill"></i></div>
+          <div class="stat-num">128</div>
+          <div class="stat-label">Consultas realizadas</div>
+          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i>+12 este mês</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-icon stat-num-yellow"><i class="bi bi-hourglass-split"></i></div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Consultas hoje</div>
+          <div class="stat-trend neutral"><i class="bi bi-dash"></i> agendadas</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-icon blue"><i class="bi bi-people-fill"></i></div>
+          <div class="stat-num">47</div>
+          <div class="stat-label">Pacientes ativos</div>
+          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i>+5 este mês</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-icon green"><i class="bi bi-cash-coin"></i></div>
+          <div class="stat-num">R$2.4k</div>
+          <div class="stat-label">Receita mensal</div>
+          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i>+18%</div>
+        </div>
+      </div>
+
+      <!-- CALENDAR + WIDGETS -->
+      <div class="dashboard-grid reveal">
+
+        <!-- Calendar -->
+        <div class="calendar-card">
+          <div class="calendar-header">
+            <div class="calendar-title"><i class="bi bi-calendar3 me-2 icon-orange"></i>Agenda</div>
+            <div class="cal-nav">
+              <div class="cal-btn" onclick="changeMonth(-1)"><i class="bi bi-chevron-left"></i></div>
+              <div class="cal-month" id="calMonthLabel">—</div>
+              <div class="cal-btn" onclick="changeMonth(1)"><i class="bi bi-chevron-right"></i></div>
+            </div>
+          </div>
+          <div class="calendar-grid">
+            <div class="cal-weekdays">
+              <div class="cal-wd">Dom</div><div class="cal-wd">Seg</div><div class="cal-wd">Ter</div>
+              <div class="cal-wd">Qua</div><div class="cal-wd">Qui</div><div class="cal-wd">Sex</div><div class="cal-wd">Sáb</div>
+            </div>
+            <div class="cal-days" id="calDays"></div>
+          </div>
+          <div class="agenda-list">
+            <div class="agenda-label" id="agendaLabel">Agenda de hoje</div>
+            <div id="agendaItems"></div>
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <div>
+          <!-- Solicitações pendentes -->
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title"><i class="bi bi-hourglass-split me-2 text-yellow"></i>Solicitações Pendentes</div>
+              <span class="nav-badge yellow py-1 px-2">2</span>
+            </div>
+            <div class="pending-body" id="pendingList"></div>
+          </div>
+
+          <!-- Receita -->
+          <div class="widget">
+            <div class="widget-header">
+              <div class="widget-title"><i class="bi bi-graph-up-arrow me-2 text-green"></i>Receita</div>
+              <a href="#" class="widget-link">detalhes</a>
+            </div>
+            <div class="earnings-body">
+              <div class="text-muted small mb-1">Mês atual</div>
+              <div class="earnings-total">R$ 2.400</div>
+                <div class="earnings-sub">Meta: R$ 3.000 &nbsp;·&nbsp; <span class="text-green">80% concluído</span></div>
+              <div class="earnings-bar-wrap">
+                <div class="earnings-bar-label"><span>Progresso da meta</span><span class="text-orange">80%</span></div>
+                <div class="earnings-bar"><div class="earnings-fill" id="earningsBar" style="width:0%"></div></div>
+              </div>
+              <div class="earnings-breakdown">
+                <div class="earn-item">
+                  <div class="earn-num text-orange">30</div>
+                  <div class="earn-label">Consultas pagas</div>
+                </div>
+                <div class="earn-item">
+                  <div class="earn-num text-green">R$80</div>
+                  <div class="earn-label">Valor médio</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATIENTS TABLE -->
+      <div class="patients-section reveal">
+        <div class="section-row">
+          <div class="section-row-title"><i class="bi bi-people-fill me-2 icon-orange"></i>Pacientes Recentes</div>
+          <a href="#" class="section-row-link">Ver todos <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="patients-table-wrap">
+          <table class="patients-table" id="patientsTable"></table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ MODAL PACIENTE -->
+<div class="modal fade" id="modalPatient" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-person-badge me-2 icon-orange"></i>Perfil do Paciente</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+          <div class="patient-header">
+            <div class="patient-av-lg" id="modalPatAv" style="background:linear-gradient(135deg,#7c3aed,#4c1d95)">JS</div>
+            <div class="patient-info">
+              <div class="patient-name-lg" id="modalPatName">João Silva</div>
+              <div class="patient-meta" id="modalPatMeta">TDAH · Paciente desde Jan/2024</div>
+              <div class="patient-tags" id="modalPatTags"></div>
+            </div>
+            <div class="text-end">
+              <div class="patient-sessions" id="modalPatSessions">0</div>
+              <div class="patient-sessions-sub">consultas</div>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <div class="info-box-num text-green">Ativo</div>
+              <div class="info-box-label">Status</div>
+            </div>
+            <div class="info-box">
+              <div class="info-box-num" id="modalNextDate">—</div>
+              <div class="info-box-label">Próxima consulta</div>
+            </div>
+            <div class="info-box">
+              <div class="info-box-num text-yellow">★ 4.9</div>
+              <div class="info-box-label">Avaliação dada</div>
+            </div>
+          </div>
+
+        <label class="form-label-sm"><i class="bi bi-journal-text me-1"></i>Anotações do Especialista</label>
+        <div id="modalNotes" class="mb-3"></div>
+
+        <label class="form-label-sm"><i class="bi bi-plus-circle me-1"></i>Nova Anotação</label>
+        <textarea class="form-ctrl" rows="3" id="newNoteInput" placeholder="Registre observações, evolução, próximos passos..."></textarea>
+
+      </div>
+          <div class="modal-footer modal-footer-between">
+        <button class="btn-sec-modal" data-bs-dismiss="modal">Fechar</button>
+        <button class="btn-primary-modal" onclick="saveNote()">
+          <i class="bi bi-floppy-fill"></i> Salvar Anotação
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ MODAL DISPONIBILIDADE -->
+<div class="modal fade" id="modalAvailability" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <i class="bi bi-clock-fill me-2 icon-orange"></i>
+          Gerenciar Disponibilidade
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Tabs -->
+        <div class="avail-modal-tabs">
+          <button class="avail-tab active" onclick="switchAvailTab('horarios', this)">
+            <i class="bi bi-calendar-week me-1"></i>Horários Semanais
+          </button>
+          <button class="avail-tab" onclick="switchAvailTab('excecoes', this)">
+            <i class="bi bi-slash-circle me-1"></i>Bloquear Datas
+          </button>
+          <button class="avail-tab" onclick="switchAvailTab('resumo', this)">
+            <i class="bi bi-eye me-1"></i>Resumo
+          </button>
+        </div>
+
+        <!-- ===== TAB: HORÁRIOS ===== -->
+        <div id="tab-horarios">
+
+          <!-- Duration -->
+          <div class="avail-section-label"><i class="bi bi-hourglass me-1"></i>Duração da consulta</div>
+          <div class="duration-btns" id="durBtns">
+            <button class="dur-btn" onclick="selectDuration(30, this)">30 min</button>
+            <button class="dur-btn selected" onclick="selectDuration(50, this)">50 min</button>
+            <button class="dur-btn" onclick="selectDuration(60, this)">60 min</button>
+            <button class="dur-btn" onclick="selectDuration(90, this)">90 min</button>
+          </div>
+
+          <!-- Days -->
+          <div class="avail-section-label mt-4"><i class="bi bi-calendar3 me-1"></i>Dias e horários disponíveis</div>
+          <div id="daysList"></div>
+
+        </div>
+
+        <!-- ===== TAB: EXCEÇÕES ===== -->
+        <div id="tab-excecoes" style="display:none;">
+
+          <div class="avail-section-label"><i class="bi bi-plus-circle me-1"></i>Bloquear nova data</div>
+          <div class="block-form-row mb-4">
+            <div class="block-form-date">
+              <label class="form-label-sm">Data</label>
+              <input type="date" class="form-ctrl" id="blockDateInput">
+            </div>
+            <div class="block-form-reason">
+              <label class="form-label-sm">Motivo (opcional)</label>
+              <input type="text" class="form-ctrl" id="blockReasonInput" placeholder="Ex: Férias, Congresso, Feriado...">
+            </div>
+            <button class="btn-primary-modal" onclick="addBlockedDate()">
+              <i class="bi bi-slash-circle"></i> Bloquear
+            </button>
+          </div>
+
+          <div class="avail-section-label"><i class="bi bi-list-ul me-1"></i>Datas bloqueadas</div>
+          <div class="blocked-list" id="blockedList"></div>
+
+        </div>
+
+        <!-- ===== TAB: RESUMO ===== -->
+        <div id="tab-resumo" style="display:none;">
+          <div class="avail-section-label"><i class="bi bi-eye me-1"></i>Como seu perfil aparece para pacientes</div>
+
+          <!-- Preview card -->
+          <div class="preview-card">
+            <div class="preview-header">
+              <div class="preview-av">AC</div>
+              <div class="preview-info">
+                <div class="preview-name">Dra. Ana Costa</div>
+                <div class="preview-role">Neuropsicóloga · TDAH</div>
+              </div>
+              <div id="previewStatus"></div>
+            </div>
+
+            <div class="preview-label">Próximos horários disponíveis</div>
+            <div id="previewSlots" class="preview-slots"></div>
+          </div>
+
+          <div id="resumoDays"></div>
+        </div>
+
+      </div>
+      <div class="modal-footer modal-footer-between align-items-center">
+          <div class="text-muted small">
+            <i class="bi bi-info-circle me-1"></i>
+            Alterações salvas ficam visíveis imediatamente para os pacientes.
+          </div>
+          <div class="d-flex gap-3">
+          <button class="btn-sec-modal" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn-primary-modal" onclick="saveAvailability()">
+            <i class="bi bi-floppy-fill"></i> Salvar Disponibilidade
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ TOAST -->
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3 toast-container-sty">
+  <div id="toastSuccess" class="toast toast-sty" role="alert">
+    <div class="toast-body d-flex align-items-center gap-3 py-3 px-3">
+      <div class="toast-icon-sty"><i class="bi bi-check-circle-fill"></i></div>
+      <div>
+        <div class="toast-msg" id="toastMsg">Ação realizada!</div>
+        <div class="toast-sub" id="toastSub">Atualizado com sucesso.</div>
+      </div>
+      <button type="button" class="btn-close ms-auto toast-close-sty" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+{% endblock %}
