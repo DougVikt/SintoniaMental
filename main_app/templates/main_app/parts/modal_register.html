@@ -9,19 +9,19 @@
       <div class="modal-body">
         <div class="d-grid gap-3">
           <button type="button" class="sty-button btn py-3 d-flex align-items-center justify-content-center gap-2"
-            onclick="location.href='/registre/register_specialist/'">
+            onclick="location.href='{% url "register_login" %}'">
             <i class="bi bi-person-badge-fill fs-5"></i>
             <div class="text-start">
-              <div class="reg-text-bold">Sou Profissional</div>
-              <div class="reg-text-sub">Psicólogo, neuropsicólogo ou especialista</div>
+              <div class="reg-text-bold">Sou Paciente</div>
+              <div class="reg-text-sub">Busco suporte e acompanhamento</div>
             </div>
           </button>
           <button type="button" class="btn py-3 modal-register-btn d-flex align-items-center justify-content-center gap-2"
-            onclick="location.href='/registre/register_user/'">
+            onclick="location.href='{% url "register_login" %}">
             <i class="bi bi-person-fill fs-5 text-orange"></i>
             <div class="text-start">
-              <div class="reg-text-bold">Sou Paciente</div>
-              <div class="reg-text-sub-sm">Busco suporte e acompanhamento</div>
+              <div class="reg-text-bold">Sou Profissional</div>
+              <div class="reg-text-sub-sm">Psicólogo, neuropsicólogo ou especialista</div>
             </div>
           </button>
         </div>

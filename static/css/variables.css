@@ -18,12 +18,8 @@
   --orange-a6: rgba(241,96,28,0.12);
   --orange-a7: rgba(241,96,28,0.15);
   --orange-a8: rgba(241,96,28,0.18);
-  --orange-a9: rgba(241,96,28,0.2);
-  --orange-a10: rgba(241,96,28,0.25);
-  --orange-a11: rgba(241,96,28,0.3);
-  --orange-a12: rgba(241,96,28,0.35);
-  --orange-a13: rgba(241,96,28,0.4);
-  --orange-a14: rgba(241,96,28,0.5);
+  --orange-a9: rgba(241,96,28,0.4);
+  --orange-a10: rgba(241,96,28,0.5);
   
   /* Orange borders */
   --orange-border: rgba(241,96,28,0.2);
@@ -52,6 +48,7 @@
   --green-a7: rgba(74,222,128,0.25);
   --green-border: rgba(74,222,128,0.2);
   --green-border-2: rgba(74,222,128,0.3);
+  --green-border-3: rgba(72, 187, 120, 0.25);
 
   /* ===== CORES VERMELHO ===== */
   --red:      #f87171;
@@ -76,6 +73,7 @@
   --blue-a6: rgba(96,165,250,0.2);
   --blue-border: rgba(96,165,250,0.2);
   --blue-border-2: rgba(96,165,250,0.3);
+  --blue-boder-3: rgba(66, 153, 225, 0.25);
 
   /* ===== CORES AMARELO ===== */
   --yellow:   #fbbf24;
@@ -105,6 +103,7 @@
   --dark-450: #333333;
   --dark-400: #3a3a3a;
   --dark-350: #404040;
+  --dark-orange: rgba(30, 20, 15, 0.9);
 
   /* Dark backgrounds with opacity */
   --dark-bg-1: rgba(17,17,17,0.3);
@@ -156,7 +155,7 @@
   --gray-600: #757575;
   --gray-700: #616161;
   --gray-800: #424242;
-  --gray-900: #212121;
+  --gray-900: #212121b0;
 
   /* ===== CORES PURPLE ===== */
   --purple: #A78BFA;

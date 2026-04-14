@@ -149,16 +149,6 @@ html, body {
   animation-delay: 5s;
   opacity: .15;
 }
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(20px, -20px) scale(1.05);
-  }
-}
-
 
 .reveal {
       opacity: 0;
@@ -217,6 +207,17 @@ html, body {
 .sty-btnmodal:hover {
   background: var(--dark-900);
   color: var(--orange);
+}
+
+/* --- Animations --- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
 }
 
 
