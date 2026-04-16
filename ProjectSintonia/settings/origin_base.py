@@ -43,11 +43,13 @@ INSTALLED_APPS = [
     # Aplicativos adicionados
     'register_login_app.apps.RegisterLoginAppConfig',
     'main_app.apps.MainAppConfig',
+    'faq_app.apps.FaqAppConfig',
     'questionnaire_app.apps.QuestionnaireAppConfig',
     'relacion_user_app.apps.RelacionUserAppConfig',
     'user_specialist_app.apps.UserSpecialistAppConfig',
     'user_patient_app.apps.UserPatientAppConfig',
     'video_consult_app.apps.VideoConsultAppConfig',
+    
     
 ]
 

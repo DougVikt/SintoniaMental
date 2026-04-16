@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # urls das apps
     path('', include('main_app.urls')),
+    path("faq/", include("faq_app.urls")),
     path("questions/", include("questionnaire_app.urls")),
     path("register_login/", include("register_login_app.urls")),
     path("specialist/", include("user_specialist_app.urls")),
