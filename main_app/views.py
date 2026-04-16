@@ -18,5 +18,3 @@ def home(request):
         'stars':stars,
     })
 
-def faq(request):
-    return render(request, 'main_app/faq.html')
