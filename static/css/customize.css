@@ -27,8 +27,8 @@
   color: var(--purple);
 }
 
-.text-muted {
-  color: var(--muted);
+.text-gray {
+  color: var(--gray-700);
 }
 
 .text-light {
