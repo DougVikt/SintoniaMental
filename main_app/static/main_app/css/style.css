@@ -3,6 +3,24 @@
   font-size: .85rem;
   padding: .4rem 1rem;
 }
+.btn-login {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: .03em;
+  padding: .45rem 1.4rem;
+  border-radius: 2rem;
+  transition: all .2s;
+  box-shadow: 0 2px 12px rgba(241,96,28,0.4);
+}
+.btn-login:hover {
+  background: #fff;
+  color: var(--orange);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
 .navbar-nav {
   display: flex;
   align-items: center;
@@ -816,14 +834,14 @@ hr.section-divider {
 }
 
 .symptom-chip.blue {
-  background: var(--blue-light-dim);
-  color: var(--blue-light);
+  background: var(--blue-a5);
+  color: var(--blue);
   border: 1px solid var(--blue-border-3);
 }
 
 .symptom-chip.green {
-  background: var(--green-light-dim);
-  color: var(--green-light);
+  background: var(--green-a5);
+  color: var(--green);
   border: 1px solid var(--green-border-3);
 }
 

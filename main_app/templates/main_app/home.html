@@ -13,7 +13,7 @@
 
 {% block content_nav %}
  <!-- Login btn mobile (aparece só em telas < lg, ao lado do toggler) -->
-    <button class="btn-primary d-lg-none login-btn-mobile">
+    <button class="btn-login d-lg-none login-btn-mobile">
         <a href="{% url 'register_login' %}">Login</a>
         </button>
 
@@ -42,7 +42,7 @@
             </a>
         </li>
       </ul>
-      <button class="btn-primary" onclick="location.href='{% url 'register_login' %}'">
+      <button class="btn-login" onclick="location.href='{% url 'register_login' %}'">
         <i class="bi bi-box-arrow-in-right me-1"></i>Login
       </button>
     </div>
@@ -275,7 +275,7 @@
             rápido e fácil. Com base na sua pontuação, você encontrará recursos e informações 
             úteis para entender e lidar com esses desafios.
             </p>
-            <a href="#" class="btn-quest">
+            <a href="{% url "questions" %}" class="btn-quest">
             Começar o Teste <i class="bi bi-arrow-right-circle-fill"></i>
             </a>
             <div class="quest-steps">
