@@ -4,16 +4,16 @@
 {% block title %}FAQ{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'main_app/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'faq_app/css/style.css' %}">
 {% endblock %}
 
 {% block scripts %}
-    <script src="{% static 'main_app/js/script.js' %}"></script>
+    <script src="{% static 'faq_app/js/script.js' %}"></script>
 {% endblock %}
 
 {% block content_nav %}
  <!-- Login btn mobile (aparece só em telas < lg, ao lado do toggler) -->
-    <button class="btn-primary d-lg-none login-btn-mobile" 
+    <button class="btn-login d-lg-none login-btn-mobile" 
       onclick="location.href='/login/'">Login</button>
 
     <!-- Collapse desktop (só aparece em lg+) -->
@@ -24,7 +24,7 @@
           <a href="{% url 'home' %}" class="nav-link sty-link-nav"><i class="bi bi-house-fill"></i>Início</a>
         </li>
       </ul>
-      <button class="btn-primary" onclick="location.href='/login/'">
+      <button class="btn-login" onclick="location.href='/login/'">
         <i class="bi bi-box-arrow-in-right me-1"></i>Login
       </button>
     </div>
