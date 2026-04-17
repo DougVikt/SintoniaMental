@@ -22,22 +22,6 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-// --- Reveal on scroll ---
-const reveals = document.querySelectorAll('.anim-up');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      e.target.style.transitionDelay = (i % 3) * 0.1 + 's';
-      e.target.classList.add('visible');
-      
-    }else {
-      e.target.classList.remove('visible');
-      
-    }
-  });
-}, { threshold: 0.1 });
-reveals.forEach(r => observer.observe(r));
 
 // --- Animated counter ---
 function animateCount(el, target, duration = 1500) {
@@ -51,13 +35,6 @@ function animateCount(el, target, duration = 1500) {
   requestAnimationFrame(step);
 }
 
-// Trigger counter when hero is visible
-const statNum = document.querySelector('[data-count="500"]');
-if (statNum) {
-  new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) animateCount(statNum, 500);
-  }, { threshold: .5 }).observe(statNum);
-}
 
 // --- Active nav link on scroll ---
 const sections = document.querySelectorAll('section[id]');
