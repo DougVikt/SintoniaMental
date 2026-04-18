@@ -102,7 +102,6 @@
   background: var(--orange);
   color: #fff;
   border: none;
-  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: .03em;
   padding: .45rem 1.4rem;
@@ -151,7 +150,7 @@
 }
 
 .faq-hero-title {
-    font-family: var(--font-d);
+    font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 800;
     color: #fff;
@@ -181,7 +180,7 @@
     color: var(--light);
     border-radius: 3rem;
     padding: .9rem 1.25rem .9rem 3rem;
-    font-family: var(--font-b);
+    font-family: var(--font-body);
     font-size: .95rem;
     outline: none;
     transition: border-color .2s;
@@ -377,7 +376,7 @@
 }
 
 .faq-section-title {
-    font-family: var(--font-d);
+    font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 800;
     color: #fff;
@@ -600,7 +599,7 @@
 }
 
 .contact-card-title {
-    font-family: var(--font-d);
+    font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 800;
     color: #fff;

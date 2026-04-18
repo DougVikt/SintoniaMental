@@ -6,7 +6,7 @@
  ========================================== */
  
 html, body {
-  font-family: var(--font-b);
+  font-family: var(--font-body);
   background: var(--dark-800);
   color: var(--light);
   min-height: 100vh;
@@ -193,7 +193,7 @@ html, body {
 }
 
 .modal-header .modal-title {
-  font-family: var(--font-d);
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--white);
 }
