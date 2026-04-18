@@ -69,7 +69,7 @@
             <i class="bi bi-question-circle"></i>FAQ
         </a>
         <hr class="border-orange my-2">
-        <button class="btn-primary w-full" onclick="location.href='/login/'">
+        <button class="btn-primary w-full" onclick="location.href='{% url "register_login" %}'">
           <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
         </button>
       </div>
@@ -110,7 +110,7 @@
           <a href="#quest" class="btn-primary-hero">
                 <i class="bi bi-clipboard2-pulse-fill"></i> Teste do TDAH
             </a>
-          <a href="#" class="btn-ghost-hero" data-bs-toggle="modal" data-bs-target="#registertype">
+          <a href="{% url "register_login" %}" class="btn-ghost-hero" >
                 <i class="bi bi-box-arrow-in-right"></i> Cadastre-se
             </a>
             </div>
@@ -302,9 +302,6 @@
     <!-- ===================== FOOTER ===================== -->
     {% include "main_app/parts/footer.html" %}
 </main>
-
-<!-- ===================== MODAL REGISTRO ===================== -->
- {% include "main_app/parts/modal_register.html" %}
 
 
 <!-- ===================== HELP ===================== -->
