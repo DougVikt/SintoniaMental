@@ -1,0 +1,154 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}Teste TDAH{% endblock %} 
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'questionnaire_app/css/style.css' %}" />
+{% endblock %} 
+
+{% block scripts %}
+<script src="{% static 'questionnaire_app/js/script.js' %}"></script>
+{% endblock %} 
+
+{% block content %}
+<!-- ===== INTRO ===== -->
+<div class="quest-wrapper">
+    <div class="intro-screen" id="introScreen">
+
+        <div class="intro-icon">
+            <i class="bi bi-clipboard2-pulse-fill"></i>
+        </div>
+
+        <h1 class="intro-title">Questionário de<br>
+            <span class="hl">Avaliação</span>
+        </h1>
+        <p class="intro-sub">
+            Responda com sinceridade para obter uma avaliação sobre sintomas de TDAH e TEA. Não existe resposta certa ou errada.
+        </p>
+
+        <div class="intro-chips">
+            <span class="intro-chip">
+                <i class="bi bi-clock"></i> ~10 minutos
+            </span>
+            <span class="intro-chip">
+                <i class="bi bi-shield-lock"></i> Anônimo
+            </span>
+            <span class="intro-chip">
+                <i class="bi bi-bar-chart-line"></i> Resultado imediato
+            </span>
+            <span class="intro-chip">
+                <i class="bi bi-clipboard2-check"></i> 20 perguntas
+            </span>
+        </div>
+        <p class="cat-label">Para quem é esta avaliação?</p>
+        <div class="cat-grid">
+            <div class="cat-card" onclick="selectCat('eu', this)">
+                <div class="cat-check">
+                    <i class="bi bi-check"></i>
+                </div>
+                <span class="cat-emoji">🧠</span>
+                <div class="cat-name">Para mim mesmo</div>
+                <div class="cat-desc">Quero entender melhor meus próprios sintomas e comportamentos</div>
+            </div>
+            <div class="cat-card" onclick="selectCat('parente', this)">
+                <div class="cat-check">
+                    <i class="bi bi-check"></i>
+                </div>
+                <span class="cat-emoji">👨‍👩‍👧</span>
+                <div class="cat-name">Para um parente</div>
+                <div class="cat-desc">Estou avaliando um familiar, filho ou pessoa próxima</div>
+            </div>
+            <div class="cat-card" onclick="selectCat('aluno', this)">
+                <div class="cat-check">
+                    <i class="bi bi-check"></i>
+                </div>
+                <span class="cat-emoji">🎒</span>
+                <div class="cat-name">Para um aluno</div>
+                <div class="cat-desc">Sou educador e quero avaliar um estudante sob minha tutela</div>
+            </div>
+        </div>
+        <div class="disclaimer">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <p><strong>Atenção:</strong> Este questionário é uma ferramenta de autoavaliação e <strong>não substitui diagnóstico profissional</strong>. Os resultados indicam probabilidade de sintomas.</p>
+        </div>
+        <button class="btn-prev">
+            <a href={% url "home" %} class="text-decoration-none text-reset p-0">
+                <i class="bi bi-caret-left-fill me-1"></i>Voltar 
+            </a>
+        </button>
+        <button class="btn-start" id="btnStart" onclick="startQuiz()" disabled>
+            <i class="bi bi-play-fill"></i> Iniciar Questionário
+        </button>
+
+    </div>
+
+    <!-- ===== QUIZ ===== -->
+    <div class="quiz-screen" id="quizScreen">
+        <div class="quiz-topbar">
+            <div class="quiz-back" onclick="goBack()">
+                <i class="bi bi-arrow-left"></i>
+            </div>
+            <div class="progress-wrap">
+                <div class="progress-meta">
+                    <span>
+                        Pergunta <strong id="qNum">1</strong> de <strong id="qTotal">20</strong>
+                    </span>
+                    <span id="qPct" class="text-orange fw-bold">0%</span>
+                </div>
+                <div class="progress-bar-outer">
+                    <div class="progress-bar-inner" id="progressBar" style="width:0%"></div>
+                </div>
+            </div>
+            <div class="quiz-badge" id="quizBadge">Seção</div>
+        </div>
+
+        <div id="questionArea"></div>
+        <div class="quiz-nav">
+            <button class="btn-prev" id="prevBtn" onclick="prevQ()" disabled>
+                <i class="bi bi-arrow-left"></i> Anterior
+            </button>
+            <button class="btn-next" id="nextBtn" onclick="nextQ()" disabled>
+                Próxima <i class="bi bi-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== RESULTADO ===== -->
+    <div class="result-screen" id="resultScreen">
+        <div class="result-hero fade-up">
+            <div class="result-ring">
+                <svg width="140" height="140" viewBox="0 0 140 140">
+                    <circle class="bg-c" cx="70" cy="70" r="52.5"/>
+                    <circle class="fg-c" id="resultCircle" cx="70" cy="70" r="52.5"/>
+                </svg>
+                <span class="score-text" id="resultPct">0%</span>
+            </div>
+            <h2 class="result-title" id="resultTitle">Resultado</h2>
+            <p class="result-sub"   id="resultSub"></p>
+            <div class="result-level" id="resultLevel"></div>
+        </div>
+        <div class="result-cards fade-up" id="resultCards"></div>
+        <div class="dim-section fade-up">
+            <div class="dim-title">Resultado por dimensão</div>
+            <div id="dimBars"></div>
+        </div>
+        <div class="rec-card fade-up">
+            <div class="rec-title"><i class="bi bi-lightbulb-fill"></i> Recomendações</div>
+            <div id="recList"></div>
+        </div>
+        <div class="result-ctas fade-up">
+            <a href="/registre/" class="btn-cta-primary">
+                <i class="bi bi-calendar-plus-fill"></i> Falar com Especialista
+            </a>
+            <button class="btn-retry" onclick="resetQuiz()">
+                <i class="bi bi-arrow-clockwise"></i> Refazer
+            </button>
+        </div>
+        <div class="result-disclaimer fade-up">
+            <i class="bi bi-info-circle-fill"></i>
+            <p>Este resultado é informativo e baseado em autorrelato. Para um diagnóstico preciso, consulte um neuropsicólogo ou psiquiatra especializado. O Sintonia Mental conecta você aos melhores profissionais.</p>
+        </div>
+    </div>
+</div>
+{% endblock  %}
