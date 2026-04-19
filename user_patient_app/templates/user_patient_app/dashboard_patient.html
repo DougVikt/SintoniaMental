@@ -1,27 +1,28 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} 
+{% load static %} 
 
-{% block title %}Área do Paciente{% endblock %}
+{% block title %}Área do Paciente{% endblock %} 
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'user_patient_app/css/style.css' %}">
-{% endblock %}
+<link rel="stylesheet" href="{% static 'user_patient_app/css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock %} 
 
 {% block scripts %}
-    <script src="{% static 'user_patient_app/js/script.js' %}"></script>
-{% endblock %}
+<script src="{% static 'user_patient_app/js/script.js' %}"></script>
+{% endblock %} 
 
 {% block content %}
 <!-- Sidebar overlay (mobile) -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <div class="layout">
-
   <!-- ==================== SIDEBAR ==================== -->
   <aside class="sidebar" id="sidebar">
-
     <div class="sidebar-logo">
-      <div class="sidebar-logo-icon"><i class="bi bi-brain"></i></div>
+      <div >
+        <img class="sidebar-logo-icon " src={% static 'img/icon_main_sm.svg' %} ></i>
+      </div>
       <div class="sidebar-logo-text">
         Sintonia Mental
         <small>Área do Paciente</small>
@@ -67,7 +68,7 @@
     </nav>
 
     <div class="sidebar-bottom">
-      <button class="btn-logout" onclick="location.href='/login/'">
+      <button class="btn-logout" onclick="location.href = '/login/'">
         <i class="bi bi-box-arrow-left"></i> Sair
       </button>
     </div>
@@ -75,7 +76,6 @@
 
   <!-- ==================== MAIN ==================== -->
   <div class="main">
-
     <!-- Topbar -->
     <div class="topbar">
       <div class="d-flex align-items-center gap-3">
@@ -83,7 +83,9 @@
           <i class="bi bi-list"></i>
         </button>
         <div>
-          <span class="topbar-title">Dashboard <small id="topbar-date"></small></span>
+          <span class="topbar-title"
+            >Dashboard <small id="topbar-date"></small
+          ></span>
         </div>
       </div>
       <div class="topbar-actions">
@@ -100,52 +102,63 @@
 
     <!-- Page Content -->
     <div class="page-content" id="pageContent">
-
       <!-- ========= STAT CARDS ========= -->
       <div class="stats-row reveal">
         <div class="stat-card orange">
-          <div class="stat-icon orange"><i class="bi bi-calendar-check-fill"></i></div>
+          <div class="stat-icon orange">
+            <i class="bi bi-calendar-check-fill"></i>
+          </div>
           <div class="stat-num">12</div>
           <div class="stat-label">Consultas realizadas</div>
-          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i> +3 este mês</div>
+          <div class="stat-trend up">
+            <i class="bi bi-arrow-up-short"></i> +3 este mês
+          </div>
         </div>
         <div class="stat-card blue">
           <div class="stat-icon blue"><i class="bi bi-clock-fill"></i></div>
           <div class="stat-num">2</div>
           <div class="stat-label">Próximas consultas</div>
-          <div class="stat-trend neutral"><i class="bi bi-dash"></i> agendadas</div>
+          <div class="stat-trend neutral">
+            <i class="bi bi-dash"></i> agendadas
+          </div>
         </div>
         <div class="stat-card green">
           <div class="stat-icon green"><i class="bi bi-person-hearts"></i></div>
           <div class="stat-num">3</div>
           <div class="stat-label">Especialistas</div>
-          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i> +1 novo</div>
-        </div>
-        <div class="stat-card yellow">
-          <div class="stat-icon yellow"><i class="bi bi-star-fill"></i></div>
-          <div class="stat-num">4.9</div>
-          <div class="stat-label">Avaliação média</div>
-          <div class="stat-trend up"><i class="bi bi-arrow-up-short"></i> excelente</div>
+          <div class="stat-trend up">
+            <i class="bi bi-arrow-up-short"></i> +1 novo
+          </div>
         </div>
       </div>
 
       <!-- ========= CALENDAR + NEXT APPT ========= -->
       <div class="dashboard-grid reveal">
-
         <!-- Calendar -->
         <div class="calendar-card">
           <div class="calendar-header">
-            <div class="calendar-title"><i class="bi bi-calendar3 me-2 icon-orange"></i>Calendário</div>
+            <div class="calendar-title">
+              <i class="bi bi-calendar3 me-2 icon-orange"></i>Calendário
+            </div>
             <div class="cal-nav">
-              <div class="cal-btn" onclick="changeMonth(-1)"><i class="bi bi-chevron-left"></i></div>
+              <div class="cal-btn" onclick="changeMonth(-1)">
+                <i class="bi bi-chevron-left"></i>
+              </div>
               <div class="cal-month" id="calMonthLabel">—</div>
-              <div class="cal-btn" onclick="changeMonth(1)"><i class="bi bi-chevron-right"></i></div>
+              <div class="cal-btn" onclick="changeMonth(1)">
+                <i class="bi bi-chevron-right"></i>
+              </div>
             </div>
           </div>
           <div class="calendar-grid">
             <div class="cal-weekdays">
-              <div class="cal-wd">Dom</div><div class="cal-wd">Seg</div><div class="cal-wd">Ter</div>
-              <div class="cal-wd">Qua</div><div class="cal-wd">Qui</div><div class="cal-wd">Sex</div><div class="cal-wd">Sáb</div>
+              <div class="cal-wd">Dom</div>
+              <div class="cal-wd">Seg</div>
+              <div class="cal-wd">Ter</div>
+              <div class="cal-wd">Qua</div>
+              <div class="cal-wd">Qui</div>
+              <div class="cal-wd">Sex</div>
+              <div class="cal-wd">Sáb</div>
             </div>
             <div class="cal-days" id="calDays"></div>
           </div>
@@ -160,7 +173,10 @@
           <!-- Próxima consulta -->
           <div class="widget">
             <div class="widget-header">
-              <div class="widget-title"><i class="bi bi-calendar-event me-2 icon-orange"></i>Próxima Consulta</div>
+              <div class="widget-title">
+                <i class="bi bi-calendar-event me-2 icon-orange"></i>Próxima
+                Consulta
+              </div>
               <a href="#" class="widget-link">ver todas</a>
             </div>
             <div class="next-appt">
@@ -192,8 +208,13 @@
               <div class="widget-title">Acesso Rápido</div>
             </div>
             <div class="quick-widget">
-              <a class="quick-item" href="#" data-bs-toggle="modal" data-bs-target="#modalAgendar"
-                onclick="openScheduleModal('Dra. Ana Costa','color-a')">
+              <a
+                class="quick-item"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#modalAgendar"
+                onclick="openScheduleModal('Dra. Ana Costa', 'color-a')"
+              >
                 <div class="quick-icon quick-icon-orange">
                   <i class="bi bi-plus-circle-fill"></i>
                 </div>
@@ -231,16 +252,22 @@
       <!-- ========= ESPECIALISTAS RECENTES ========= -->
       <div class="specialists-section reveal">
         <div class="section-row">
-          <div class="section-row-title"><i class="bi bi-person-badge-fill me-2 icon-orange"></i>Especialistas Recentes</div>
-          <a href="#" class="section-row-link">Ver todos <i class="bi bi-arrow-right"></i></a>
+          <div class="section-row-title">
+            <i class="bi bi-person-badge-fill me-2 icon-orange"></i
+            >Especialistas Recentes
+          </div>
+          <a href="#" class="section-row-link"
+            >Ver todos <i class="bi bi-arrow-right"></i
+          ></a>
         </div>
         <div class="specialists-grid" id="specialistsGrid"></div>
       </div>
-
-    </div><!-- /page-content -->
-  </div><!-- /main -->
-</div><!-- /layout -->
-
+    </div>
+    <!-- /page-content -->
+  </div>
+  <!-- /main -->
+</div>
+<!-- /layout -->
 
 <!-- ============================================================
      MODAL AGENDAR CONSULTA
@@ -249,17 +276,24 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><i class="bi bi-calendar-plus me-2 icon-orange"></i>Agendar Consulta</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        <h5 class="modal-title">
+          <i class="bi bi-calendar-plus me-2 icon-orange"></i>Agendar Consulta
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+        ></button>
       </div>
       <div class="modal-body">
-
         <!-- Specialist chosen -->
         <div class="modal-specialist-info" id="modalSpecialistInfo">
           <div class="modal-av color-a" id="modalSpecAvatar">A</div>
           <div>
             <div class="modal-name" id="modalSpecName">Especialista</div>
-            <div class="modal-role" id="modalSpecRole">Neuropsicóloga • TDAH</div>
+            <div class="modal-role" id="modalSpecRole">
+              Neuropsicóloga • TDAH
+            </div>
           </div>
           <div class="modal-right">
             <div class="modal-stars">★★★★★</div>
@@ -270,16 +304,22 @@
         <div class="row g-4">
           <!-- Left: date + time -->
           <div class="col-md-6">
-            <label class="form-label-sm"><i class="bi bi-calendar3 me-1"></i>Escolha a data</label>
-            <input type="date" class="form-ctrl" id="apptDate" min="">
+            <label class="form-label-sm"
+              ><i class="bi bi-calendar3 me-1"></i>Escolha a data</label
+            >
+            <input type="date" class="form-ctrl" id="apptDate" min="" />
 
-            <label class="form-label-sm mt-3"><i class="bi bi-clock me-1"></i>Horários disponíveis</label>
+            <label class="form-label-sm mt-3"
+              ><i class="bi bi-clock me-1"></i>Horários disponíveis</label
+            >
             <div class="slots-grid" id="timeSlotsGrid"></div>
           </div>
 
           <!-- Right: type + notes -->
           <div class="col-md-6">
-            <label class="form-label-sm"><i class="bi bi-camera-video me-1"></i>Tipo de consulta</label>
+            <label class="form-label-sm"
+              ><i class="bi bi-camera-video me-1"></i>Tipo de consulta</label
+            >
             <div class="modal-type-grid" id="consultTypeGrid">
               <div class="type-option selected" onclick="selectType(this)">
                 <i class="bi bi-camera-video-fill"></i>
@@ -291,16 +331,22 @@
               </div>
             </div>
 
-            <label class="form-label-sm mt-3"><i class="bi bi-chat-text me-1"></i>Motivo / Observações</label>
-            <textarea class="form-ctrl" rows="4"
-              placeholder="Descreva brevemente o motivo da consulta ou deixe um recado para o especialista..."></textarea>
+            <label class="form-label-sm mt-3"
+              ><i class="bi bi-chat-text me-1"></i>Motivo / Observações</label
+            >
+            <textarea
+              class="form-ctrl"
+              rows="4"
+              placeholder="Descreva brevemente o motivo da consulta ou deixe um recado para o especialista..."
+            ></textarea>
 
             <div class="info-box-sm">
               <div class="info-box-row">
                 <i class="bi bi-shield-lock-fill secure-green"></i>
                 <span class="info-box-bold">Consulta segura e privada</span>
               </div>
-              Suas informações são protegidas. O especialista só acessa seus dados após confirmação do agendamento.
+              Suas informações são protegidas. O especialista só acessa seus
+              dados após confirmação do agendamento.
             </div>
           </div>
         </div>
@@ -308,16 +354,25 @@
         <!-- Summary bar -->
         <div class="summary-bar" id="summaryBar">
           <div class="summary-bar-label">Resumo:</div>
-          <span class="summary-bar-value text-light" id="summaryDate"><i class="bi bi-calendar3 me-1 icon-orange"></i>—</span>
-          <span class="summary-bar-value text-light" id="summaryTime"><i class="bi bi-clock me-1 icon-orange"></i>—</span>
-          <span class="summary-bar-value text-light" id="summaryType"><i class="bi bi-camera-video me-1 icon-orange"></i>Online</span>
+          <span class="summary-bar-value text-light" id="summaryDate"
+            ><i class="bi bi-calendar3 me-1 icon-orange"></i>—</span
+          >
+          <span class="summary-bar-value text-light" id="summaryTime"
+            ><i class="bi bi-clock me-1 icon-orange"></i>—</span
+          >
+          <span class="summary-bar-value text-light" id="summaryType"
+            ><i class="bi bi-camera-video me-1 icon-orange"></i>Online</span
+          >
           <div class="summary-bar-price">Grátis*</div>
         </div>
-        <div class="summary-bar-note">*Primeira consulta gratuita. Consultas seguintes a partir de R$80.</div>
-
+        <div class="summary-bar-note">
+          *Primeira consulta gratuita. Consultas seguintes a partir de R$80.
+        </div>
       </div>
       <div class="modal-footer">
-        <button class="btn-cancel-modal" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn-cancel-modal" data-bs-dismiss="modal">
+          Cancelar
+        </button>
         <button class="btn-confirm" onclick="confirmAgendamento()">
           <i class="bi bi-check-circle-fill"></i> Confirmar Agendamento
         </button>
@@ -326,19 +381,26 @@
   </div>
 </div>
 
-
 <!-- ============================================================
      TOAST CONFIRMAÇÃO
      ============================================================ -->
-<div class="toast-container position-fixed bottom-0 end-0 p-3 toast-container-sty">
+<div
+  class="toast-container position-fixed bottom-0 end-0 p-3 toast-container-sty"
+>
   <div id="toastSuccess" class="toast toast-sty" role="alert">
     <div class="toast-body d-flex align-items-center gap-3 py-3 px-3">
       <div class="toast-icon"><i class="bi bi-check-circle-fill"></i></div>
       <div>
         <div class="toast-body-sty">Consulta agendada!</div>
-        <div class="toast-body-sub">Você receberá um e-mail de confirmação em breve.</div>
+        <div class="toast-body-sub">
+          Você receberá um e-mail de confirmação em breve.
+        </div>
       </div>
-      <button type="button" class="btn-close btn-close-white ms-auto toast-close-sty" data-bs-dismiss="toast"></button>
+      <button
+        type="button"
+        class="btn-close btn-close-white ms-auto toast-close-sty"
+        data-bs-dismiss="toast"
+      ></button>
     </div>
   </div>
 </div>
