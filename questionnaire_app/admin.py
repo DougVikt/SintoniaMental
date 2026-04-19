@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import QuestionsTest
 
-# Register your models here.
+@admin.register(QuestionsTest)
+class AdminQuestions(admin.ModelAdmin):
+    list_display = ['id','category','type_user']
