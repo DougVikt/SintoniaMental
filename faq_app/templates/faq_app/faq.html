@@ -14,7 +14,7 @@
 {% block content_nav %}
  <!-- Login btn mobile (aparece só em telas < lg, ao lado do toggler) -->
     <button class="btn-login d-lg-none login-btn-mobile" 
-      onclick="location.href='/login/'">Login</button>
+      onclick="location.href='{% url "register_login" %}'">Login</button>
 
     <!-- Collapse desktop (só aparece em lg+) -->
     <div class="collapse navbar-collapse" id="navbarDesktop">
@@ -24,7 +24,7 @@
           <a href="{% url 'home' %}" class="nav-link sty-link-nav"><i class="bi bi-house-fill"></i>Início</a>
         </li>
       </ul>
-      <button class="btn-login" onclick="location.href='/login/'">
+      <button class="btn-login" onclick="location.href='{% url "register_login" %}'">
         <i class="bi bi-box-arrow-in-right me-1"></i>Login
       </button>
     </div>
@@ -38,7 +38,7 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
       </div>
       <div class="offcanvas-body d-flex flex-column gap-1 p-3">
-    <button class="btn-primary w-full" onclick="location.href='/login/'">
+    <button class="btn-primary w-full" onclick="location.href='{% url "register_login" %}'">
           <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
         </button>
       </div>
