@@ -5,6 +5,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'user_specialist_app/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
 {% block scripts %}
@@ -19,7 +20,9 @@
   <!-- ==================== SIDEBAR ==================== -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-      <div class="sidebar-logo-icon"><i class="bi bi-brain"></i></div>
+      <div >
+        <img class="sidebar-logo-icon" src="{% static 'img/icon_main_sm.svg' %}">
+      </div>
       <div class="sidebar-logo-text">Sintonia Mental <small>Área do Especialista</small></div>
     </div>
 

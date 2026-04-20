@@ -39,7 +39,7 @@
     border-radius: .75rem;
     display: flex;
     justify-content: center;
-    
+
 }
 
 .sidebar-logo-text {
@@ -287,6 +287,7 @@
     padding: 2rem;
     flex: 1;
 }
+
 /* ============================================================
     STAT CARDS ROW
     ============================================================ */
@@ -368,7 +369,11 @@
     color: var(--green);
     border: 1px solid rgba(74, 222, 128, 0.3);
 }
-
+.stat-icon.purple {
+    background: var(--purple-dim);
+    color: var(--purple);
+    border: 1px solid var(--purple-border);
+}
 .stat-icon.yellow {
     background: rgba(251, 191, 36, 0.12);
     color: var(--yellow);
@@ -400,7 +405,9 @@
 .stat-trend.up {
     color: var(--green);
 }
-
+.stat-trend.down { 
+    color: var(--red); 
+}
 .stat-trend.neutral {
     color: var(--muted);
 }
@@ -630,7 +637,9 @@
 .agenda-dot.green {
     background: var(--green);
 }
-
+.agenda-dot.purple {
+    background: var(--purple); 
+}
 .agenda-info {
     flex: 1;
     min-width: 0;
