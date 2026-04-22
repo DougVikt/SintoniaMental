@@ -7,7 +7,7 @@ Specific configurations for the production environment
 
 """
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
