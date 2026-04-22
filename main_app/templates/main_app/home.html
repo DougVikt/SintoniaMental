@@ -310,4 +310,49 @@
   Ajuda
 </a>
 
+<script>
+// AVISO SITE EM DESENVOLVIMENTO - Remover quando pronto!
+document.addEventListener('DOMContentLoaded', function() {
+    // Cria div do modal dinamicamente
+    const modalHtml = `
+        <div class="modal fade" id="modal-aviso" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title">🚧 Site em Desenvolvimento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p><strong>Aviso:</strong> Este site ainda está em fase de desenvolvimento.</p>
+                        <p>Algumas funcionalidades podem não estar 100% operacionais. Mas convido a fazer nosso teste de tdah , na 
+                        pagina de login tem dois botões para encaminhar para os dashboards do paciente e especialista para visualização .
+                         Gostaria de seu feedback para nosso front . <br>
+                         Obrigado pelo apoio!</p>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="fechar-aviso">Entendi, continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    // Insere no body
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    // Instancia e mostra
+    const modalElement = document.getElementById('modal-aviso');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+
+    document.getElementById('fechar-aviso').addEventListener('click', function() {
+        localStorage.setItem('avisoVisto', 'true');
+        if (localStorage.getItem('avisoVisto')){
+            return;
+        } 
+            
+    });
+    
+});
+</script>
+
+
 {% endblock %}

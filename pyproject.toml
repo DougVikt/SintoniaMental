@@ -12,7 +12,8 @@ dependencies = [
     "django (>=6.0.3,<7.0.0)",
     "psycopg2-binary (>=2.9.11,<3.0.0)",
     "pillow (>=12.1.1,<13.0.0)",
-    "python-decouple (>=3.8,<4.0)"
+    "python-decouple (>=3.8,<4.0)",
+    "make (>=0.1.6.post2,<0.2.0)"
 ]
 
 [tool.poetry]
