@@ -1,6 +1,6 @@
 from django.db import models
 
-class TipsCards(models.Model):
+class TipsCard(models.Model):
     title = models.CharField(max_length=50)
     summary = models.CharField( max_length=200)
     text = models.TextField()
@@ -8,6 +8,7 @@ class TipsCards(models.Model):
     alt = models.CharField( max_length=50)
     
     class Meta:
+        db_table = 'tips_card'
         verbose_name = 'Card Dica'
         verbose_name_plural = 'Cards Dicas'
 
