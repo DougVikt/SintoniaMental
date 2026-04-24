@@ -1,7 +1,7 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Specialties
+from .models import Specialtie
 
 
 class RegisterForm(UserCreationForm):
@@ -22,6 +22,6 @@ class PatientForm(RegisterForm):
     pass
 
 
-class ExpertsForm(RegisterForm):
+class ExpertForm(RegisterForm):
     num_registration = forms.CharField( max_length=50)
-    specialties = forms.ModelMultipleChoiceField(queryset=Specialties.objects.all)
+    specialtie = forms.ModelMultipleChoiceField(queryset=Specialtie.objects.all)
