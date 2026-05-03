@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from .models import TipsCards
+from .models import TipsCard
 import random
 
 # Create your views here.
 def home(request):
-    tips_card = TipsCards.objects.all()
+    tips_card = TipsCard.objects.all()
     # Limita os cards para 2 , manda aleatorio
     if tips_card.count() >= 2:
         tips = random.sample(list(tips_card),2)
@@ -12,7 +12,6 @@ def home(request):
         tips = None
     # Auxilia na estrela das avaliações 
     stars= range(1,6)
-    
     return render(request, 'main_app/home.html',{
         'tips':tips,
         'stars':stars,

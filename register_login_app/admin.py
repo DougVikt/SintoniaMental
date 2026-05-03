@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Experts ,Patients,Specialties
+from .models import Expert ,Patient,Specialtie
 
 
-admin.site.register(Experts)
-admin.site.register(Patients)
-admin.site.register(Specialties)
+admin.site.register(Expert)
+admin.site.register(Patient)
+admin.site.register(Specialtie)

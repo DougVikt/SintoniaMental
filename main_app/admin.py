@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import TipsCards
+from .models import TipsCard
 
 
 
-admin.site.register(TipsCards)
+admin.site.register(TipsCard)

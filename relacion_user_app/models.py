@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator , MaxValueValidator
 # Create your models here.
 class Testimonial(models.Model):
     patient = models.ForeignKey("register_login_app.Patient" ,on_delete=models.CASCADE , related_name="testimonials")
-    expert = models.ForeignKey("register_login_app.Experts", on_delete=models.CASCADE , related_name="testimonials")
+    expert = models.ForeignKey("register_login_app.Expert", on_delete=models.CASCADE , related_name="testimonials")
     note = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     comment = models.TextField(default="Não quero comentar" , blank=True)
     
