@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import F
 
 
 class CategoryFaq(models.Model):
@@ -19,6 +20,8 @@ class QuestionAnswer(models.Model):
     question = models.CharField( max_length=200 ,verbose_name= 'pergunta')
     answer = models.TextField(verbose_name='resposta')
     list_answer = models.TextField(help_text='a cada linha e item da lista')
+    useful = models.PositiveIntegerField(default=0)
+    not_useful = models.PositiveIntegerField(default=0)
     
     class Meta:
         db_table = 'question_answer'
@@ -28,6 +31,19 @@ class QuestionAnswer(models.Model):
     
     def __str__(self):
         return self.question
+    
+    def sun_vote(self, type):
+        """
+        Recebe o tipo de voto e incrementa no banco de forma segura.
+        """
+        if type == 'useful':
+            # O F() faz a soma direto no SQL: contagem = contagem + 1
+            QuestionAnswer.objects.filter(pk=self.pk).update(useful=F('useful') + 1)
+        elif type == 'not_useful':
+            QuestionAnswer.objects.filter(pk=self.pk).update(not_useful=F('not_useful') + 1)
+        
+        # Atualiza o objeto atual na memória para refletir o novo valor
+        self.refresh_from_db()
     
     @property
     def get_list(self):
