@@ -14,7 +14,7 @@ class Consult(FkUser):
     class Status(models.TextChoices):
         PENDING = 'PENDING' , 'PENDENTE'
         HELD = 'HELD' , 'REALIZADA'
-        CANCELED = 'HELD' , 'CANCELADA'
+        CANCELED = 'CANCELED' , 'CANCELADA'
     
     date = models.DateTimeField()
     link = models.URLField( max_length=200)
