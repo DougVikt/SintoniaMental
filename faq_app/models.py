@@ -16,7 +16,7 @@ class CategoryFaq(models.Model):
     
     
 class QuestionAnswer(models.Model):
-    category = models.ForeignKey(CategoryFaq, on_delete=models.CASCADE , help_text='categoria da pergunta')
+    category = models.ForeignKey(CategoryFaq, on_delete=models.CASCADE , help_text='categoria da pergunta', related_name='questionanswer')
     question = models.CharField( max_length=200 ,verbose_name= 'pergunta')
     answer = models.TextField(verbose_name='resposta')
     list_answer = models.TextField(help_text='a cada linha e item da lista')
