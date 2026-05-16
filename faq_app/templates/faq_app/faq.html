@@ -74,14 +74,16 @@
     <a class="cat-item active" onclick="filterCat('all', this)">
       <div class="cat-icon"><i class="bi bi-grid-fill"></i></div>
       <span class="cat-name">Todas</span>
-      <span class="cat-count" id="cnt-all">18</span>
+      <span class="cat-count" id="cnt-all">{{ total_quest }}</span>
     </a>
-    <a class="cat-item" onclick="filterCat('inicio', this)">
-      <div class="cat-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
-      <span class="cat-name">Primeiros passos</span>
-      <span class="cat-count">4</span>
-    </a>
-    <a class="cat-item" onclick="filterCat('consultas', this)">
+    {% for category in faq %}
+      <a class="cat-item" onclick="filterCat('{{ category.name }}', this)">
+        <div class="cat-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+        <span class="cat-name">{{ category.name }}</span>
+        <span class="cat-count">{{ category.number_quest }}</span>
+      </a>
+    {% endfor %}
+    {% comment %} <a class="cat-item" onclick="filterCat('consultas', this)">
       <div class="cat-icon"><i class="bi bi-calendar-check-fill"></i></div>
       <span class="cat-name">Consultas</span>
       <span class="cat-count">5</span>
@@ -100,30 +102,30 @@
       <div class="cat-icon"><i class="bi bi-person-gear"></i></div>
       <span class="cat-name">Minha conta</span>
       <span class="cat-count">2</span>
-    </a>
+    </a> {% endcomment %}
   </aside>
 
   <!-- FAQ Accordion -->
   <div class="faq-content" id="faqContent">
-
-    <!-- ===== PRIMEIROS PASSOS ===== -->
-    <div class="faq-section fade-up" data-cat="inicio" id="section-inicio">
+{% for category in faq %}
+    <!-- ===== {{ category.name }} ===== -->
+    <div class="faq-section fade-up" data-cat="{{ category.name }}" id="section-{{ category.name }}">
       <div class="faq-section-header">
-        <div class="faq-section-icon" class="faq--s0">
+        <div class="faq-section-icon">
           <i class="bi bi-rocket-takeoff-fill"></i>
         </div>
-        <div class="faq-section-title">Primeiros passos</div>
-        <div class="faq-section-count">4 perguntas</div>
+        <div class="faq-section-title">{{ category.name }}</div>
+        <div class="faq-section-count">{{ category.number_quest }}</div>
       </div>
-
-      <div class="faq-item" data-cat="inicio">
+      {% for quest in category.questionanswer.all %}
+      <div class="faq-item" data-cat="{{ category.name }}">
         <div class="faq-question" onclick="toggleFAQ(this)">
-          <span class="faq-q-text">O que é o Sintonia Mental e como funciona?</span>
+          <span class="faq-q-text">{{ quest.question }}</span>
           <i class="bi bi-chevron-down faq-chevron"></i>
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            <p>O <strong>Sintonia Mental</strong> é uma plataforma de saúde mental focada em pessoas com TDAH e TEA. Conectamos pacientes a neuropsicólogos e psicólogos especializados para consultas online.</p>
+            <p>{{ quest.answer }}</p>
             <p>O funcionamento é simples:</p>
             <ul>
               <li>Você se cadastra como paciente ou especialista</li>
@@ -211,7 +213,7 @@
     <!-- ===== CONSULTAS ===== -->
     <div class="faq-section fade-up" data-cat="consultas" id="section-consultas">
       <div class="faq-section-header">
-        <div class="faq-section-icon" class="faq--s1">
+        <div class="faq-section-icon" >
           <i class="bi bi-calendar-check-fill"></i>
         </div>
         <div class="faq-section-title">Consultas</div>
@@ -335,7 +337,7 @@
     <!-- ===== PAGAMENTOS ===== -->
     <div class="faq-section fade-up" data-cat="pagamentos" id="section-pagamentos">
       <div class="faq-section-header">
-        <div class="faq-section-icon" class="faq--s2">
+        <div class="faq-section-icon" >
           <i class="bi bi-credit-card-fill"></i>
         </div>
         <div class="faq-section-title">Pagamentos</div>
@@ -436,7 +438,7 @@
     <!-- ===== ESPECIALISTAS ===== -->
     <div class="faq-section fade-up" data-cat="especialistas" id="section-especialistas">
       <div class="faq-section-header">
-        <div class="faq-section-icon" class="faq--s3">
+        <div class="faq-section-icon" >
           <i class="bi bi-person-badge-fill"></i>
         </div>
         <div class="faq-section-title">Especialistas</div>
@@ -522,7 +524,7 @@
     <!-- ===== CONTA ===== -->
     <div class="faq-section fade-up" data-cat="conta" id="section-conta">
       <div class="faq-section-header">
-        <div class="faq-section-icon" class="faq--s4">
+        <div class="faq-section-icon" >
           <i class="bi bi-person-gear"></i>
         </div>
         <div class="faq-section-title">Minha conta</div>
