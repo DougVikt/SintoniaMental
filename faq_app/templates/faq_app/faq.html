@@ -126,24 +126,27 @@
         <div class="faq-answer">
           <div class="faq-answer-inner">
             <p>{{ quest.answer }}</p>
-            <p>O funcionamento é simples:</p>
             <ul>
-              <li>Você se cadastra como paciente ou especialista</li>
-              <li>Navega pelos perfis dos especialistas disponíveis</li>
-              <li>Agenda uma consulta no horário que preferir</li>
-              <li>Realiza a consulta por videochamada diretamente pela plataforma</li>
+            {% for list in quest.list_answer %} 
+                <li>{{ list }}</li>         
+            {% empty %}
+            {% endfor %}
             </ul>
             <div class="faq-footer-row">
               <div class="faq-helpful">Isso foi útil?
-                <button class="helpful-btn" onclick="voteHelpful(this, true)"><i class="bi bi-hand-thumbs-up"></i> Sim</button>
-                <button class="helpful-btn" onclick="voteHelpful(this, false)"><i class="bi bi-hand-thumbs-down"></i> Não</button>
+                <button class="helpful-btn" onclick="voteHelpful(this, true)">
+                  <i class="bi bi-hand-thumbs-up"></i> Sim {{ quest.useful }}
+                </button>
+                <button class="helpful-btn" onclick="voteHelpful(this, false)">
+                  <i class="bi bi-hand-thumbs-down"></i> Não {{ quest.not_useful }}
+                </button>
               </div>
-              <span class="faq-tag">Geral</span>
             </div>
           </div>
         </div>
       </div>
-
+      {% endfor %}
+      {% comment %}
       <div class="faq-item" data-cat="inicio">
         <div class="faq-question" onclick="toggleFAQ(this)">
           <span class="faq-q-text">Preciso ter diagnóstico de TDAH ou TEA para usar a plataforma?</span>
@@ -209,7 +212,7 @@
         </div>
       </div>
     </div>
-
+{% endcomment %}
     <!-- ===== CONSULTAS ===== -->
     <div class="faq-section fade-up" data-cat="consultas" id="section-consultas">
       <div class="faq-section-header">
