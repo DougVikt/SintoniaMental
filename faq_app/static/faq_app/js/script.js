@@ -29,6 +29,7 @@ btn.innerHTML = positive
 
 /* ---- CATEGORY FILTER ---- */
 function filterCat(cat, el) {
+cat.toLowerCase()
 // update active cat
 document.querySelectorAll('.cat-item').forEach(c => c.classList.remove('active'));
 el.classList.add('active');

@@ -78,7 +78,7 @@
     </a>
     {% for category in faq %}
       <a class="cat-item" onclick="filterCat('{{ category.name }}', this)">
-        <div class="cat-icon"><i class="bi bi-rocket-takeoff-fill"></i></div>
+        <div class="cat-icon"><i class="bi {{ category.icon_class }}"></i></div>
         <span class="cat-name">{{ category.name }}</span>
         <span class="cat-count">{{ category.number_quest }}</span>
       </a>
@@ -117,7 +117,7 @@
         <div class="faq-section-title">{{ category.name }}</div>
         <div class="faq-section-count">{{ category.number_quest }}</div>
       </div>
-      {% for quest in category.questionanswer.all %}
+    {% for quest in category.questionanswer.all %}
       <div class="faq-item" data-cat="{{ category.name }}">
         <div class="faq-question" onclick="toggleFAQ(this)">
           <span class="faq-q-text">{{ quest.question }}</span>
@@ -128,8 +128,9 @@
             <p>{{ quest.answer }}</p>
             <ul>
             {% for list in quest.list_answer %} 
-                <li>{{ list }}</li>         
+              <li>{{ list }}</li>         
             {% empty %}
+              <p></p>
             {% endfor %}
             </ul>
             <div class="faq-footer-row">
@@ -145,7 +146,8 @@
           </div>
         </div>
       </div>
-      {% endfor %}
+    {% endfor %}
+{% endfor %}
       {% comment %}
       <div class="faq-item" data-cat="inicio">
         <div class="faq-question" onclick="toggleFAQ(this)">
