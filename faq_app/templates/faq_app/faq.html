@@ -106,13 +106,13 @@
   </aside>
 
   <!-- FAQ Accordion -->
-  <div class="faq-content" id="faqContent">
+<div class="faq-content" id="faqContent">
 {% for category in faq %}
     <!-- ===== {{ category.name }} ===== -->
-    <div class="faq-section fade-up" data-cat="{{ category.name }}" id="section-{{ category.name }}">
+    <div class="faq-section fade-up" data-cat="{{ category.name }}" id="section-{{ category.name }}" >
       <div class="faq-section-header">
         <div class="faq-section-icon">
-          <i class="bi bi-rocket-takeoff-fill"></i>
+          <i class="bi {{ category.icon_class }}"></i>
         </div>
         <div class="faq-section-title">{{ category.name }}</div>
         <div class="faq-section-count">{{ category.number_quest }}</div>
@@ -127,7 +127,7 @@
           <div class="faq-answer-inner">
             <p>{{ quest.answer }}</p>
             <ul>
-            {% for list in quest.list_answer %} 
+            {% for list in quest.get_list %} 
               <li>{{ list }}</li>         
             {% empty %}
               <p></p>
@@ -146,6 +146,7 @@
           </div>
         </div>
       </div>
+    </div>
     {% endfor %}
 {% endfor %}
       {% comment %}
@@ -216,7 +217,7 @@
     </div>
 {% endcomment %}
     <!-- ===== CONSULTAS ===== -->
-    <div class="faq-section fade-up" data-cat="consultas" id="section-consultas">
+    <div class="faq-section fade-up" data-cat="consultas" >
       <div class="faq-section-header">
         <div class="faq-section-icon" >
           <i class="bi bi-calendar-check-fill"></i>
